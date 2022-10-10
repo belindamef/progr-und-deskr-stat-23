@@ -1,0 +1,111 @@
+---
+fontsize: 8pt
+bibliography: ../Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: true
+    includes:
+      in_header: ../Header.tex
+classoption: t    
+---
+
+
+```{r, include = F}
+source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics(file.path(abb_dir,"pds_otto.png"))
+```
+
+\vspace{2mm}
+
+\huge
+Grundlagen der Mathematik und Informatik
+\vspace{6mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+#  {.plain}
+
+\vfill
+\center
+\huge
+\textcolor{black}{(1) Einführung}
+\vfill
+
+
+
+
+# Lehrstuhl für Methodenlehre I
+\setstretch{1.7}
+
+[\textcolor{blue}{Webseite des Lehrstuhls (Lehre, Forschung, Team)}](https://www.ipsy.ovgu.de/methodenlehre_I-path-980,1404.html)
+
+\vspace{3mm}
+
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics(file.path(abb_dir,"Lehrstuhlseite.png"))
+```
+
+
+
+
+# Inhalte
+\setstretch{2}
+\large
+\vfill
+
+
+\vfill
+
+
+
+
+
+# Kursmaterialien und Skripte
+
+[\textcolor{blue}{Webseite des Kurses (Folien, Videos)}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html)
+
+\vspace{5mm}
+
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir, "Kursseite_pds.png"))
+```
+
+
+
+
+# Kursmaterialien und Skripte
+
+[\textcolor{blue}{git-repository des Kurses (Folien, RMarkdown Codes)}](https://github.com/belindamef/mathe-vorkurs-22)
+
+\vspace{5mm}
+
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir, "glmi_0_git_repo.png"))
+```
+
+
+
+
+#  {.plain}
+\vfill
+\center
+\huge
+Q & A
+\vfill
