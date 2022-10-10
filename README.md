@@ -6,7 +6,7 @@
 - [Allgemeine Informationen](#allgemeine-informationen)
 - [Anleitung, wie man beitragen kann](#anleitung-wie-man-beitragen-kann)
   - [Schritt 1: Repository kopieren (***Fork***)](#schritt-1-repository-kopieren-fork)
-    - [**Wichtige Eigenschaften eines Forks:**](#wichtige-eigenschaften-eines-forks)
+    - [Wichtige Eigenschaften eines Forks:](#wichtige-eigenschaften-eines-forks)
   - [Schritt 2: Fork mit Original-Repo synchronisieren (***Fetch upstream***)](#schritt-2-fork-mit-original-repo-synchronisieren-fetch-upstream)
   - [Schritt 3: Eigenen 'Zweig' erstellen (***Branch***)](#schritt-3-eigenen-zweig-erstellen-branch)
   - [Schritt 4: Änderungen vornehmen und speichern (***Commit changes***)](#schritt-4-änderungen-vornehmen-und-speichern-commit-changes)
@@ -42,7 +42,7 @@ Wenn das Forking erfolgreich abgeschlossen wurde, werden wir automatisch auf die
 <img src="doc/Abbildungen/Abb_4_fork_4_new_fork_created.png" width="80%"/>
 
   
-#### **Wichtige Eigenschaften eines Forks:** 
+#### Wichtige Eigenschaften eines Forks:
 
 * Alle Änderungen, die im Fork vorgenommen werden, werden *nicht* im Original-Repository geändert. Änderungen im eigenen Fork können mit der [**pull-request**](#schritt-5-änderungsvorschläge-einreichen-pull-request)-Funktion als Anfrage beim Eigentümer des Original-Repo's eingereicht werden. Erst wenn der Eigentümer den pull-request annimmt, werden die Änderungen im Original-Repo übernommen. (Achtung! bevor Sie Änderungen vornehmen, sollten Sie stets zuerst Schritt 2 - 4 durchführen)
 * Änderungen im Original-Repository werden im Fork *nicht* automatisch synchronisiert. Ein Fork kann jedoch jederzeit mit dem Origianl-Repository synchronisiert werden (mit der [**fetch upstream**](#schritt-2-fork-mit-original-repo-synchronisieren-fetch-upstream)-Funktion)
