@@ -176,10 +176,10 @@ Datum          & Einheit               & Thema		                              \\
 14.12.22       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
 21.12.22       & \textit{Leistungsnachweis Teil 1}                       \\
                & \textcolor{gray}{Weihnachtspause}       \\
-04.01.22       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
-11.01.22       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
-18.01.22       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
-25.01.22       & \textit{Leistungsnachweis Teil 2}        \\
+04.01.23       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
+11.01.23       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+18.01.23       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
+25.01.23       & \textit{Leistungsnachweis Teil 2}        \\
                         \\\hline
 \end{tabular}
 
