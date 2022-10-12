@@ -142,6 +142,9 @@ inbesodere Einheit [\textit{(7) Grundbegriffe der Informatik}](https://www.ipsy.
 * [\textcolor{darkblue}{Link zum Kurs Grundlagen der Mathematik und Informatik}](https://bit.ly/3SNh3nR) 
 * Q&A im [\textcolor{darkblue}{Mattermost-Channel "C1 - Programmierung und Deskriptive Statistik"}](https://mm.cs.ovgu.de/bsc-psy-2022/channels/c1---programmeriung-und-deskriptive-statistik-2022)
   * Einmalige Registrierung zum Team "bsc-psy-2022" über [\textcolor{darkblue}{diesen Link}](https://mm.cs.ovgu.de/signup_user_complete/?id=6zhrsn3oab8pdynz16gmqpm9ka) 
+* Leistungsnachweis: Unbenotet, Multiple Choice, digitales Format
+  * Teil 1 vor der Weihnachtspause
+  * Teil 2 am Semesterende
 
 
 
