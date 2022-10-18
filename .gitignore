@@ -17,3 +17,4 @@
 
 # macOS configuration files
 *.DS_Store
+.Rproj.user
