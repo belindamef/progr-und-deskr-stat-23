@@ -11,14 +11,14 @@ output:
 ---
 
 
-```{r, include = F}
+```{r source R_common, include = F}
 source("../R_common.R")
 abb_dir = file.path(dirname(getwd()), "Abbildungen")
 ```
 
 #  {.plain}
 \center
-```{r, echo = FALSE, out.width = "20%"}
+```{r Abb otto, echo = FALSE, out.width = "20%"}
 knitr::include_graphics(file.path(abb_dir,"otto.png"))
 ```
 
@@ -109,7 +109,7 @@ Datenstrukturen
 Runterladen (z.B. \url{https://cran.r-project.org/bin/windows/base/}) und installieren.
 \vspace{2mm}
 
-```{r, echo = FALSE, out.width = "80%"}
+```{r Abb download R, echo = FALSE, out.width = "80%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_r_download.png"))
 ```
 
@@ -150,7 +150,7 @@ Bücher [RBookdown](https://bookdown.org/yihui/bookdown/) erstellen.
 * \url{https://www.r-project.org/help.html}
 * Während der Programmierung und bei bekanntem Funktionsnamen über die Kommandozeile:
 \footnotesize
-    ```{r, eval = F, echo = T}
+    ```{r R Hilfe, eval = F, echo = T}
     ?mean                    # Zeigt Hilfe zu der Funktion "mean()"
     help(mean)               # Zeigt Hilfe zu der Funktion "mean()"
     browseVignettes()        # Zeigt Vignetten aller installierten Pakete im Browser
@@ -188,7 +188,7 @@ Bücher [RBookdown](https://bookdown.org/yihui/bookdown/) erstellen.
 Runterladen (\url{https://www.rstudio.com/products/rstudio/}) und installieren.
 \vspace{2mm}
 
-```{r, echo = FALSE, out.width = "80%"}
+```{r Abb RStudio installieren, echo = FALSE, out.width = "80%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_download.png"))
 ```
 
@@ -226,7 +226,7 @@ Laut Eigenwerbung:
 
 Custom Layout via Tools $\rightarrow$ Global Options ...
 
-```{r, echo = FALSE, out.width = "90%"}
+```{r Abb 4 panels, echo = FALSE, out.width = "80%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_4panels.png"))
 ```
 
@@ -239,7 +239,7 @@ knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_4panels.png"))
 
 Custom Layout via Tools $\rightarrow$ Global Options ...
 
-```{r, echo = FALSE, out.width = "90%"}
+```{r Abb custom layout, echo = FALSE, out.width = "80%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_settings.png"))
 ```
 
@@ -254,7 +254,7 @@ Googlen
 
 Zur Einführung $\Rightarrow$ [Using the RStudio IDE](https://support.rstudio.com/hc/en-us/sections/200107586-Using-the-RStudio-IDE)
 
-```{r, echo = FALSE, out.width = "70%"}
+```{r Abb Hilfe RStudio, echo = FALSE, out.width = "70%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_using_rstudio.png"))
 ```
 
@@ -265,9 +265,9 @@ knitr::include_graphics(file.path(abb_dir, "pds_2_using_rstudio.png"))
 \large
 \textcolor{darkblue}{R Kommandozeile $\vert$ Working in the Console}
 
-\normalsize
-Die Basics:  
 \small
+Die Basics:  
+\footnotesize
 
 * Eingabe von R Befehlen bei ```>```
 * Autocomplete mit \fbox{Tab}
@@ -277,14 +277,13 @@ Die Basics:
 * Code Ausführungsstopp mit \fbox{Esc}
 
 \vspace{2mm}
-\normalsize
-Beispiel für einen Befehl:
 \small
+Beispiel für einen Befehl:
+\footnotesize
 
 ```{r Hello world console, eval=T, echo=T, indent="  "}
 print("Hallo Welt!")
 ```
-
 
 \vfill
 \footnotesize
@@ -299,8 +298,9 @@ Anmerkung:
 \large
 \textcolor{darkblue}{R Skripte $\vert$ Executing and Editing Code}
 
-\normalsize
+\small
 Neue .R Datei erstellen  
+\vspace{-1pt}
 
 \footnotesize 
 
@@ -311,7 +311,8 @@ Bestehende .R Datei öffnen
 * \fbox{Ctrl} + \fbox{O}
 
 \vspace{2mm}
-\normalsize Code im .R Skript schreiben (Befehle in Programmiersprache formulieren)  
+\small Code im .R Skript schreiben (Befehle in Programmiersprache formulieren)  
+
 
 \vspace{1mm}
 \footnotesize
@@ -320,8 +321,9 @@ print("Hallo Welt!")  # Hinter Hashtags stehen dokumentierende Kommentare
 print("Hallo R!")     # Kommentare werden nicht ausgefuehrt
 ```
 
-\normalsize
+\small
 Befehle eines R Scripts ausführen
+\vspace{-2mm}
 
 \footnotesize
 * Einzelnen Zeile, auf welcher der Cursor ruht: $\Rightarrow$ Run oder \fbox{Ctrl} + \fbox{Enter}
@@ -339,7 +341,7 @@ Anmerkung:
 \textcolor{darkblue}{Das R und RStudio Data Science Universum}
 \vspace{2mm}
 
-```{r, echo = FALSE, out.width = "100%"}
+```{r R Universum, echo = FALSE, out.width = "100%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_datascienceuniverse.pdf"))
 ```
 
@@ -349,7 +351,7 @@ knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_datascienceuniverse.pd
 \textcolor{darkblue}{Lehrmaterialien mit R und RStudio}
 \vspace{2mm}
 
-```{r, echo = FALSE, out.width = "80%"}
+```{r Literatur, echo = FALSE, out.width = "80%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_lehrmaterialien.pdf"))
 ```
 
@@ -371,26 +373,35 @@ Datenstrukturen
 Übungen und Selbstkontrollfragen
 
 
+
 # Arithmetik, Logik und Präzedenz
 \textcolor{darkblue}{R Konsole als Taschenrechner}
 \footnotesize
-\vspace{1mm}
+\vfill
 
-```{r}
-1+1
+\setstretch{0.7}
+```{r add} 
+1 + 1
 ```
-```{r}
-2*3
+\vspace{4mm}
+```{r mult}
+2 * 3
 ```
-```{r}
+\vspace{4mm}
+```{r sqrt}
 sqrt(2)
 ```
-```{r}
+\vspace{4mm}
+```{r exp}
 exp(0)
 ```
-```{r}
+\vspace{4mm}
+```{r log}
 log(1)
 ```
+
+\vfill
+Anmerkung:
 
 \begin{itemize}
 \item $[1]$ zeigt das erste und einzige Element des Ausgabevektors an
@@ -398,18 +409,18 @@ log(1)
 \end{itemize}
 
 
+
 # Arithmetik, Logik und Präzedenz
 \textcolor{darkblue}{Arithmetische Operatoren}
-\vspace{4mm}
 \setstretch{1.6}
 
 \small
 \begin{center}
 \begin{tabular}{l|l}
-Operator 			& Bedeutung 							\\\hline
+Operator 		& Bedeutung 							\\\hline
 $+$ 				& Addition 								\\
-$-$ 				& Subtraktion 							\\
-$*$ 				& Multiplikation 						\\
+$-$ 				& Subtraktion 						\\
+$*$ 				& Multiplikation 					\\
 $/$ 				& Division 								\\
 \^{} oder $**$    	& Potenz             					\\
 \%$*$\% 			& Matrixmultiplikation 					\\
@@ -418,6 +429,9 @@ $/$ 				& Division 								\\
 \end{tabular}
 \end{center}
 \vspace{4mm}
+
+\vfill
+\footnotesize
 
 * Matrixmultiplikation, Modulo, ganzzahlige Teilung benötigen wir zunächst nicht.
 * Ganzzahlige Teilung gibt das Resultat der ganzzahligen Teilung an.
@@ -431,9 +445,8 @@ $/$ 				& Division 								\\
 \textcolor{darkblue}{Logische Operatoren}
 \small
 
-Die Boolesche Algebra und R kennen zwei logische Werte: TRUE und FALSE
-
-Bei Auswertung von Relationsoperatoren ergeben sich logische Werte
+* Die Boolesche Algebra und R kennen zwei *logische Werte*: TRUE und FALSE
+* Bei Auswertung von Relationsoperatoren ergeben sich logische Werte
 
 \small
 \begin{center}
@@ -448,10 +461,12 @@ $\&$    			& UND              						\\
 \end{tabular}
 \end{center}
 
+\vfill
+\footnotesize
 * $<,<=,>,>=$ werden zumeist auf numerische Werte angewendet.
 * $==,!=$ werden zumeist auf beliebige Datenstrukturen angewendet.
 * $\vert$  und $\&$ werden zumeist auf logische Werte angewendet.
-* Die Funktion xor() implementiert das exklusive ODER.
+* $\vert$ implementiert das inklusive *oder*. Die Funktion xor() implementiert das exklusive ODER.
 
 # Arithmetik, Logik und Präzedenz
 \textcolor{darkblue}{Mathematische Funktionen}
@@ -471,41 +486,41 @@ log(x)				& Logarithmus Funktion						\\
 \end{tabular}
 \end{center}
 
-Es handelt sich um eine Auswahl, einen vollständigen Überblick gibt
 
-```{r, eval = F}
-names(methods:::.BasicFunsList)
-```
+\vfill
+\footnotesize
 
-R unterscheidet formal nicht zwischen Operatoren und Funktionen
-
-Operatoren können mit der Infix Notation als Funktionen genutzt werden
-
-```{r}
-`+`(2,3)            # Infixnotation für 2 + 3
-```
+* Hierbei handelt es sich um eine Auswahl. Einen vollständigen Überblick gibt
+    ```{r Funktionen, eval = F}
+    names(methods:::.BasicFunsList)
+    ```
+* R unterscheidet formal nicht zwischen Operatoren und Funktionen
+* Operatoren können mit der Infix Notation als Funktionen genutzt werden
+    ```{r Infixnotation}
+    `+`(2,3)            # Infixnotation für 2 + 3
+    ```
 
 
 
 # Arithmetik, Logik und Präzedenz
 \textcolor{darkblue}{Operatorpräzedenz}
+
+\footnotesize
+* Operatorrangfolge
+* Regeln der Form "Punktrechnung geht vor Strichrechnung"
+* Vordefinierte Operatorpräzedenz kann durch Klammern überschrieben werden
+\setstretch{0.7}
+    ```{r Praezedenz}
+    2 * 3 + 4
+    ```
+\vspace{2mm}
+    ```{r Praezedenz überschreiben}
+    2 * (3 + 4)
+    ```
+
 \small
-
-Operatorrangfolge
-
-Regeln der Form "Punktrechnung geht vor Strichrechnung"
-
-Vordefinierte Operatorpräzedenz kann durch Klammern überschrieben werden
-
-```{r}
-2 * 3 + 4
-```
-
-```{r}
-2 * (3 + 4)
-```
-
 Generell gilt
+\footnotesize
 
 * Operatorrangfolge nicht raten oder folgern, sondern nachschauen!
 * Lieber Klammern setzen, als keine Klammern setzen!
@@ -522,7 +537,7 @@ Generell gilt
 Präzedenz und Ausführungsreihenfolge arithmetischer Operatoren
 
 \small
-
+\setstretch{1.3}
 \begin{center}
 \begin{tabular}{l|l}
 Operator			& Reihenfolge 								\\\hline
@@ -533,9 +548,10 @@ $+$, $-$			& Links nach Rechts							\\
 \end{tabular}
 \end{center}
 
+\color{darkcyan}
 Beispiele
 \footnotesize
-```{r, eval = F}
+```{r Taschenrechnerbeispiele, eval = F}
 2^2^3 			# 2^(2^3)  	= 2^8 = 256
 (2^2)^3			# (2^2)^3  	= 4^3 = 64
 -1^2 			# -(1^2)   	= -1
@@ -547,8 +563,14 @@ Beispiele
 
 # Arithmetik, Logik und Präzedenz
 \textcolor{darkblue}{Operatorpräzedenz}
+\vspace{3mm}
+\footnotesize 
 
-```{r, echo = FALSE, out.width = "70%"}
+```{r Operatorpräzedenz}
+?Syntax
+```
+
+```{r Operatorpräzedenz output, echo = FALSE, out.width = "60%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_precedence.pdf"))
 ```
 
@@ -588,67 +610,68 @@ zu einer Konstante – zur Laufzeit des Rechenprozesses verändert werden.
 \normalsize
 \textcolor{darkblue}{Grundlagen}
 \small
+\setstretch {1.3}
 
-Variablen sind vom Programmierenden benannte Platzhalter für Werte
+* Variablen sind vom Programmierenden benannte Platzhalter für Werte
+* In 3GL Sprachen wird der Variablentyp durch eine Initialisierungsanweisung festgelegt:
 
-In 3GL Sprachen wird der Variablentyp durch eine Initialisierungsanweisung festgelegt:
-
-```{r, eval = F}
-VAR A : INTEGER     # A ist eine Variable vom Typ Integer (ganze Zahl)
-```
-
-
-In 3GL Sprachen wird Variablen durch eine Zuweisungsanweisung ein Wert zugeschrieben:
-
-```{r, eval = F}
-A := 1              # Der Variable A wird der numerische Wert 1 zugewiesen
-```
-
+    ```{r, eval = F}
+    VAR A : INTEGER     # A ist eine Variable vom Typ Integer (ganze Zahl)
+    ```
+* In 3GL Sprachen wird Variablen durch eine Zuweisungsanweisung ein Wert zugeschrieben:
+    ```{r, eval = F}
+    A := 1              # Der Variable A wird der numerische Wert 1 zugewiesen
+    ```
 In 4GL Sprachen wie Matlab, Python, R werden Variablen durch Zuweisung initialisiert:
-```{r, eval = F}
-a = 1               # a ist eine Variable vom Typ double, ihr Wert ist 1
-```
-
-Der Zuweisungsbefehl in Matlab und Python ist `=`, der Zuweisungsbefehl in R ist `<-`  oder `=`.
-
-Offiziell empfohlen für R ist `<-`, aus Kohärenzgründen benutzen wir hier `=`.
+    ```{r, eval = F}
+    a = 1               # a ist eine Variable vom Typ double, ihr Wert ist 1
+    ```
+* Der Zuweisungsbefehl in Matlab und Python ist `=`, der Zuweisungsbefehl in R ist `<-`  oder `=`.
+* Offiziell empfohlen für R ist `<-`, aus Kohärenzgründen benutzen wir hier `=`.
 
 
-# Variablen
-\textcolor{darkblue}{Beispiel}
-\vspace{2mm}
+
+# Variablen - \textcolor{darkblue}{Beispiel}
+
 
 \footnotesize
 \justifying
 Greta geht ins Schreibwarengeschäft und kauft vier Hefte, zwei Stifte und einen Füller. 
 Wie viele analoge Gegenstände kauft Greta insgesamt?
 
+Wir definieren zunächst alle Variablen:
+
+\vspace{1mm}
 ```{r}
 hefte  = 4		# Definition der Variable 'hefte'  und Wertzuweisung 4
 stifte = 2		# Definition der Variable 'stifte' und Wertzuweisung 2
 fuller = 1		# Definition der Variable 'fuller' und Wertzuweisung 1
 ```
 
-Nach Zuweisung existieren die Variablen im Arbeitsspeicher, dem sogenannten \textit{Workspace}
-
-Die Variablen können jetzt wie Zahlen in Berechnungen genutzt werden
+Nach Zuweisung existieren die Variablen im Arbeitsspeicher, dem sogenannten \textit{Workspace}. Die Variablen können jetzt wie Zahlen in Berechnungen genutzt werden
+\vspace{1mm}
 
 ```{r}
-gesamt  = hefte + stifte + fuller                    # Berechnung der Gegenstandsanzahl
+gesamt  = hefte + stifte + fuller  # Berechnung der Gegenstandsanzahl
 print(gesamt)
 ```
 
+\vspace{1mm}
 
 Ein Heft kostet einen Euro, ein Stift kostet zwei Euro, und ein Füller kostet 10 Euro. Wie viel Euro muss Greta insgesamt bezahlen?
+\vspace{1mm}
+
 ```{r}
-gesamtpreis	= hefte*1 + stifte*2 + fuller*10         # Berechung des Preises
+gesamtpreis	= hefte*1 + stifte*2 + fuller*10  # Berechung des Preises
 print(gesamtpreis)
 ```
+\vspace{1mm}
 
 `print()` gibt Variablenwerte in der R Konsole aus.
 
 
-# Variablen
+
+# Variablen - Workspace
 \textcolor{darkblue}{Workspace}
 \vspace{1mm}
 
@@ -708,6 +731,7 @@ Sinnvolle Variablennamen
 ... sind kurz ($\approx$ 1 bis 7 Zeichen) und aussagekräftig
 
 ... bestehen nur aus Kleinbuchstaben und Unterstrichen
+
 
 
 # Variablen
@@ -1091,7 +1115,7 @@ Datenstrukturen
 \setstretch{1.6}
 
 1. Installieren Sie R und RStudio auf Ihrem Rechner.
-2. Führen Sie die Befehlssequenz auf Folie \textcolor{blue}{R Skripte $\vert$ Executing and Editing Code} aus.
+2. Führen Sie die Befehlssequenz auf Folie \textcolor{darkblue}{R Skripte $\vert$ Executing and Editing Code} aus.
 3. Dokumentieren Sie die in dieser Einheit eingeführten R Befehle in einem kommentierten R Skript.
 4. Erläutern Sie den Begriff der Operatorpräzedenz.
 5. Definieren Sie den Begriff der Variable im Kontext der Programmierung.
