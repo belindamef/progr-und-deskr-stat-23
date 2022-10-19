@@ -40,6 +40,7 @@ Folie \insertframenumber}
 % colors
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{grey}{RGB}{235,235,235}
+\definecolor{middlegrey}{RGB}{210,210,210}
 \definecolor{darkgrey}{RGB}{105,105,105}
 \definecolor{lightgrey}{RGB}{245,245,245}
 \definecolor{LightBlue}{RGB}{220,220,255}
@@ -65,6 +66,7 @@ Folie \insertframenumber}
 % colors
 % -----------------------------------------------------------------------------
 \usepackage{color}
+\usepackage{xcolor}
 
 % justified text
 % ------------------------------------------------------------------------------
@@ -116,6 +118,10 @@ Folie \insertframenumber}
   \let\reset@color\beamerorig@reset@color
   \HL}
 \makeatother
+
+% text box colors
+\renewcommand\fbox{\fcolorbox{middlegrey}{white}}
+\newcommand{\fboxfill}{\fcolorbox{grey}{grey}}
 
 % equation highlighting
 % -----------------------------------------------------------------------------

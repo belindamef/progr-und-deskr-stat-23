@@ -1,0 +1,78 @@
+---
+title: "Vektoren Selbstkontrollfragen Lösung"
+author: "Belinda Fleischmann"
+date: '2022-04-11'
+output: pdf_document
+---
+
+
+---
+fontsize: 8pt
+bibliography: 0_Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: yes
+    includes:
+      in_header: 0_header.tex
+---
+
+```{r, include = F}
+source("R_common.R")
+```
+
+
+# Selbstkontrollfragen
+\footnotesize
+\setstretch{1.5}
+1. Geben Sie die Definition eines Vektorraums wieder.
+2. Geben Sie die Definition des reellen Vektorraums wieder.
+3. Es seien 
+\begin{equation}
+x := \begin{pmatrix} 2 \\ 1 \end{pmatrix}, 
+y := \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\mbox{ und } 
+a := 2. 
+\end{equation}
+Berechnen Sie
+\begin{equation}
+v = a(x+y) \mbox{ und } w = \frac{1}{a}(y-x)
+\end{equation}
+und überprüfen Sie ihre Rechnung mit R.
+4. Geben Sie die Definition des Skalarproduktes auf $\mathbb{R}^m$ wieder.
+5. Für
+\begin{equation}
+x := \begin{pmatrix} 2 \\ 1 \\ 3 \end{pmatrix},
+y := \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix},
+z := \begin{pmatrix} 3 \\ 1 \\ 0 \end{pmatrix} 
+\end{equation}
+berechnen Sie
+\begin{equation}
+\langle x,y \rangle, \langle x, z \rangle, \langle y,z \rangle
+\end{equation}
+und überprüfen Sie ihre Rechnung mithilfe von R.
+6. Geben Sie die Definition des Euklidischen Vektorraums wieder.
+7. Definieren Sie die Länge eines Vektors im Euklidischen Vektorraum.
+8. Berechnen Sie die Längen der Vektoren $x,y,z$ aus Aufgabe 5 und überprüfen
+Sie ihre Rechnung mit R.
+
+# Selbstkontrollfragen
+\footnotesize
+\setstretch{1.9}
+9. Geben Sie Definition des Abstands zweier Vektoren im Euklidischen Vektorraum wieder.
+10. Berechnen Sie $d(x,y), d(x,z)$ und $d(y,z)$ für $x,y,z$ aus Aufgabe 5.
+11. Geben Sie die Definition des Winkels zwischen zwei Vektoren im Euklidischen
+Vektorraum wieder.
+12. Berechnen Sie die Winkel zwischen den Vektoren $x$ und $y$, $x$ und $z$, sowie
+$y$ und $z$ aus Aufgabe 5 mit R.
+13. Definieren Sie die Begriffe der Orthogonalität und Orthonormalität von Vektoren.
+14. Definieren Sie den Begriff der Linearkombination von Vektoren.
+15. Definieren Sie den Begriff der linearen Unabhängigkeit von Vektoren.
+16. Woran kann man erkennen, dass zwei Vektoren linear abhängig sind?
+17. Definieren Sie den Begriff der linearen Hülle einer Menge von Vektoren.
+18. Definieren Sie den Begriff der Basis eines Vektorraums.
+19. Geben Sie das Theorem zu den Eigenschaften von Vektorraumbasen wieder.
+20. Definieren Sie den Begriff der Basisdarstellung eines Vektors.
+21. Definieren Sie den Begriff einer Orthonormalbasis von $\mathbb{R}^m$.
+22. Definieren Sie die kanonische Basis von $\mathbb{R}^m$
+23. Dokumentieren Sie alle in dieser Einheit eingeführten R Befehle in einem Skript.

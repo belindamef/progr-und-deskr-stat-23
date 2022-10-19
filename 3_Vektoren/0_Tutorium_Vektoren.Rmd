@@ -1,0 +1,1339 @@
+---
+fontsize: 8pt
+bibliography: 0_Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: yes
+    includes:
+      in_header: 0_header.tex
+classoption: t   
+---
+
+```{r, include = F}
+source("R_common.R")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("0_Abbildungen/wtfi_otto.png")
+```
+
+\vspace{2mm}
+
+\Huge
+Tutorium Allgemeines Lineares Modell
+\vspace{2mm}
+
+
+\normalsize
+BSc Psychologie SoSe 2022
+
+\vspace{2mm}
+\text{1. Termin: Organisatorisches und Vektoren}
+
+\vspace{18mm}
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [ALM Kursmaterialien](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2022/Allgemeines+Lineares+Modell.html) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+
+
+# Organisatorisches
+\vspace{3mm}
+\setstretch{1}
+
+Termine:
+
+* jeden Donnerstag 
+  * außer 26.05. (Christi Himmelfahrt)
+  * Gruppe 1: 11.15 - 12.45 Uhr [G22A-112]
+  * Gruppe 2: 13.15 - 14.45 Uhr [G22A-209]
+
+Vorbereitung für das Tutorium:
+
+* Selbstkontrollfragen der letzten VO bearbeiten
+* Offene Fragen zur letzten VO vorbereiten
+* Gerne Fragen auf moodle posten 
+
+Kontakt
+
+* per Mail: belinda.fleischmann@ovgu.de
+
+
+
+# Ziele der Veranstaltung
+\vspace{3mm}
+
+Allgemeines Ziel des Tutoriums
+
+* Wiederholung der Lehrinhalte der VO Allgemeines Lineares Modell (Modul B.2)
+* Besprechung der Selbstkontrollfragen
+
+
+\vspace{9pt}
+
+Ziel der heutigen Veranstaltung
+
+* Wiederholung mathematischer Grundlagen zur Vorbereitung für ALM
+* Im Spezifischen: Vektoren
+
+#
+
+\vfill
+\center
+\huge
+\textcolor{black}{Vektoren}
+\vfill
+
+# Vektoren
+\vspace{3mm}
+\setstretch{2}
+Motivation
+
+* In der Statistik wollen wir aus Daten Sinn generieren.
+* Einzelne Datenpunkte bestehen häufig aus mehreren Zahlen.
+  * z.B. Abhängige Variable = (Alter, IQ)
+* Datenpunkte, die aus mehreren Zahlen bestehen, nennen wir Vektoren.
+* Vektorraumstrukturen definieren den mathematischen Umgang mit Vektoren.
+
+
+# Vektoren
+\vfill
+\setstretch{2.3}
+\Large
+
+Reeller Vektorraum
+
+Euklidischer Vektorraum
+
+Lineare Unabhängigkeit
+
+Selbstkontrollfragen
+
+
+# Vektoren
+\vfill
+\setstretch{2.3}
+\Large
+
+**Reeller Vektorraum**
+
+Euklidischer Vektorraum
+
+Lineare Unabhängigkeit
+
+Selbstkontrollfragen
+
+
+# Reeller Vektorraum
+\vspace{3mm}
+\small
+\setstretch{1.2}
+\begin{definition}[Vektorraum]
+\justifying
+\begin{footnotesize}
+Es seien $V$ eine nichtleere Menge und $S$ eine Menge von Skalaren. Weiterhin 
+sei eine Abbildung (oder Funktion)
+\begin{equation}
++ : V \times V \to V, (v_1,v_2) \mapsto +(v_1,v_2) := v_1 + v_2,
+\end{equation}
+genannt \textit{Vektoraddition}, definiert. Schließlich sei eine Abbildung 
+\begin{equation}
+\cdot : S \times V \to V, (s,v) \mapsto \cdot(s,v) := sv,
+\end{equation}
+genannt \textit{Skalarmuliplikation} definiert. Dann wird das Tupel 
+$(V,S,+,\cdot)$ genau dann \textit{Vektorraum} genannt, wenn für beliebige 
+Elemente $v,w,u \in V$ und $a,b \in S$ folgende Bedingungen gelten:
+
+\vspace{6pt}
+\setstretch{1.5}
+\begin{tabular}{l l}
+(1) Kommutativität der Vektoraddition & $v+w=w+v.$ \\ [2pt]
+(2) Assoziativität der Vektoraddition & $(v+w)+u=v+(w+u).$ \\ [2pt]
+(3) Existenz eines neutralen Elements der Vektoraddition
+  & $\exists 0 \in V \text{ mit } v + 0 = 0 + v = v.$ \\ [2pt]
+(4) Existenz inverser Elemente der Vektoraddition
+  & $\forall v \in V \exists -v \in V \text{ mit } v+(-v) = 0.$ \\ [2pt]
+(5) Existenz eines neutralen Elements der Skalarmultiplikation
+  & $\exists 1 \in S \text{ mit } 1 \cdot v = v.$ \\ [2pt]
+(6) Assoziativität der Skalarmultiplikation
+  & $a \cdot (b \cdot c) = (a \cdot b) \cdot c.$ \\ [2pt]
+(7) Distributivität hinsichtlich der Vektoraddition 
+  & $a \cdot (v + w) = a \cdot v + a \cdot w.$ \\ [2pt]
+(8) Distributivität hinsichtlich der Skalaraddition 
+  & $(a+b) \cdot v = a \cdot v + b \cdot v.$
+\end{tabular}
+\end{footnotesize}
+\end{definition}
+
+
+# Reeller Vektorraum
+\vspace{3mm}
+\small
+\justifying
+
+Bemerkungen
+
+* Es gibt viele sehr verschiedene Vektorräume. 
+* Beipiele für Mengen, auf denen eine Vektorraumstruktur definiert werden kann, sind
+  * \small Die Menge der reellen $m$-Tupel
+  * Die Menge der Matrizen
+  * Die Menge der Polynome
+* Wir sind hier nur an der Vektorraumstruktur auf den reellen $m$-Tupeln interessiert
+* Zur Erinnerung: die reellen $m$-Tupel bezeichnen wir mit
+\begin{align*}
+\mathbb{R}^m := 
+\left\{
+\begin{pmatrix}
+x_1 \\ \vdots \\ x_m
+\end{pmatrix}
+\vert x_i \in \mathbb{R} \text{ für alle } 1 \leq i \leq m
+\right\}
+\end{align*}
+* Wir sprechen $\mathbb{R}^m$ als "R hoch m" aus.
+* Die Elemente $x \in \mathbb{R}^m$ nennen wir *reelle Vektoren* oder einfach *Vektoren*
+
+
+
+# Reeller Vektorraum
+\vspace{3mm}
+\small
+\setstretch{1.2}
+\justifying
+
+\begin{definition}[Reeller Vektorraum]
+\footnotesize
+\justifying
+Für alle $x,y \in \mathbb{R}^m$ und $a \in \mathbb{R}$ definieren wir die \textit{Vektoraddition} durch 
+\begin{equation}
++ : \mathbb{R}^m  \times \mathbb{R}^m \to \mathbb{R}^m, (x,y) \mapsto x+y = 
+\begin{pmatrix}
+x_1 \\ \vdots \\ x_m
+\end{pmatrix} + 
+\begin{pmatrix}
+y_1 \\ \vdots \\ y_m
+\end{pmatrix} :=
+\begin{pmatrix}
+x_1 + y_1 \\ \vdots \\ x_m + y_m
+\end{pmatrix}
+\end{equation}
+und die \textit{Skalarmultiplikation} durch
+\begin{equation}
+\cdot : \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^m, (a,x) \mapsto ax = a
+\begin{pmatrix}
+x_1 \\ \vdots \\ x_m
+\end{pmatrix} :=
+\begin{pmatrix}
+ax_1 \\ \vdots \\ ax_m
+\end{pmatrix}.
+\end{equation}
+Dann bildet $(\mathbb{R}^m, +, \cdot)$ mit den Rechenregeln der Addition und Multiplikation in $\mathbb{R}$ einen Vektorraum, den wir den \textit{reellen Vektorraum} nennen.
+\end{definition}
+
+Bemerkungen
+
+* Man sagt, dass Vektoraddition und Skalarmultiplikation *komponentenweise* durchgeführt werden. 
+
+
+# Reeller Vektorraum
+\vspace{3mm}
+\setstretch{1}
+
+\textcolor{darkcyan}{Beispiele}
+
+\footnotesize
+
+\textbf{\textcolor{darkcyan}{1)}} Für $x:= \begin{pmatrix}1\\2\\3\\4\end{pmatrix}$ und $y:= \begin{pmatrix}2\\0\\-3\\1\end{pmatrix}$ gilt $x+y = \begin{pmatrix}1\\2\\3\\4\end{pmatrix} + \begin{pmatrix}2\\0\\-3\\1\end{pmatrix} = \begin{pmatrix}1+2\\2+0\\3+(-3)\\4+1\end{pmatrix}=\begin{pmatrix}3\\2\\0\\5\end{pmatrix}$.
+
+\vspace{6pt}
+
+\textbf{\textcolor{darkcyan}{2)}} Für $x:= \begin{pmatrix}4\\8\end{pmatrix}$ und $y:= \begin{pmatrix}2\\7\end{pmatrix}$ gilt $x-y = \begin{pmatrix}4\\8\end{pmatrix} - \begin{pmatrix}2\\7\end{pmatrix} = \begin{pmatrix}4-2\\8-7\end{pmatrix} = \begin{pmatrix}2\\1\end{pmatrix}$.
+
+\vspace{6pt}
+
+\textbf{\textcolor{darkcyan}{3)}} Für $x:= \begin{pmatrix}3\\2\\1\end{pmatrix}$ und $a:=3$ gilt $ax = 3\begin{pmatrix}3\\2\\1\end{pmatrix} = \begin{pmatrix}9\\6\\3\end{pmatrix}$.
+
+
+# Reeller Vektorraum
+\vspace{3mm}
+\setstretch{1}
+
+\textcolor{darkcyan}{Rechenbeispiele in R}
+
+\footnotesize
+\textcolor{darkcyan}{Bsp. 1)}
+\tiny
+```{r}
+x = matrix(c(1,2,3,4), nrow = 4)   # Vektordefinition
+y = matrix(c(2,0,-3,1), nrow = 4)  # Vektordefinition
+x + y                              # Vektoraddition
+```
+\footnotesize
+\textcolor{darkcyan}{Bsp. 2)}
+\tiny
+```{r}
+x = matrix(c(4,8), nrow = 2)  # Vektordefinition
+y = matrix(c(2,7), nrow = 2)  # Vektordefinition
+x - y                         # Vektorsubtraktion
+```
+\footnotesize
+\textcolor{darkcyan}{Bsp. 3)}
+\tiny
+```{r}
+x = matrix(c(3,2,1), nrow = 3)  # Vektordefinition
+a = 3                           # Skalardefinition
+a * x                           # Skalarmultiplikation
+```
+
+# Reeller Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Visualisierung von $x:= \begin{pmatrix}4\\8\end{pmatrix}$ in $\mathbb{R}^2$}
+\vspace{9pt}
+
+```{r, echo=F, fig.show='hold', out.width='40%'}
+x_1 = 4
+x_2 = 8
+
+
+# Define general plot parameters
+par(
+family      = "sans",
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+cex.main    = 1.2
+)
+
+# Plot dot 
+plot(x_1, x_2, xlim=c(0, 10), ylim=c(0, 10), pch=19,
+     xlab=TeX('$x_1$'), ylab=TeX('$x_2$'))
+axis(side=1, pos=0)
+grid(nx = NULL, ny = NULL,
+     lty = 3,      # Grid line type
+     col = "gray", # Grid line color
+     lwd = 1) 
+text(5,8,expression(bgroup("(", atop("4", "8"), ")")), cex = .9)
+
+# Plot arrows
+plot(x_1, x_2, xlim=c(0, 10), ylim=c(0, 10), pch=0, cex=0.2,
+     xlab=TeX('$x_1$'), ylab=TeX('$x_2$'))
+axis(side=1, pos=0)
+text(5,8,expression(bgroup("(", atop("4", "8"), ")")), cex = .9)
+grid(nx = NULL, ny = NULL,
+     lty = 3,      # Grid line type
+     col = "gray", # Grid line color
+     lwd = 1) 
+arrows(0, 0, x_1, x_2, length = 0.15)
+```
+
+
+
+# Reeller Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Vektoraddition in $\mathbb{R}^2$}
+
+\vspace{9pt}
+\small
+\begin{align*}
+\begin{pmatrix}
+1 \\ 2
+\end{pmatrix}
++
+\begin{pmatrix}
+3 \\ 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ 3
+\end{pmatrix}
+\end{align*}
+
+```{r, eval = T, echo = F, fig.show='hold', out.width='40%'}
+
+# Define general plot parameters
+par(
+family      = "sans",
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+cex.main    = 1.2
+)
+
+# Vektordefinitionen
+x           = c(1,2)
+y           = c(3,1)
+z           = c(4,3)
+
+# Visualisierung
+plot(
+NULL,
+xlab        = TeX("$x_1$"),
+ylab        = TeX("$x_2$"),
+xlim        = c(0,5),
+ylim        = c(0,5))
+grid()
+points(
+c(x[1],y[1],z[1]),
+c(x[2],y[2],z[2]),
+pch = 19)
+text(1.5,2,expression(bgroup("(", atop("1", "2"), ")")), cex = .9)
+text(3.5,1,expression(bgroup("(", atop("3", "1"), ")")), cex = .9)
+text(4.5,3,expression(bgroup("(", atop("4", "3"), ")")), cex = .9)
+arrows(
+x0          = c(0,0,0,x[1],y[1]),
+y0          = c(0,0,0,x[2],y[2]),
+x1          = c(x[1],y[1],z[1],z[1],z[1]),
+y1          = c(x[2],y[2],z[2],z[2],z[2]),
+angle       = 20,
+length      = .1,
+col         = c("black", "black", "black", "gray60", "gray80"))
+
+```
+
+
+# Reeller Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Vektorsubtraktion in $\mathbb{R}^2$}
+
+\vspace{9pt}
+\small
+\begin{align*}
+\begin{pmatrix}
+1 \\ 2
+\end{pmatrix}
+-
+\begin{pmatrix}
+3 \\ 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\ 2
+\end{pmatrix}
++
+\begin{pmatrix}
+-3 \\ -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2 \\ \,\, 1
+\end{pmatrix}
+\end{align*}
+
+
+```{r, eval = T, echo = F, fig.show='hold', out.width='40%'}
+
+# Define general plot parameters
+par(
+family      = "sans",
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+cex.main    = 1.2
+)
+
+# Vektordefinitionen
+x           = c(1,2)
+y           = c(3,1)
+z           = c(-2,1)
+
+# Punktperspektive
+plot(
+NULL,
+xlab        = TeX("$x_1$"),
+ylab        = TeX("$x_2$"),
+xlim        = c(-4,4),
+ylim        = c(-4,4))
+grid()
+points(
+c(x[1],y[1],z[1]),
+c(x[2],y[2],z[2]),
+pch = 19)
+text(1.5,2,expression(bgroup("(", atop("1", "2"), ")")), cex = .9)
+text(3.5,1,expression(bgroup("(", atop("3", "1"), ")")), cex = .9)
+text(-2.5,1,expression(bgroup("(", atop("-2", "1"), ")")), cex = .9)
+arrows(
+x0          = c(0,0,0,0, -y[1],x[1], y[1]),
+y0          = c(0,0,0,0, -y[2],x[2], y[2]),
+x1          = c(x[1],y[1],z[1],-y[1], z[1], z[1],x[1]),
+y1          = c(x[2],y[2],z[2],-y[2], z[2], z[2],x[2]),
+angle       = 20,
+length      = .1,
+col         = c("black", "black", "black", "gray80", "gray80", "gray80", "gray80"))
+```
+
+
+
+# Reeller Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Skalarmultiplikation in $\mathbb{R}^2$}
+\vspace{9pt}
+\small
+\begin{align*}
+3
+\begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 \\ 3
+\end{pmatrix}
+\end{align*}
+
+
+```{r, eval = T, echo = F, fig.show='hold', out.width='40%'}
+
+# Define general plot parameters
+par(
+family      = "sans",
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+cex.main    = 1.2
+)
+
+# Vektor- und Skalardefinitionen
+x           = c(1,1)
+a           = 3
+
+# Punktperspektive
+plot(
+NULL,
+xlab        = TeX("$x_1$"),
+ylab        = TeX("$x_2$"),
+xlim        = c(0,4),
+ylim        = c(0,4))
+grid()
+points(
+c(a*x[1],x[1]),
+c(a*x[2],x[2]),
+pch = 19)
+text(1,1.5,expression(bgroup("(", atop("1", "1"), ")")), cex = .9)
+text(3,2.5,expression(bgroup("(", atop("3", "3"), ")")), cex = .9)
+arrows(
+x0          = c(0,0),
+y0          = c(0,0),
+x1          = c(x[1],a*x[1]),
+y1          = c(x[2],a*x[2]),
+angle       = 20,
+length      = .1,
+lwd         = c(4,1),
+col         = c("gray70", "black"))
+```
+
+
+# Vektoren
+\vspace{3mm}
+\vfill
+\setstretch{2.3}
+\Large
+
+Reeller Vektorraum
+
+**Euklidischer Vektorraum**
+
+Lineare Unabhängigkeit
+
+Selbstkontrollfragen
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\justifying
+\setstretch{1.2}
+
+\begin{definition}[Skalarprodukt auf $\mathbb{R}^m$]
+\footnotesize
+Das \textit{Skalarprodukt auf $\mathbb{R}^m$} ist definiert als die Abbildung
+\begin{equation}
+\langle \rangle : \mathbb{R}^m \times \mathbb{R}^m \to \mathbb{R}, (x,y) \mapsto \langle (x,y) \rangle := \langle x,y \rangle := \sum^m_{i=1}x_iy_i.
+\end{equation}
+\end{definition}
+
+\small
+
+Bemerkungen
+
+* Das Skalarprodukt heißt Skalarprodukt, weil das Ergebnis ein Skalar ist, und nicht weil Skalare multipliziert werden.
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Beispiel für Skalarprodukt}
+
+\footnotesize
+Es seien 
+\begin{equation}
+x:= \begin{pmatrix}1\\2\\3\end{pmatrix} \text{ und } y:= \begin{pmatrix}2\\0\\1\end{pmatrix}
+\end{equation}
+Dann ergibt sich 
+\begin{equation}
+\langle x,y\rangle = x_1 y_1 + x_2 y_2 +  x_3  y_3 = 1 \cdot 2 + 2 \cdot 0 +  3 \cdot 1 = 2+0+3 = 5.
+\end{equation}
+
+\vspace{6pt}
+
+```{r}
+# Vektordefinition
+x = matrix(c(1,2,3), nrow = 3)
+y = matrix(c(2,0,1), nrow = 3)
+```
+
+```{r}
+# Skalarprodukt mit R's komponentenweiser Multiplikation (*) und sum()
+sum(x*y)
+```
+
+```{r}
+# Skalarprodukt mit R's Matrixtransposition t() und -multiplikation (%*%)
+t(x) %*% y
+```
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\justify
+\setstretch{1.2}
+
+
+\begin{definition}[Euklidischer Vektorraum]
+Das Tupel $((\mathbb{R}^m,+,\cdot),\langle\rangle)$ aus dem reellen Vektorraum $(\mathbb{R}^m,+,\cdot)$ und dem Skalarprodukt $\langle \rangle$ auf $\mathbb{R}^m$ heißt \textit{reeller kanonischer Euklidischer Vektorraum}.
+\end{definition}
+
+\small
+Bemerkungen 
+
+* Generell heißt jedes Tupel aus einem Vektorraum (nicht nur reeller Vektorraum) und einem Skalarprodukt "Euklidischer Vektorraum".
+* Informell sprechen wir aber oft auch einfach von $\mathbb{R}^m$ von "Euklidischer Vektorraum" und insbesondere bei $((\mathbb{R}^m,+,\cdot),\langle\rangle)$ von "Euklidischer Vektorraum". 
+* Der Unterschied zwischen einem Euklidischen Vektorraum und einem Vektorraum ist, dass es im Euklidischen Vektorraum neben Vektoraddition $(+)$ und Skalarmultiplikation $(\cdot)$ noch das Skalarprodukt $(\langle \rangle)$ gibt.
+* Ein Euklidischer Vektorraum ist ein Vektorraum mit geometrischer Struktur, die durch das Skalarprodukt induziert wird.
+* Mithilfe des Skalarproduktes können wir im Euklidischen Vektorraum die *Länge* eines Vektors, den *Abstand* zweier Vektoren und den *Winkel* zwischen zwei Vektoren bestimmen.
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\justify
+\setstretch{1.2}
+\small 
+
+\begin{definition}[Länge, Abstand, Winkel]
+$((\mathbb{R}^m,+,\cdot),\langle\rangle)$ sei der Euklidische Vektorraum.
+\begin{itemize}
+\item Die \textit{Länge} eines Vektors $x \in \mathbb{R}^m$ ist definiert als
+\begin{equation}
+\lVert x \rVert := \sqrt{\langle x,x \rangle}.
+\end{equation}
+\item Der \textit{Abstand} zweier Vektoren $x,y \in \mathbb{R}^m$ ist definiert als
+\begin{equation}
+d(x,y) := \lVert x-y \rVert.
+\end{equation}
+\item Der \textit{Winkel} $\alpha$ zwischen zwei Vektoren $x,y \in \mathbb{R}^m$ mit $x,y \neq 0$ ist definiert durch \begin{equation}
+0 \leq \alpha \leq \pi \text{ und } \cos\alpha := \frac{\langle x,y \rangle}{\lVert x \rVert\lVert y \rVert}
+\end{equation}
+\end{itemize}
+\end{definition}
+
+\footnotesize
+Bemerkungen
+
+\begin{itemize}
+\item $\lVert x \rVert$ wird auch \textit{Norm von $x$} oder \textit{$\ell_2$-Norm von $x$} genannt.
+\item Für den Abstand gilt, dass
+\begin{itemize}
+\footnotesize
+\item $d(x,y) \geq 0$, $d(x,x) = 0$, $d(x,y) = d(y,x)$ und $d(x,y) \leq d(x,z) + d(z,y)$.
+\end{itemize}
+\item $\cos$ ist auf $[0, \pi]$ bijektiv, also invertierbar
+\end{itemize}
+
+```{r, echo=F, eval=F, fig.show='hold', out.width='45%'}
+x = seq(0,1*pi,0.01)
+plot(x, cos(x), type="l",
+     xlab='x',
+     frame=FALSE, las=1,
+     mgp=c(3,1,0))
+
+x = seq(0,2*pi,0.01)
+plot(x, cos(x), type="l",
+     xlab='x',
+     frame=FALSE, las=1,
+     mgp=c(3,1,0))
+
+```
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Beispiele für Vektorlängen in $\mathbb{R}^2$}
+\vspace{9pt}
+
+```{r, eval=F, echo=F, fig.show='hold', out.width='70%'}
+x_1 = matrix(c(3,5), nrow = 2)
+x_2 = matrix(c(3,3), nrow = 2)
+x_3 = matrix(c(3,1), nrow = 2)
+
+x = c(3,3,3)
+y = c(5,3,1)
+
+# Plot arrows
+plot(x,y,
+     xlim=c(0, 6), ylim=c(0, 6), pch=0, cex=0.2,
+     xlab=TeX('$x_1$'), ylab=TeX('$x_2$'), 
+     frame=FALSE, xaxs="i", yaxs="i", las=1)
+axis(side=1, pos=0)
+grid(nx = NULL, ny = NULL,
+     lty = 3,      # Grid line type
+     col = "gray", # Grid line color
+     lwd = 1) 
+arrows(0, 0, x_1[1], x_1[2], length = 0.15)
+arrows(0, 0, x_2[1], x_2[2], length = 0.15)
+arrows(0, 0, x_3[1], x_3[2], length = 0.15)
+```
+
+
+```{r, eval = T, echo = F, fig.show='hold', out.width='50%'}
+
+# Define general plot parameters
+par(
+family      = "sans",
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+cex.main    = 1.2
+)
+
+# Vektordefinitionen
+x           = c(3,5)
+y           = c(3,3)
+z           = c(3,1)
+
+# Visualisierung
+plot(
+NULL,
+xlab        = TeX("$x_1$"),
+ylab        = TeX("$x_2$"),
+xlim        = c(0,6),
+ylim        = c(0,6))
+grid()
+points(
+c(x[1],y[1],z[1]),
+c(x[2],y[2],z[2]),
+pch = 19, cex=.6)
+text(3.5,5,expression(bgroup("(", atop("3", "5"), ")")), cex = .9)
+text(3.5,3  ,expression(bgroup("(", atop("3", "3"), ")")), cex = .9)
+text(3.5,1  ,expression(bgroup("(", atop("3", "1"), ")")), cex = .9)
+arrows(
+x0          = c(0,0,0),
+y0          = c(0,0,0),
+x1          = c(x[1],y[1],z[1]),
+y1          = c(x[2],y[2],z[2]),
+angle       = 20,
+length      = .1,
+xpd         = TRUE,
+lwd         = 2)
+```
+
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Beispiele Vektorlängen in $\mathbb{R}^2$}
+
+\footnotesize
+\setstretch{1}
+
+
+\begin{align*}
+\left\lVert \begin{pmatrix}3\\5\end{pmatrix}\right\rVert = \sqrt{\left\langle \begin{pmatrix}3\\5\end{pmatrix} ,\begin{pmatrix}3\\5\end{pmatrix} \right\rangle} = \sqrt{3^2+5^2} = \sqrt{9+25} = \sqrt{34} \approx 5.83
+\end{align*}
+
+
+```{r}
+norm(matrix(c(3,5), nrow = 2), type = "2")  # Vektorlänge = l_2 Norm (type = "2")
+```
+
+\begin{align*}
+\left\lVert \begin{pmatrix}3\\3\end{pmatrix}\right\rVert = \sqrt{\left\langle \begin{pmatrix}3\\3\end{pmatrix}, \begin{pmatrix}3\\3\end{pmatrix}\right\rangle} = \sqrt{3^2+3^2} = \sqrt{9+9} = \sqrt{18} \approx 4.24
+\end{align*}
+
+```{r}
+norm(matrix(c(3,3), nrow = 2), type = "2")  # Vektorlänge = l_2 Norm (type = "2")
+```
+
+
+\begin{align*}
+\left\lVert \begin{pmatrix}3\\1\end{pmatrix}\right\rVert = \sqrt{\left\langle \begin{pmatrix}3\\1\end{pmatrix},\begin{pmatrix}3\\1\end{pmatrix} \right\rangle} = \sqrt{3^2+1^2} = \sqrt{9+1}
+= \sqrt{10} \approx 3.16
+\end{align*}
+
+```{r}
+norm(matrix(c(3,1), nrow = 2), type = "2")  # Vektorlänge = l_2 Norm (type = "2")
+```
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Beispiele für Abstände zwischen Vektoren in $\mathbb{R}^2$}
+\vspace{9pt}
+
+```{r, eval = T, echo = F, fig.show='hold', out.width='50%'}
+# Define general plot parameters
+par(
+family      = "sans",
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+cex.main    = 1.2
+)
+
+# Vektordefinitionen
+x           = c(1,1)
+y           = c(2,3)
+z           = c(4,1)
+
+# Visualisierung
+plot(
+NULL,
+xlab        = TeX("$x_1$"),
+ylab        = TeX("$x_2$"),
+xlim        = c(0,5),
+ylim        = c(0,5))
+grid()
+points(
+c(x[1],y[1],z[1]),
+c(x[2],y[2],z[2]),
+pch = 19)
+text(.5,1,expression(bgroup("(", atop("1", "1"), ")")), cex = .9)
+text(2.5,3  ,expression(bgroup("(", atop("2", "3"), ")")), cex = .9)
+text(4.5,1.5  ,expression(bgroup("(", atop("4", "1"), ")")), cex = .9)
+arrows(
+x0          = c(x[1],x[1]),
+y0          = c(x[2],x[2]),
+x1          = c(y[1],z[1]),
+y1          = c(y[2],z[2]),
+angle       = 20,
+length      = .1,
+xpd         = TRUE,
+lwd         = 1,
+col         = "gray80")
+```
+
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Beispiele Abstände zwischen Vektoren in $\mathbb{R}^2$}
+\footnotesize
+\setstretch{1}
+
+\begin{align*}
+d\left(\begin{pmatrix}1\\1\end{pmatrix}, \begin{pmatrix}2\\3\end{pmatrix}\right) = \left\lVert \begin{pmatrix}1\\1\end{pmatrix} - \begin{pmatrix}2\\3\end{pmatrix}\right\rVert = \left\lVert \begin{pmatrix}-1\\-2\end{pmatrix}\right\rVert = \sqrt{(-1)^2+(-2)^2} = \sqrt{5} \approx 2.24
+\end{align*}
+```{r}
+norm(matrix(c(1,1), nrow = 2) - matrix(c(2,3), nrow = 2), type = "2")
+```
+\begin{align*}
+d\left(\begin{pmatrix}1\\1\end{pmatrix}, \begin{pmatrix}4\\1\end{pmatrix}\right) = \left\lVert \begin{pmatrix}1\\1\end{pmatrix} - \begin{pmatrix}4\\1\end{pmatrix}\right\rVert = \left\lVert \begin{pmatrix}-3\\0\end{pmatrix}\right\rVert = \sqrt{(-3)^2+0^2} = \sqrt{9} = 3
+\end{align*}
+```{r}
+norm(matrix(c(1,1), nrow = 2) - matrix(c(4,1), nrow = 2), type = "2")
+```
+
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+Kosinus und Arkuskosinus auf $[0,\pi]$
+\setstretch{1}
+\vspace{6pt}
+```{r, eval = T, echo = F, fig.show='hold', out.width='35%'}
+
+# Define general plot parameters
+par(
+family      = "sans",
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+cex.main    = 1.2,
+font.main = 1
+)
+
+x           =  seq( 0,pi,by = 0.01)
+y           =  seq(-1,1 ,by = 0.01)
+
+plot(
+x,
+cos(x),
+type = "l",
+xlim = c(0,3.14),
+ylim = c(-1.1,1.1),
+ylab = " ",
+main = "cos(x)",
+xlab = "x [rad]"
+)
+grid()
+
+plot(
+y,
+acos(y),
+type = "l",
+xlim = c(-1,1),
+ylim = c(0,3.14),
+ylab = " ",
+xlab = "y",
+main = "acos(y)"
+)
+grid()
+
+```
+\small
+\vspace{5pt}
+Umrechnung zwischen Gradmaß [deg] und Bogenmaß [rad]:
+\vspace{3pt}
+\footnotesize
+\begin{equation}
+\mbox{deg} = \mbox{rad} \cdot \frac{180}{\pi}, \,
+\mbox{rad} = \mbox{deg} \cdot \frac{\pi}{180}
+\end{equation}
+
+\small
+\textcolor{darkcyan}{Beispiele}
+\footnotesize
+\begin{align*}
+0\pi \mbox{ rad }                 = 0.00 \mbox{ rad } = 0  \mbox{ deg }, \,
+\frac{\pi}{2} \mbox{ rad } \approx  1.57 \mbox{ rad } = 90 \mbox{ deg }, \,
+\pi \mbox{ rad } \approx  3.14 \mbox{ rad } = 180 \mbox{ deg }
+\end{align*}
+
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Beispiele für Winkel zwischen Vektoren in $\mathbb{R}^2$}
+
+\vspace{6pt}
+```{r, eval = T, echo = F, fig.show='hold', out.width='50%'}
+
+# Define general plot parameters
+par(
+family      = "sans",
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),   # position of axis label
+xaxs        = "i",
+yaxs        = "i",
+cex.main    = 1.2,
+font.main   = 1           # title font not bold
+)
+
+# Vektordefinitionen
+x           = c(3,0)
+y           = c(3,3)
+z           = c(0,3)
+
+# Visualisierung
+plot(
+NULL,
+xlab        = TeX("$x_1$"),
+ylab        = TeX("$x_2$"),
+xlim        = c(0,5),
+ylim        = c(0,5))
+grid()
+points(
+c(x[1],y[1],z[1]),
+c(x[2],y[2],z[2]),
+pch = 19,
+xpd = TRUE,
+cex = 0.7)
+text(3,.75,expression(bgroup("(", atop("3", "0"), ")")), cex = .9)
+text(3.5,3.5  ,expression(bgroup("(", atop("3", "3"), ")")), cex = .9)
+text(.5,3  ,expression(bgroup("(", atop("0", "3"), ")")), cex = .9)
+arrows(
+x0          = c(0,0,0),
+y0          = c(0,0,0),
+x1          = c(x[1],y[1],z[1]),
+y1          = c(x[2],y[2],z[2]),
+angle       = 20,
+length      = .12,
+xpd         = TRUE,
+lwd         = 2)
+
+```
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Beispiel 1) für Winkel zwischen Vektoren in $\mathbb{R}^2$}
+
+\vspace{6pt}
+\small
+Winkel in Radians
+
+\footnotesize
+\begin{align*}
+\alpha = \mbox{acos} \left ( \frac{\left \langle \begin{pmatrix} 3\\0 \end{pmatrix}, \begin{pmatrix} 3\\3 \end{pmatrix} \right \rangle}{\left \lVert \begin{pmatrix}3\\0\end{pmatrix}\right \rVert\left \lVert \begin{pmatrix}3\\3\end{pmatrix}\right \rVert}\right)
+= \mbox{acos}\left(\frac{3 \cdot 3 + 0 \cdot 3}{\sqrt{3^2 + 0^2} \cdot \sqrt{3^2 + 3^2}}\right)
+= \mbox{acos}\left(\frac{9}{3 \cdot \sqrt{18}}\right)
+= \frac{\pi}{4} \approx 0.785
+\end{align*}
+
+\vspace{6pt}
+\small
+Winkel in Grad
+
+\footnotesize
+\begin{align*}
+\frac{\pi}{4} \cdot \frac{180}{\pi} = 45
+\end{align*}
+
+\small
+Berechnung in R
+\footnotesize
+```{r}
+x = matrix(c(3,0), nrow = 2)                                   # Vektor 1
+y = matrix(c(3,3), nrow = 2)                                   # Vektor 2
+w = acos(sum(x*y)/(sqrt(sum(x*x))*sqrt(sum(y*y)))) * 180/pi    # Winkel in Grad
+print(w)
+```
+
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\textcolor{darkcyan}{Beispiel 2) für Winkel zwischen Vektoren in $\mathbb{R}^2$}
+
+
+\vspace{6pt}
+\small
+Winkel in Radians
+
+\footnotesize
+\begin{align*}
+\alpha = \mbox{acos}  \left ( \frac{\left \langle \begin{pmatrix} 3\\0 \end{pmatrix}, \begin{pmatrix} 0\\3 \end{pmatrix} \right \rangle}{\left \lVert \begin{pmatrix}3\\0\end{pmatrix}\right \rVert \left \lVert\begin{pmatrix}0\\3\end{pmatrix}\right \rVert}\right)
+= \mbox{acos}\left(\frac{3 \cdot 0 + 0 \cdot 3}{\sqrt{3^2 + 0^2} \cdot \sqrt{0^2 + 3^2}}\right)
+= \mbox{acos}\left(\frac{0}{3 \cdot \sqrt{3\cdot 3}}\right)
+= \frac{\pi}{2} \approx 1.57
+\end{align*}
+
+\vspace{6pt}
+\small
+Winkel in Grad
+
+\footnotesize
+\begin{align*}
+\frac{\pi}{2} \cdot \frac{180}{\pi} = 90
+\end{align*}
+
+\small
+Berechnung in R
+\footnotesize
+```{r}
+x = matrix(c(3,0), nrow = 2)                                   # Vektor 1
+y = matrix(c(0,3), nrow = 2)                                   # Vektor 2
+w = acos(sum(x*y)/(sqrt(sum(x*x))*sqrt(sum(y*y)))) * 180/pi    # Winkel in Grad
+print(w)
+```
+
+
+
+# Euklidischer Vektorraum
+\vspace{3mm}
+\setstretch{1.2}
+\small
+\begin{definition}[Orthogonalität und Orthonormalität von Vektoren]
+\justifying
+$\left((\mathbb{R}^m, +, \cdot), \langle \rangle \right)$ sei der Euklidische Vektorraum.
+\begin{itemize}
+\item Zwei Vektoren $x,y \in \mathbb{R}^m$ heißen \textit{orthogonal}, wenn gilt, dass
+\begin{equation}
+\langle x, y \rangle = 0
+\end{equation}
+\item Zwei Vektoren $x,y \in \mathbb{R}^m$ heißen \textit{orthonormal}, wenn gilt, dass
+\begin{equation}
+\langle x, y \rangle = 0 \mbox{ und } \Vert x \Vert = \Vert y \Vert = 1.
+\end{equation}
+\end{itemize}
+\end{definition}
+
+Bemerkungen
+
+* Für orthogonale und orthonormale Vektoren gilt insbesondere auch
+
+\begin{equation}
+\cos \alpha
+= \frac{\langle x, y \rangle}{\Vert x \Vert \Vert y \Vert}
+= \frac{0}{\Vert x \Vert \Vert y \Vert}
+= 0
+\end{equation}
+also
+\begin{equation}
+\alpha = \frac{\pi}{2} = 90^{\circ}
+\end{equation}
+
+
+# Vektoren
+\vspace{3mm}
+\vfill
+\setstretch{2.3}
+\Large
+
+Reeller Vektorraum
+
+Euklidischer Vektorraum
+
+**Lineare Unabhängigkeit**
+
+Selbstkontrollfragen
+
+
+# Lineare Unabhängigkeit
+\vspace{3mm}
+\setstretch{1}
+\small
+\begin{definition}[Linearkombination]
+\justifying
+$\{v_1, v_2, ..., v_k\}$ sei eine Menge von $k$ Vektoren eines Vektorraums $V$.
+Dann ist die \textit{Linearkombination} der Vektoren in $v_1, v_2, ..., v_k$ mit den
+skalaren Koeffizienten $a_1, a_2,...,a_k$ definiert als der Vektor
+\begin{equation}
+w := \sum_{i=1}^k a_i v_i \in V.
+\end{equation}
+\end{definition}
+
+\textcolor{darkcyan}{Beispiel einer Linearkombination}
+
+\footnotesize
+
+Es seien
+\begin{align*}
+v_1 := \begin{pmatrix} 2 \\ 1 \end{pmatrix},
+v_2 := \begin{pmatrix} 1 \\ 1 \end{pmatrix},
+v_3 := \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\mbox{ und }
+a_1 := 2, a_2 := 3, a_3 := 0.
+\end{align*}
+Dann ergibt sich
+\begin{align*}
+\begin{split}
+w
+  = a_1v_1 + a_2v_2 + a_3v_3
+& =  2 \cdot \begin{pmatrix} 2 \\ 1 \end{pmatrix}
+   + 3 \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+   + 0 \cdot \begin{pmatrix} 0 \\ 1 \end{pmatrix}   \\
+& =   \begin{pmatrix} 4 \\ 2 \end{pmatrix}
+    + \begin{pmatrix} 3 \\ 3 \end{pmatrix}
+    + \begin{pmatrix} 0 \\ 0 \end{pmatrix}   \\
+& =   \begin{pmatrix} 7 \\ 5 \end{pmatrix}
+\end{split}
+\end{align*}
+
+
+# Lineare Unabhängigkeit
+\vspace{3mm}
+\small
+\begin{definition}[Lineare Unabhängigkeit]
+\justifying
+$V$ sei ein Vektorraum. Eine Menge $W := \{w_1, w_2, ...,w_k\}$ von Vektoren in $V$ heißt
+\textit{linear unabhängig}, wenn die einzige Repräsentation des Nullelements
+$0 \in V$ durch eine Linearkombination der $w \in W$ die triviale
+Repräsentation
+\begin{equation}
+0 = a_1 w_1 + a_2 w_2 + \cdots + a_k w_k \mbox{ mit } a_1 = a_2 =  \cdots = a_k = 0
+\end{equation}
+ist. Wenn die Menge $W$ nicht linear unabhängig ist, dann heißt sie \textit{linear abhängig}.
+\end{definition}
+
+Bemerkungen
+
+* Prinzipiell müsste man für jede Linearkombination der $w \in W$ prüfen, ob sie Null ist.
+* Die beiden folgenden Theoreme zeigen, dass es auch einfacher geht.
+
+
+# Lineare Unabhängigkeit
+\vspace{3mm}
+\small
+\begin{theorem}[Lineare Abhängigkeit von zwei Vektoren]
+\justifying
+\normalfont
+$V$ sei ein Vektorraum. Zwei Vektoren $v_1, v_2 \in V$ sind linear abhängig,
+wenn einer der Vektoren ein skalares Vielfaches des anderen Vektors ist.
+\end{theorem}
+
+\footnotesize
+\underline{Beweis}
+\vspace{1mm}
+$v_1$ sei ein skalares Vielfaches von $v_2$, also
+\begin{equation}
+v_1 = \lambda v_2 \mbox{ mit } \lambda \neq 0.
+\end{equation}
+Dann gilt
+\begin{equation}
+v_1 - \lambda v_2 = 0.
+\end{equation}
+Dies wiederum entspricht der Linearkombination
+\begin{equation}
+a_1v_1 + a_2v_2 = 0
+\end{equation}
+mit $a_1 = 1 \neq 0$ und  $a_2 = -\lambda \neq 0$. Es gibt also eine Linearkombination
+des Nullelementes, die nicht die triviale Repräsentation ist, und damit sind
+$v_1$ und $v_2$ nicht linear unabhängig.
+
+# Lineare Unabhängigkeit
+\vspace{3mm}
+\small
+\textcolor{darkcyan}{Beispiel linear abhängiger Vektoren}
+
+\footnotesize
+
+Es seien
+\begin{align*}
+v_1 = \begin{pmatrix} 3 \\ 3 \end{pmatrix} \text{ und }
+v_2 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
+\end{align*}
+$v_1$ ist also ein skalares Vielfaches von $v_2$, also
+\begin{equation}
+v_1 = \lambda v_2 \mbox{ mit } \lambda =3.
+\end{equation}
+Dann gilt
+
+\begin{equation}
+v_1 - \lambda v_2 = \begin{pmatrix} 3 \\ 3 \end{pmatrix} -
+\lambda \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 0.
+\end{equation}
+
+Dies wiederum entspricht der Linearkombination
+\begin{equation}
+a_1v_1 + a_2v_2 = 0
+\end{equation}
+mit $a_1 = 1 \neq 0$ und  $a_2 = -\lambda \neq 0$.
+
+# Lineare Unabhängigkeit
+\vspace{3mm}
+\setstretch{1.1}
+\small
+\begin{theorem}[Lineare Abhängigkeit einer Menge von Vektoren]
+\justifying
+\normalfont
+$V$ sei ein Vektorraum und $w_1,...,w_k \in V$ sei eine Menge von Vektoren in $V$.
+Wenn einer der Vektoren $w_i, i = 1,...,k$ eine Linearkombination der anderen
+Vektoren ist, dann ist die Menge der Vektoren linear abhängig.
+\end{theorem}
+
+\footnotesize
+\underline{Beweis}
+
+Die Vektoren $w_1,...,w_k$ sind genau dann linear abhängig, wenn gilt, dass
+$\sum_{i=1}^n a_i w_i = 0$ mit mindestens einem $a_i \neq 0$ . Es sei also zum
+Beispiel $a_j \neq 0$. Dann gilt
+\begin{equation}
+0 = \sum_{i=1}^n a_i w_i = \sum_{i=1, i \neq j}^n a_i w_i + a_jw_j
+\end{equation}
+Also folgt
+\begin{equation}
+a_jw_j  = - \sum_{i=1, i \neq j}^n a_i w_i
+\end{equation}
+und damit
+\begin{equation}
+w_j  = - a_j^{-1}\sum_{i=1, i \neq j}^n a_i w_i = - \sum_{i=1, i \neq j}^n (a_j^{-1}a_i) w_i
+\end{equation}
+Also ist $w_j$ eine Linearkombination der $w_i, i = 1,...,k$ mit $i \neq j$.
+$\hfill \Box$
+
+
+
+# Vektoren
+\vfill
+\setstretch{2.3}
+\Large
+
+Reeller Vektorraum
+
+Euklidischer Vektorraum
+
+Lineare Unabhängigkeit
+
+**Selbstkontrollfragen**
+
+
+# Selbstkontrollfragen
+\footnotesize
+\setstretch{1.5}
+1. Geben Sie die Definition eines Vektorraums wieder.
+2. Geben Sie die Definition des reellen Vektorraums wieder.
+3. Es seien 
+\begin{equation}
+x := \begin{pmatrix} 2 \\ 1 \end{pmatrix}, 
+y := \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\mbox{ und } 
+a := 2. 
+\end{equation}
+Berechnen Sie
+\begin{equation}
+v = a(x+y) \mbox{ und } w = \frac{1}{a}(y-x)
+\end{equation}
+und überprüfen Sie ihre Rechnung mit R.
+4. Geben Sie die Definition des Skalarproduktes auf $\mathbb{R}^m$ wieder.
+5. Für
+\begin{equation}
+x := \begin{pmatrix} 2 \\ 1 \\ 3 \end{pmatrix},
+y := \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix},
+z := \begin{pmatrix} 3 \\ 1 \\ 0 \end{pmatrix} 
+\end{equation}
+berechnen Sie
+\begin{equation}
+\langle x,y \rangle, \langle x, z \rangle, \langle y,z \rangle
+\end{equation}
+und überprüfen Sie ihre Rechnung mithilfe von R.
+6. Geben Sie die Definition des Euklidischen Vektorraums wieder.
+7. Definieren Sie die Länge eines Vektors im Euklidischen Vektorraum.
+8. Berechnen Sie die Längen der Vektoren $x,y,z$ aus Aufgabe 5 und überprüfen
+Sie ihre Rechnung mit R.
+
+# Selbstkontrollfragen
+\footnotesize
+\setstretch{1.9}
+9. Geben Sie Definition des Abstands zweier Vektoren im Euklidischen Vektorraum wieder.
+10. Berechnen Sie $d(x,y), d(x,z)$ und $d(y,z)$ für $x,y,z$ aus Aufgabe 5.
+11. Geben Sie die Definition des Winkels zwischen zwei Vektoren im Euklidischen
+Vektorraum wieder.
+12. Berechnen Sie die Winkel zwischen den Vektoren $x$ und $y$, $x$ und $z$, sowie
+$y$ und $z$ aus Aufgabe 5 mit R.
+13. Definieren Sie die Begriffe der Orthogonalität und Orthonormalität von Vektoren.
+14. Definieren Sie den Begriff der Linearkombination von Vektoren.
+15. Definieren Sie den Begriff der linearen Unabhängigkeit von Vektoren.
+16. Woran kann man erkennen, dass zwei Vektoren linear abhängig sind?
+17. Dokumentieren Sie alle in dieser Einheit eingeführten R Befehle in einem Skript.
