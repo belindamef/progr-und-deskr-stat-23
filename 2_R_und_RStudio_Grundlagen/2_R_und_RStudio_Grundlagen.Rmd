@@ -81,6 +81,8 @@ Datenstrukturen
 
 Übungen und Selbstkontrollfragen
 
+
+
 # R und RStudio
 \setstretch{2}
 \large
@@ -304,8 +306,10 @@ Neue .R Datei erstellen
 
 \footnotesize 
 
-* GUI: *File* $\rightarrow$ *New File* $\rightarrow$* R Script* 
+* GUI: *File* $\rightarrow$ *New File* $\rightarrow$ *R Script* 
 * Keyboard Shortcut: \fbox{Ctrl} + \fbox{Shift} + \fbox{N}  
+
+\small
 Bestehende .R Datei öffnen  
 * GUI: File $\rightarrow$ Open File 
 * \fbox{Ctrl} + \fbox{O}
