@@ -311,6 +311,10 @@ Neue .R Datei erstellen
 
 \small
 Bestehende .R Datei öffnen  
+\vspace{-1pt}
+
+\footnotesize 
+
 * GUI: File $\rightarrow$ Open File 
 * \fbox{Ctrl} + \fbox{O}
 
