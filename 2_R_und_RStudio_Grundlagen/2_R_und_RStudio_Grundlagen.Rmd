@@ -598,6 +598,8 @@ Datenstrukturen
 
 Übungen und Selbstkontrollfragen
 
+
+
 # Variablen
 \textcolor{darkblue}{Definition}
 \vspace{5mm}
@@ -614,15 +616,15 @@ zu einer Konstante – zur Laufzeit des Rechenprozesses verändert werden.
 \end{flushright}
 
 
+
 # Variablen
 \normalsize
 \textcolor{darkblue}{Grundlagen}
 \small
-\setstretch {1.3}
+\setstretch {1.5}
 
 * Variablen sind vom Programmierenden benannte Platzhalter für Werte
 * In 3GL Sprachen wird der Variablentyp durch eine Initialisierungsanweisung festgelegt:
-
     ```{r, eval = F}
     VAR A : INTEGER     # A ist eine Variable vom Typ Integer (ganze Zahl)
     ```
@@ -641,11 +643,9 @@ In 4GL Sprachen wie Matlab, Python, R werden Variablen durch Zuweisung initialis
 
 # Variablen - \textcolor{darkblue}{Beispiel}
 
-
 \footnotesize
 \justifying
-Greta geht ins Schreibwarengeschäft und kauft vier Hefte, zwei Stifte und einen Füller. 
-Wie viele analoge Gegenstände kauft Greta insgesamt?
+\textcolor{darkblue}{Greta geht ins Schreibwarengeschäft und kauft vier Hefte, zwei Stifte und einen Füller. Wie viele analoge Gegenstände kauft Greta insgesamt?}
 
 Wir definieren zunächst alle Variablen:
 
@@ -653,14 +653,14 @@ Wir definieren zunächst alle Variablen:
 ```{r}
 hefte  = 4		# Definition der Variable 'hefte'  und Wertzuweisung 4
 stifte = 2		# Definition der Variable 'stifte' und Wertzuweisung 2
-fuller = 1		# Definition der Variable 'fuller' und Wertzuweisung 1
+fueller = 1		# Definition der Variable 'fuller' und Wertzuweisung 1
 ```
 
 Nach Zuweisung existieren die Variablen im Arbeitsspeicher, dem sogenannten \textit{Workspace}. Die Variablen können jetzt wie Zahlen in Berechnungen genutzt werden
 \vspace{1mm}
 
 ```{r}
-gesamt  = hefte + stifte + fuller  # Berechnung der Gegenstandsanzahl
+gesamt  = hefte + stifte + fueller  # Berechnung der Gegenstandsanzahl
 print(gesamt)
 ```
 
@@ -670,7 +670,7 @@ Ein Heft kostet einen Euro, ein Stift kostet zwei Euro, und ein Füller kostet 1
 \vspace{1mm}
 
 ```{r}
-gesamtpreis	= hefte*1 + stifte*2 + fuller*10  # Berechung des Preises
+gesamtpreis	= hefte*1 + stifte*2 + fueller*10  # Berechung des Preises
 print(gesamtpreis)
 ```
 \vspace{1mm}
@@ -679,32 +679,40 @@ print(gesamtpreis)
 
 
 
-# Variablen - Workspace
+# Variablen
 \textcolor{darkblue}{Workspace}
 \vspace{1mm}
 
+\small
+Nach Zuweisung werden Variablen automatisch im Workspace gespeichert. 
+
 \footnotesize
 
-`ls()` zeigt die existierenden benutzbaren Variablen im Arbeitsspeicher an
+* In der RStudio IDE wird das im *Environment* Pane angezeigt. 
+* `ls()` zeigt die existierenden benutzbaren Variablen im Arbeitsspeicher an
+\setstretch{0.9}
+    ```{r}
+    ls()						# Anzeigen aller Variablennamen im Workspace
+    ```
 
-```{r}
-ls()						# Anzeigen aller Variablennamen im Workspace
-```
-\vspace{2mm}
+\setstretch{1}
+\small
+Löschen von Variablen
 
-`rm()` erlaubt das Löschen von Variablen
+\footnotesize
 
-```{r}
-rm(gesamtpreis)		        # Löschen der Variable Gesamtpreis
-ls()
-```
-\vspace{2mm}
+* `rm()` erlaubt das Löschen von Variablen
+\setstretch{0.9}
+    ```{r}
+    rm(gesamtpreis)		        # Löschen der Variable Gesamtpreis
+    ls()
+    ```
+* `rm(list=ls())` löscht alle Variablen
+    ```{r}
+    rm(list = ls()) 	        # Löschen aller Variablen
+    ls()
+    ```
 
-`rm(list=ls())` löscht alle Variablen
-```{r}
-rm(list = ls()) 	        # Löschen aller Variablen
-ls()
-```
 
 
 # Variablen
@@ -721,6 +729,7 @@ knitr::include_graphics(file.path(abb_dir, "pds_2_workspace.pdf"))
 \setstretch{1.6}
 \textcolor{darkblue}{Variablennamen}
 
+\small
 \vspace{2mm}
 
 Zulässige Variablennamen
@@ -733,60 +742,116 @@ Zulässige Variablennamen
 
 ... werden unter ?make.names() beschrieben
 
+\vspace{1mm}
 
-Sinnvolle Variablennamen
+Sinnvoll
+\vspace{2mm} Variablennamen
 
-... sind kurz ($\approx$ 1 bis 7 Zeichen) und aussagekräftig
+... sind kurz ($\approx$ 1 bis 9 Zeichen) und \textcolor{darkcyan}{aussagekräftig}
 
 ... bestehen nur aus Kleinbuchstaben und Unterstrichen
 
-
-
-# Variablen
-\textcolor{darkblue}{Variablenrepräsentation $\vert$ Binding}
-\vspace{1mm}
+\vfill
 \footnotesize
-\setstretch{0.5}
+Anmerkung
+
+* R ist *case-sensitive*. Bsp. x $\neq$ X
+
+
+
+# Variablen - \textcolor{darkblue}{Variablenrepräsentation $\vert$ Binding}
+
+\vspace{3mm}
+\footnotesize
 
 ```{r, eval = F}
 x = 1
 ```
 
-Intuitiv wird eine Variable genannt x mit dem Wert 1 erzeugt.
+\setstretch{0.8}
 
-De-facto geschehen zwei Dinge:
-
-1. R erzeugt ein Objekt (Vektor mit Wert 1) mit Speicheradresse `lobstr::obj_addr(x).
-2. R verbindet dieses Objekt mit dem Namen x, der das Objekt im Speicher referenziert.
-
+\begin{itemize}
+\item Intuitiv wird eine Variable genannt mit dem Wert 1 erzeugt.
+\item De-facto geschehen zwei Dinge: 
+\begin{enumerate}
+\footnotesize
+  \item R erzeugt ein Objekt (Vektor mit Wert 1) mit Speicheradresse ```0x1d888c1a800```.
+  \item 2. R verbindet dieses Objekt mit dem Namen x, der das Objekt im Speicher referenziert.
+\end{enumerate}
+\end{itemize}
 
 ```{r, echo = FALSE, out.width="22%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_binding_1.pdf"))
 ```
-\vspace{1mm}
+\vspace{2mm}
 
 ```{r, eval = F}
 y = x
 ```
 
-Intuitiv wird eine Variable genannt y mit Wert gleich dem Wert von x erzeugt.
+\begin{itemize}
+\item Intuitiv wird eine Variable genannt y mit Wert gleich dem Wert von x erzeugt.
+\item De-facto wird ein neuer Name y erzeugt, der dasselbe Objekt referenziert wie x.
+\item Das Objekt (Vektor mit Wert 1) wird nicht kopiert, R spart Arbeitsspeicher.
+\end{itemize}
 
-De-facto wird ein neuer Name y erzeugt, der dasselbe Objekt referenziert wie x:
+```{r, eval = F}
+y = 1
+```
 
-```{r, echo = FALSE, out.width="22%"}
+\begin{itemize}
+\item R erzeugt ein Objekt (Vektor mit Wert 1) mit eigener Speicheradresse ```0x1da21b17843```
+\item De-facto wird ein neuer Name y erzeugt, der ein anderes Objekt referenziert wie x.
+\end{itemize}
+
+```{r, echo = FALSE, out.width="44%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_binding_2.pdf"))
 ```
 \vspace{1mm}
 
-Man überzeuge sich mit `lobstr::obj_addr(x)` und `lobstr::obj_addr(y).
 
-Das Objekt (Vektor mit Wert 1) wird nicht kopiert, R spart Arbeitsspeicher.
+
+
+# Variablen
+\textcolor{darkblue}{Speicheradressen $\vert$ object adress}
+
+\setstretch{1}
+
+\footnotesize
+
+* Speicheraddressen können mit `lobstr::obj_addr()` angezeigt werden
+    ```{r}
+    library(lobstr)   # Paket `lobstr` laden
+    x = 1
+    obj_addr(x)
+    ```
+
+* y bekommt die Zuweisung x. De-facto refenziert y dieselbe Speicheradresse wie x
+    ```{r}
+    y = x
+    obj_addr(y) 
+    ```
+* y bekommt die Zuweisung zu einem neuen Objekt (Vektor mit Wert 1). De-facto referenziert y eine andere Speicheradresse wie x
+    ```{r}
+    y = 1
+    obj_addr(y) 
+    ```
+
+\vfill
+
+
+Anmerkungen:
+
+* \justifying Ausdrücke der Art ```lobstr::obj_addr()``` referieren eine Funktion, in diesem Fall `obj_addr()`, bei gleichzeitiger Angabe des Pakets, in diesem Fall `lobbstr`. 
+* Bevor Funktionen eines Pakets verwendet werden können, muss es mit `library()` geladen werden. Ausnahmen sind R Pakete, die per default geladen werden, z.B. `base`. 
+
+
 
 
 # Variablen
 \textcolor{darkblue}{Variablenrepräsentation $\vert$ Copy-on-modify}
 \vspace{2mm}
-\small
+\footnotesize
 
 ```{r}
 x = 1 		# Objekt (0x74b) erzeugt, x referenziert Speicheradresse  des Objektes
@@ -807,25 +872,29 @@ knitr::include_graphics(file.path(abb_dir, "pds_2_copy_on_modify.pdf"))
 R Objekte sind \textit{immutable}, können also nicht verändert werden.
 
 
+
 # Variablen
 \textcolor{darkblue}{Variablenrepräsentation $\vert$ Copy-on-modify}
 \vspace{2mm}
 \small
-\setstretch{2.5}
 
 Zur Immutability gibt allerdings zwei Ausnahmen, genannt \textit{Modifications-in-place}
 
 1. Objekte mit nur einem gebundenem Namen werden in-place modifiziert
 
-    * \footnotesize Dieses Verhalten ist allerdings nur in R, nicht innerhalb RStudios reproduzierbar.
+\footnotesize
+    ```{r, indent= "    "}
+    x = c(1,2) # Objekt (0x74b) erzeugt, x referenziert Speicheradresse des Objektes
+    x[1] = 2   # Objekt (0x74b) veraendert
+    ```
+ 
+   * \footnotesize Dieses Verhalten ist allerdings nur in R, nicht innerhalb RStudios reproduzierbar.
+   
+2. \small Environments werden in-place modifiziert ($\rightarrow$ Environments und Funktionen).
 
-```{r, indent = "      "}
-x = 1 		# Objekt (0x74b) erzeugt, x referenziert Speicheradresse des Objektes
-x[1] = 2 	# Objekt (0x74b) veraendert
-```
+\vfill
 
-\small
-2.  Environments werden in-place modifiziert ($\rightarrow$ Environments und Funktionen).
+
 
 # Variablen
 \textcolor{darkblue}{Variablenrepräsentation $\vert$ Unbinding und Carbage Collection}
@@ -853,13 +922,17 @@ x = 1		#  x referenziert Objekt (0x74b)
 x = "a"		#  x referenziert Objekt (0x2a08), Objekt (0x74b) jetzt ohne Referenz
 ```
 
+\vspace{2mm}
 \small
 Carbage collection
 \footnotesize
+\vspace{-2mm}
 
 * Nicht referenzierte Objekte im Arbeitsspeicher werden automatisch gelöscht.
 * Das Löschen geschieht meist erst dann, wenn es wirklich nötig ist.
 * Es ist nicht nötig, aktiv die Garbage Collection Funktion `gc()` zu benutzen.
+
+
 
 #
 \large
@@ -886,8 +959,8 @@ Variablen
 \textcolor{darkblue}{Fundamentale Datenstrukturen}
 
 * Vordefiniert innerhalb der Programmiersprache
-* Logische Werte (logical): TRUE, FALSE
-* Ganze Zahlen (integer): int8 (-128,...,127), int16 (–32768,..., 32767)
+* Logische Werte (`logical`): TRUE, FALSE
+* Ganze Zahlen (`integer`): int8 (-128,...,127), int16 (–32768,..., 32767)
 * Gleitkommazahlen (single, double): 1.23456, 12.3456, 123.456, ...
 * Zeichen (character): "a", "b", "c", "!"
 * Datentyp-spezifische assoziierte Operationen
@@ -905,7 +978,9 @@ Variablen
 * Definition eigener Operationen
 
 
+
 # Datenstrukturen
+
 \textcolor{darkblue}{Datenstrukturenkennenlernen beim Erlernen einer Programmiersprache}
 
 \small
@@ -926,6 +1001,9 @@ Variablen
 * Wie erzeugt man selbstdefinierte Datenstrukturen und zugehörige Operationen?
 * Wie lautet die Syntax zum Umgang mit einer selbstdefinierten Datenstruktur?
 
+\vfill
+
+
 
 # Datenstrukturen
 \setstretch{1.8}
@@ -945,6 +1023,9 @@ Jedem Objekt kann eindeutig zugeordnet werden
 
 * optional weitere **Attribute**
 
+\vfill
+
+
 # Datenstrukturen
 \setstretch{1.8}
 \textcolor{darkblue}{Organisation von Daten in R}
@@ -956,6 +1037,8 @@ Alles, was in R vorkommt, ist ein **Objekt**
 ```{r, echo = FALSE, out.width="80%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_r_objektstruktur.pdf"))
 ```
+
+\vfill
 
 
 
@@ -992,10 +1075,12 @@ raw
 \end{center}
 \vspace{2mm}
 
-
 Double und integer werden zusammen auch als numeric bezeichnet.
 
 Viele weitere Typen, hier relevant sind **logical**, **double**, **integer**, **character**.
+
+\vfill
+
 
 
 # Datenstrukturen
@@ -1044,11 +1129,13 @@ is.logical(x)
 is.double(x)
 ```
 
+
+
 # Datenstrukturen
-\setstretch{2.5}
 \textcolor{darkblue}{Übersicht atomare Datenstrukturen in R}
 \vspace{3mm}
 
+\setstretch{2.5}
 \begin{center}
 \begin{tabular}{l|l}
 Datenstruktur
@@ -1070,15 +1157,17 @@ Array
 \end{center}
 \vspace{3mm}
 
-
 $\Rightarrow$ (3) Vektoren, Matrizen, Arrays
+
+\vfill
+
 
 
 # Datenstrukturen
-\setstretch{2.5}
-\textcolor{darkblue}{Übersicht rekursive Datenstrukturen in R}
-\vspace{3mm}
 
+\textcolor{darkblue}{Übersicht rekursive Datenstrukturen in R}
+\vspace{-3mm}
+\setstretch{2.5}
 \begin{center}
 \begin{tabular}{l|l}
 Datenstruktur
@@ -1099,7 +1188,11 @@ Dataframe
 \end{tabular}
 \end{center}
 \vspace{3mm}
+
 $\Rightarrow$ (4) Listen und Dataframes
+
+\vfill
+
 
 
 #
