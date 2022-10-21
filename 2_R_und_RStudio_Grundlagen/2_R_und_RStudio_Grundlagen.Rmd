@@ -1167,6 +1167,7 @@ $\Rightarrow$ (3) Vektoren, Matrizen, Arrays
 
 \textcolor{darkblue}{Übersicht rekursive Datenstrukturen in R}
 \vspace{-3mm}
+
 \setstretch{2.5}
 \begin{center}
 \begin{tabular}{l|l}
