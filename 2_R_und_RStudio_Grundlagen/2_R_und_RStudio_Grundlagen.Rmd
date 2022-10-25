@@ -650,10 +650,10 @@ In 4GL Sprachen wie Matlab, Python, R werden Variablen durch Zuweisung initialis
 Wir definieren zunächst alle Variablen:
 
 \vspace{1mm}
-```{r}
+```{r Greta Beispiel}
 hefte  = 4		# Definition der Variable 'hefte'  und Wertzuweisung 4
 stifte = 2		# Definition der Variable 'stifte' und Wertzuweisung 2
-fueller = 1		# Definition der Variable 'fuller' und Wertzuweisung 1
+fueller = 1		# Definition der Variable 'fueller' und Wertzuweisung 1
 ```
 
 Nach Zuweisung existieren die Variablen im Arbeitsspeicher, dem sogenannten \textit{Workspace}. Die Variablen können jetzt wie Zahlen in Berechnungen genutzt werden
@@ -738,7 +738,7 @@ Zulässige Variablennamen
 
 ... beginnen mit einem Buchstaben oder . nicht gefolgt von einer Zahl
 
-... dürfen keine reserverd words wie \textcolor{blue}{for}, \textcolor{blue}{if}, \textcolor{blue}{NaN}, usw. sein ($>$?reserved)
+... dürfen keine reserverd words wie \textcolor{blue}{for}, \textcolor{blue}{if}, \textcolor{blue}{NaN}, usw. sein (`?reserved`)
 
 ... werden unter ?make.names() beschrieben
 
@@ -755,7 +755,7 @@ Sinnvoll
 \footnotesize
 Anmerkung
 
-* R ist *case-sensitive*. Bsp. x $\neq$ X
+* R ist *case-sensitive*. Das heißt z.B. x $\neq$ X
 
 
 
@@ -771,11 +771,11 @@ x = 1
 \setstretch{0.8}
 
 \begin{itemize}
-\item Intuitiv wird eine Variable genannt mit dem Wert 1 erzeugt.
+\item Intuitiv wird eine Variable genannt x mit dem Wert 1 erzeugt.
 \item De-facto geschehen zwei Dinge: 
 \begin{enumerate}
 \footnotesize
-  \item R erzeugt ein Objekt (Vektor mit Wert 1) mit Speicheradresse ```0x1d888c1a800```.
+  \item R erzeugt ein Objekt (Vektor mit Wert 1) mit Speicheradresse `0x1d888c1a800`.
   \item 2. R verbindet dieses Objekt mit dem Namen x, der das Objekt im Speicher referenziert.
 \end{enumerate}
 \end{itemize}
@@ -800,7 +800,7 @@ y = 1
 ```
 
 \begin{itemize}
-\item R erzeugt ein Objekt (Vektor mit Wert 1) mit eigener Speicheradresse ```0x1da21b17843```
+\item R erzeugt ein Objekt (Vektor mit Wert 1) mit (neuer) Speicheradresse `0x1da21b17843`.
 \item De-facto wird ein neuer Name y erzeugt, der ein anderes Objekt referenziert wie x.
 \end{itemize}
 
@@ -819,19 +819,19 @@ knitr::include_graphics(file.path(abb_dir, "pds_2_binding_2.pdf"))
 
 \footnotesize
 
-* Speicheraddressen können mit `lobstr::obj_addr()` angezeigt werden
+* Speicheraddressen können mit `lobstr::obj_addr()` angezeigt werden.
     ```{r}
     library(lobstr)   # Paket `lobstr` laden
     x = 1
     obj_addr(x)
     ```
 
-* y bekommt die Zuweisung x. De-facto refenziert y dieselbe Speicheradresse wie x
+* y bekommt die Zuweisung x. De-facto refenziert y dieselbe Speicheradresse wie x.
     ```{r}
     y = x
     obj_addr(y) 
     ```
-* y bekommt die Zuweisung zu einem neuen Objekt (Vektor mit Wert 1). De-facto referenziert y eine andere Speicheradresse wie x
+* y bekommt die Zuweisung zu einem neuen Objekt (Vektor mit Wert 1). De-facto referenziert y eine andere Speicheradresse wie x.
     ```{r}
     y = 1
     obj_addr(y) 
@@ -854,8 +854,8 @@ Anmerkungen:
 \footnotesize
 
 ```{r}
-x = 1 		# Objekt (0x74b) erzeugt, x referenziert Speicheradresse  des Objektes
-y = x		# y referenziert dieselbe Speicheradresse wie x (0x74b)
+x = 1 		# Objekt (0x74b) erzeugt, x referenziert Speicheradresse des Objektes
+y = x		  # y referenziert dieselbe Speicheradresse wie x (0x74b)
 y = 3 		# y modifiziert, modifizierte Kopie (0xcd2) wird gespeichert
 y        	# y referenziert jetzt (0xcd2)
 ```
@@ -881,13 +881,12 @@ R Objekte sind \textit{immutable}, können also nicht verändert werden.
 Zur Immutability gibt allerdings zwei Ausnahmen, genannt \textit{Modifications-in-place}
 
 1. Objekte mit nur einem gebundenem Namen werden in-place modifiziert
-
 \footnotesize
     ```{r, indent= "    "}
     x = c(1,2) # Objekt (0x74b) erzeugt, x referenziert Speicheradresse des Objektes
     x[1] = 2   # Objekt (0x74b) veraendert
     ```
- 
+   
    * \footnotesize Dieses Verhalten ist allerdings nur in R, nicht innerhalb RStudios reproduzierbar.
    
 2. \small Environments werden in-place modifiziert ($\rightarrow$ Environments und Funktionen).
@@ -968,9 +967,9 @@ Variablen
 
 \textcolor{darkblue}{Zusammengesetzte Datenstrukturen}
 
-* Vordefinierte Container zur Zusammenfassung mehrerer Variablen gleichen Datentyps
-* Zum Beispiel Vektoren, Listen, Arrays, Matrizen, ...
-* Container-spezifische Operationen (Z.B. Vektorindizierung, Matrixmultiplikation, ...)
+* Vordefinierte Container zur Zusammenfassung mehrerer Variablen gleichen Datentyps.  
+(z.B. Vektoren, Listen, Arrays, Matrizen, ...) 
+* Container-spezifische Operationen (z.B. Vektorindizierung, Matrixmultiplikation, ...)
 
 \textcolor{darkblue}{Selbstdefinierte Datenstrukturen}
 
@@ -994,7 +993,7 @@ Variablen
 \textcolor{darkblue}{Zusammengesetzte Datenstrukturen}
 
 * Welche Container und zugehörige Operationen bietet die Programmiersprache?
-* Wie lautet die Syntax zum Umgang mit einem Containers?
+* Wie lautet die Syntax zum Umgang mit einem Container?
 
 \textcolor{darkblue}{Selbstdefinierte Datenstrukturen}
 
@@ -1010,13 +1009,15 @@ Variablen
 \textcolor{darkblue}{Organisation von Daten in R}
 \vspace{1mm}
 
-Alles, was in R vorkommt, ist ein **Objekt**
+Alles, was in R vorkommt, ist ein **Objekt**.
 \vspace{1mm}
 
-Jedem Objekt kann eindeutig zugeordnet werden
+Jedem Objekt kann eindeutig zugeordnet werden:
+
+\small 
 
 * ein **Modus**
-    * Atomar  $\,\,\vert$ Komponenten sind vom gleichen Datentyp.
+    * \small Atomar  $\,\,\vert$ Komponenten sind vom gleichen Datentyp.
     * Rekursiv $\vert$ Komponenten können von unterschiedlichem Datentyp sein.
 
 * eine **Länge**
@@ -1031,7 +1032,7 @@ Jedem Objekt kann eindeutig zugeordnet werden
 \textcolor{darkblue}{Organisation von Daten in R}
 \vspace{1mm}
 
-Alles, was in R vorkommt, ist ein **Objekt**
+Alles, was in R vorkommt, ist ein **Objekt**.
 \vspace{5mm}
 
 ```{r, echo = FALSE, out.width="80%"}
@@ -1091,40 +1092,40 @@ Viele weitere Typen, hier relevant sind **logical**, **double**, **integer**, **
 
 Automatische Festlegung von Datentypen durch Zuweisung
 \vspace{1mm}
-
+\tiny
 ```{r}
 b = TRUE					# logical
 x = 2.5 					# double
 y = 1L						# (long) integer
 c = 'a' 					# character
 ```
-
+\footnotesize
 Testen von Datentypen durch `typeof()`
-\vspace{1mm}
-
+\setstretch{0.5}
+\tiny
 ```{r}
 typeof(b)
 ```
-
+\vspace{1.5mm}
 ```{r}
 typeof(x)
 ```
-
+\vspace{1.5mm}
 ```{r}
 typeof(y)
 ```
-
+\vspace{1.5mm}
 ```{r}
 typeof(c)
 ```
-
+\vspace{2mm}
+\footnotesize
 Testen von Datetypen durch `is.*()`
-\vspace{1mm}
-
+\tiny
 ```{r}
 is.logical(x)
 ```
-
+\vspace{1.5mm}
 ```{r}
 is.double(x)
 ```
@@ -1143,7 +1144,7 @@ Datenstruktur
 \\\hline
 
 Vektor
-& Container von indizierte Komponenten identischen Typs
+& Container von indizierten Komponenten identischen Typs
 \\
 
 Matrix
