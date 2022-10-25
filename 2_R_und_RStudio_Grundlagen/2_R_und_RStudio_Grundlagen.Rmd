@@ -800,7 +800,7 @@ y = 1
 ```
 
 \begin{itemize}
-\item R erzeugt ein Objekt (Vektor mit Wert 1) mit (neuer) Speicheradresse `0x1da21b17843`.
+\item R erzeugt ein \textit{neues} Objekt (Vektor mit Wert 1) mit \textit{eigener} Speicheradresse `0x1da21b17843`.
 \item De-facto wird ein neuer Name y erzeugt, der ein anderes Objekt referenziert wie x.
 \end{itemize}
 
