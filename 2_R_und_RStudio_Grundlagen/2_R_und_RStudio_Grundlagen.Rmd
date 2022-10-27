@@ -896,7 +896,7 @@ Zur Immutability gibt allerdings zwei Ausnahmen, genannt \textit{Modifications-i
 
 
 # Variablen
-\textcolor{darkblue}{Variablenrepräsentation $\vert$ Unbinding und Carbage Collection}
+\textcolor{darkblue}{Variablenrepräsentation $\vert$ Unbinding und Garbage Collection}
 \small
 
 Copy-on-modify gilt auch in umgekehrter Reihenfolge
@@ -923,7 +923,7 @@ x = "a"		#  x referenziert Objekt (0x2a08), Objekt (0x74b) jetzt ohne Referenz
 
 \vspace{2mm}
 \small
-Carbage collection
+Garbage collection
 \footnotesize
 \vspace{-2mm}
 
