@@ -3,7 +3,7 @@
 #
 # Author: Belinda Fleischmann
 
-# ------ # SKF 3 ---------------------------------
+# ------ SKF 3 ---------------------------------
 # Die Basics
 print("Hallo Welt!")        # Textausgabe
 print("Hallo R!")           # Begrüße R
