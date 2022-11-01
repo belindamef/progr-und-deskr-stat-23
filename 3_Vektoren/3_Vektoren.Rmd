@@ -140,7 +140,7 @@ l = NaN                  # Einelementiger Vektor vom Typ double (NaN)
 ```  
 
 \footnotesize
-Integer wird wie double ohne Dezimalstellen spezifiziert, gefolgt von L (long integer)
+Integer werden wie double ohne Dezimalstellen spezifiziert, gefolgt von einem L (long integer).
 \vspace{1mm}
 \tiny
 ```{r, eval = F}
@@ -152,7 +152,7 @@ y = 200L                 # Einelementiger Vektor vom Typ integer
 **Logical**
 
 \footnotesize
-TRUE oder FALSE, abgekürzt T oder F
+TRUE oder FALSE, abgekürzt T oder F.
 \vspace{1mm}
 \tiny
 ```{r, eval = F}
@@ -164,7 +164,7 @@ y = F                   # Einelementiger Vektor vom Typ logical
 **Character**
 
 \footnotesize
-Anführungszeichen ("a") oder Hochkommata ('a')
+Anführungszeichen ("a") oder Hochkommata ('a').
 \vspace{1mm}
 \tiny
 ```{r, eval = F}
@@ -192,7 +192,7 @@ l = c(TRUE, FALSE)              # logical  vector [TRUE, FALSE]
 * \footnotesize Beachte: `c()` konkateniert die Eingabeargumente und erzwingt einen einheitlichen Datentyp (vgl. coercion)
 \footnotesize
     ```{r, eval = F}
-    x = c(1, "a", TRUE)             # character vector ["1", "a", "TRUE"]
+    x = c(1, "a", TRUE)         # character vector ["1", "a", "TRUE"]
     ```
 
 \small
@@ -286,30 +286,30 @@ Attribute
 
 `length()` gibt die Anzahl der Elemente eines Vektors aus
 ```{r, eval = T}
-x = 0:10					# Vektor
-length(x)					# Anzahl der Elemente des Vektors
+x = 0:10          # Vektor
+length(x)         # Anzahl der Elemente des Vektors
 ```
 \vspace{2mm}
 `typeof()` gibt den elementaren Datentyp eines Vektors aus
 ```{r, eval = T}
-x = 1:3L					# Vektor
-typeof(x)					# Datentyp des atomic vectors
+x = 1:3L          # Vektor
+typeof(x)         # Datentyp des atomic vectors
 ```
 \vspace{2mm}
 ```{r, eval = T}
-y = c(T,F,T)				# Vektor
-typeof(y)				    # Der Datentyp des atomic vectors
+y = c(T,F,T)      # Vektor
+typeof(y)         # Der Datentyp des atomic vectors
 ```
 \vspace{2mm}
 `mode()` und `storage.mode()` werden nicht empfohlen, sie existieren für S Kompatibilität
 
 `is.logical()`, `is.double()`, `is.integer()`, `is.character()` testen den Datentyp
 ```{r, eval = T}
-is.double(x)				# Testen obigen Vektors
+is.double(x)      # Testen, ob der x vom Typ double ist
 ```
 \vspace{2mm}
 ```{r, eval = T}
-is.logical(y)			    # Testen obigen Vektors
+is.logical(y)     # Testen, ob der y vom Typ logical ist
 ```
 
 
@@ -355,16 +355,10 @@ typeof(y)				# Erzeugter Vektor ist vom Typ integer
 Datentypangleichung (Coercion)
 \vspace{2mm}
 \setstretch{0.9}
-\small
-Bei Konkatenation verschiedener Datentypen wird ein einheitlicher Datentyp erzwungen. Es gilt 
-
-\center
-character $>$ double $>$ integer $>$ logical
-\vspace{2mm}
 
 \justifying
 \small
-`as.logical()`, `as.integer()`, `as.double()`, `as.character()` erlauben explizite Coercion:
+Explizite Coercion mit `as.logical()`, `as.integer()`, `as.double()`, `as.character()`
 \vspace{1mm}
 
 \footnotesize
@@ -412,7 +406,7 @@ Attribute
 \setstretch{1.4}
 
 \normalsize
-Grundlagen Indizierung
+Grundlagen
 \vspace{-2mm}
 
 \small
@@ -769,15 +763,16 @@ Attribute
 \setstretch{2}
 \small
 1. Dokumentieren Sie die in dieser Einheit eingeführten R Befehle in einem R Skript.  
-2. Beschreiben Sie in einer Übersicht die R Datenstruktur "Atomarer Vektor".
-3. Erläutern Sie die Funktion des Colonoperators in R.
-4. Nennen Sie vier Prinzipien der Indizierung in R.
-5. Erzeugen Sie einen Vektor der Dezimalzahlen 0.0, 0.05, 0.10 , 0.15, ..., 0.90, 0.95, 1.0.  
-6. Wählen Sie mithilfe positiver Indices die Elemente 0.0, 0.1,..., 0.9, 1.0 dieses Vektors aus.  
-7. Wählen Sie mithilfe negativer Indices die Elemente 0.0, 0.1,..., 0.9, 1.0 dieses Vektors aus.  
-8. Wählen Sie die letzten 10 Elemente dieses Vektors aus. 
-9. Erläutern Sie den Begriff der Datentypangleichung (Coercion).
-10. Erläutern Sie den Begriff des (Vektor)Recylings.
-11. Erläutern Sie die Bedeutung des R Datentyps `NA`.
-12. Erläutern Sie das Konzept der Attribute in R.
+2. Überlegen Sie sich zu den gelernten Konzepten eigene Beispiele und dokumentieren Sie diese im R Skript aus SKF 1.
+3. Beschreiben Sie in einer Übersicht die R Datenstruktur "Atomarer Vektor".
+4. Erläutern Sie die Funktion des Colonoperators in R.
+5. Nennen Sie vier Prinzipien der Indizierung in R.
+6. Erzeugen Sie einen Vektor der Dezimalzahlen 0.0, 0.05, 0.10 , 0.15, ..., 0.90, 0.95, 1.0.  
+7. Wählen Sie mithilfe positiver Indices die Elemente 0.0, 0.1,..., 0.9, 1.0 dieses Vektors aus.  
+8. Wählen Sie mithilfe negativer Indizes die Elemente 0.0, 0.1,..., 0.9, 1.0 dieses Vektors aus.  
+9. Wählen Sie die letzten 10 Elemente dieses Vektors aus. 
+10. Erläutern Sie den Begriff der Datentypangleichung (Coercion).
+11. Erläutern Sie den Begriff des (Vektor)Recylings.
+12. Erläutern Sie die Bedeutung des R Datentyps `NA`.
+13. Erläutern Sie das Konzept der Attribute in R.
 \vfill
