@@ -3,7 +3,7 @@
 #
 # author: Belinda Fleischmann
 
-# ====== SKF 1 ================================================================
+# ======SKF 1================================================================
 
 # ------Erzeugung einelementiger Vektoren------
 # Double
@@ -197,10 +197,10 @@ p = c(age    = 31,
       height = 198, 
       weight = 75)
 
-# ====== SKF 6 ================================================================
+# ======SKF 6================================================================
 vektor = seq(0, 1, by=0.05) 
 
-# ====== SKF 7 ================================================================
+# ======SKF 7================================================================
 # Bestimme die Laenge des Vektors
 laenge_vektor = length(vektor)
 
@@ -210,14 +210,14 @@ indizes_1_3_5_usw = seq(1, laenge_vektor, by=2)
 # Kreiere einen neuen Vektor, der nur die Elemente 0.0, 0.1, ..., 0.9., 1.0 enthält
 vektor_eine_dezimal_stelle_skf7 = vektor[indizes_pos]
 
-# ====== SKF 8 ================================================================
+# ======SKF 8================================================================
 # Kreiere einen Vektor mit jeder 2. Zahl in der Sequenz 2 - [Laenge des Vektors]
 indizes_2_4_6_usw = seq(2, laenge_vektor, by=2)
 
 # Kreiere einen neuen Vektor, der nur die Elemente 0.0, 0.1, ..., 0.9., 1.0 enthält
 vektor_eine_dezimal_stelle_skf_8 = vektor[-indizes_2_4_6_usw]
 
-# ====== SKF 9 ================================================================
+# ======SKF 9================================================================
 # Kreiere einen Vektor, der die letzten 10 Indizes enthält
 indizes_letzte_10 = seq(laenge_vektor-10, laenge_vektor)
 
@@ -227,7 +227,7 @@ vektor_letzte_10 = vektor[indizes_letzte_10]
 # Anmerkung: die hier gewählten Variablennamen sind natürlich viel zu lang. Sie 
 # wurden hier aus didaktischen Gründen gewählt. :)
 
-# ====== End of Script ======
+# ======End of Script======
 # Ausgabe einen Textesm der dem Programmierer zeigt, dass das gesamte Skript 
 # ausgemführt werden konnte. 
 print("Das gesamte Skript wurde ausgeführt.")
