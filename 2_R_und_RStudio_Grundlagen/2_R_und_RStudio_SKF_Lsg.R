@@ -54,3 +54,33 @@ log(1)                      # Wert der Logarithmusfunktion für x = 1
 (-1)^2                      # Überschreiben der Präzedenz Potenz-vor-Vorzeichen
 2+3/4*5                     # 2+(3/4)*5 = 2+(0.75*5) = 2+3.75 = 5.75
 2+3/(4*5)                   # 2+3/(4*5) = 2+3/20 = 2+0.15 = 2.15
+
+# Variablenzuweisung
+a = 1                      # a ist eine Variable vom Typ double, ihr Wert ist 1
+
+# Das Gretchenbeispiel
+hefte = 4                    # Definition der Variable 'hefte' und Wertzuweisung 4
+stifte = 2                   # Definition der Variable 'stifte' und Wertzuweisung 2
+fueller = 1                  # Definition der Variable 'fueller' und Wertzuweisung 1
+gesamt = (                   # Berechnung der Gegenstandsanzahl
+  hefte + stifte + fueller
+  )  
+gesamtpreis = (              # Berechung des Preises
+  hefte*1 
+  + stifte*2 
+  + fueller*10
+  )   
+print(gesamt)                      
+print(gesamtpreis)
+
+# Workspace
+ls()                         # Anzeigen aller Variablennamen im Workspace
+rm(gesamtpreis)              # Löschen der Variable Gesamtpreis
+rm(list = ls())              # Löschen aller Variablen
+
+# Speicheradressen anzeigen
+library(lobstr)              # Paket 'lobstr' laden
+x = 1                        
+obj_addr(x)
+y = 1
+obj_addr(y)
