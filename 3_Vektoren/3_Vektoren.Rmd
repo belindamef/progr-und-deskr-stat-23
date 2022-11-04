@@ -105,7 +105,7 @@ Attribute
 \item Vektoren sind geordnete Folgen von Datenwerten, die in \underline{einem} Objekt zusammengefasst sind und \underline{einem} Variablennamen zugewiesen sind.
 \item Die einzelnen Datenwerte eines Vektors heißen \textit{Elemente} des Vektors.
 \item Vektoren, deren Elemente alle vom gleichen Datentyp sind, heißen \textbf{atomar}.
-\item Die zentralen Datentypen sind \textbf{numeric}, (\textbf{double}, \textbf{integer}),  \textbf{logical},  \textbf{character}
+\item Die zentralen Datentypen sind \textbf{numeric} (\textbf{double}, \textbf{integer}),  \textbf{logical},  \textbf{character}
 \end{itemize}
 
 \vspace{1mm}
@@ -633,7 +633,7 @@ NA & FALSE 				# NA UND FALSE  ergibt FALSE, weil jeder Wert UND FALSE FALSE erg
 \vspace{2mm}
 
 Auf NA testet man mit `is.na()`
-```{r, eval = F}
+```{r, eval = T}
 x = c(NA, 5, NA, 10)	# Vektor mit NAs
 x == NA					# Kein Testen auf NAs : 5 == NA ist NA, nicht FALSE
 ``` 
