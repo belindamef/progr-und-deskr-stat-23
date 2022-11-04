@@ -217,7 +217,7 @@ indizes_2_4_6_usw = seq(2, laenge_vektor, by=2)
 # Kreiere einen neuen Vektor, der nur die Elemente 0.0, 0.1, ..., 0.9., 1.0 enthält
 vektor_eine_dezimal_stelle_skf_8 = vektor[-indizes_2_4_6_usw]
 
-# ====== SKF 8 ================================================================
+# ====== SKF 9 ================================================================
 # Kreiere einen Vektor, der die letzten 10 Indizes enthält
 indizes_letzte_10 = seq(laenge_vektor-10, laenge_vektor)
 
