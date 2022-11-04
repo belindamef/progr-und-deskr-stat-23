@@ -1,37 +1,47 @@
 ---
 fontsize: 8pt
-bibliography: 4_Referenzen.bib
+bibliography: ../Referenzen.bib
 citation_package: natbib
 output:
   beamer_presentation:
+    highlight: tango
     keep_tex: true
     includes:
-      in_header: 4_header.tex
+      in_header: ../Header.tex
 ---
 
 
-```{r, include = F}
-source("4_R_common.R")
+```{r source R_common, include = F}
+source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
 ```
+
+
 
 #  {.plain}
 \center
-```{r, echo = FALSE, out.width = "20%"}
-knitr::include_graphics("4_Abbildungen/pds_4_otto.png")
+```{r Abb otto, echo = FALSE, out.width = "20%"}
+knitr::include_graphics(file.path(abb_dir,"otto.png"))
 ```
 
 \vspace{2mm}
 
-\huge
+\Large
 Programmierung und Deskriptive Statistik
-\vspace{6mm}
+\vspace{4mm}
 
-\large
-BSc Psychologie WiSe 2021/22
+\normalsize
+BSc Psychologie WiSe 2022/23
 
-\vspace{6mm}
-\large
-Prof. Dr. Dirk Ostwald
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
 
 #  {.plain}
 
@@ -42,48 +52,6 @@ Prof. Dr. Dirk Ostwald
 \end{center}
 \vfill
 
-# {.plain}
-
-Programmierung und Deskriptive Statistik
-
-\small
-\center
-\footnotesize
-\renewcommand{\arraystretch}{1.1}
-\begin{tabular}{lll}
-Datum        & Einheit                     & Thema					                            \\\hline
-14.10.2021   & Einführung                  & (1) Einführung 				                    \\
-21.10.2021   & R Grundlagen                & (2) R und RStudio             	            \\
-28.10.2021   & R Grundlagen                & (3) R und RStudio                          \\
-04.11.2021   & R Grundlagen                & (4) Vektoren                               \\
-  \textbf{11.11.2021}
-& \textbf{R Grundlagen}
-& \textbf{(5) Matrizen}                                                      \\
-18.11.2021   & R Grundlagen                & (6) Listen und Dataframes                  \\
-25.11.2021   & R Grundlagen                & (7) Kontrollstruktur und Schleifen         \\
-02.12.2021   & R Grundlagen                & (8) R Base Graphics                        \\
-09.12.2021   & Deskriptive Statistik       & (9) Datenmanagement                        \\
-16.12.2021   & Deskriptive Statistik       & (10) Häufigkeitsverteilungen               \\
-             & \textcolor{gray}{Weihnachtspause}                                        \\
-06.01.2022   & Deskriptive Statistik       & (11) Verteilungsfunktionen und Quantile    \\
-13.01.2022   & Deskriptive Statistik       & (12) Maße der zentralen Tendenz            \\
-20.01.2022   & Deskriptive Statistik       & (13) Maße der Datenvariabilität            \\
-27.01.2022   & Deskriptive Statistik       & (14) Bivariate Zusammenhangsmaße           \\\hline
-  \textbf{25.02.2021}  
-& \textbf{Klausurtermin}
-& \textbf{9 - 10 Uhr, G26 - H11}                                                        \\
-Jul 2022     & Klausurwiederholungstermin
-\end{tabular}
-
-
-#
-\setstretch{3}
-\vfill
-\large
-Matrizen
-
-Übungen und Selbstkontrollfragen
-\vfill
 
 
 #
@@ -346,7 +314,7 @@ A										 # A mit Attribut dimnames
 attr(A, "dimnames")					     # Aufrufen des Attributs dimnames
 ```
 
-Bei Matrizen ist die Benennung von Zeilen und Spalten eher ungewöhnlich.
+\textcolor{darkcyan}{Bei Matrizen ist die Benennung von Zeilen und Spalten eher ungewöhnlich.}
 
 
 

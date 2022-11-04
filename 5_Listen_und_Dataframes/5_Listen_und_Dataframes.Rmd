@@ -1,36 +1,48 @@
 ---
 fontsize: 8pt
-bibliography: 5_Referenzen.bib
+bibliography: ../Referenzen.bib
 citation_package: natbib
 output:
   beamer_presentation:
+    highlight: tango
     keep_tex: true
+    latex_engine: xelatex
     includes:
-      in_header: 5_header.tex
+      in_header: ../Header.tex
 ---
 
-```{r, include = F}
-source("5_R_common.R")
+
+```{r source R_common, include = F}
+source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
 ```
+
+
 
 #  {.plain}
 \center
-```{r, echo = FALSE, out.width = "20%"}
-knitr::include_graphics("5_Abbildungen/pds_5_otto.png")
+```{r Abb otto, echo = FALSE, out.width = "20%"}
+knitr::include_graphics(file.path(abb_dir,"otto.png"))
 ```
 
 \vspace{2mm}
 
-\huge
+\Large
 Programmierung und Deskriptive Statistik
-\vspace{6mm}
+\vspace{4mm}
 
-\large
-BSc Psychologie WiSe 2021/22
+\normalsize
+BSc Psychologie WiSe 2022/23
 
-\vspace{6mm}
-\large
-Prof. Dr. Dirk Ostwald
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
 
 #  {.plain}
 
@@ -40,6 +52,7 @@ Prof. Dr. Dirk Ostwald
 (5) Listen und Dataframes
 \end{center}
 \vfill
+
 
 #
 \setstretch{3}
@@ -72,7 +85,7 @@ Dataframes
 * Defacto enthalten Listen keine Objekte, sondern Referenzen zu Objekten.
 
 ```{r, echo = FALSE, out.width = "30%"}
-knitr::include_graphics("5_Abbildungen/pds_5_list_representation.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_5_list_representation.pdf"))
 ```
 
 * Listen sind ein wesentlicher Baustein von Dataframes.
@@ -255,6 +268,7 @@ $Sam      							# 2. Listelement
 
 
 
+
 # Listen
 \textcolor{darkblue}{Indizierung}
 
@@ -309,6 +323,7 @@ L2[[2]](1)					# Anwendung des 2. Listenelementinhalts, exp(1)
 ```
 
 
+
 # Listen
 \setstretch{1}
 \textcolor{darkblue}{Copy-on-modify}
@@ -321,16 +336,21 @@ Wie bei Vektoren gilt bei Listen das Copy-on-Modify Prinzip.
 `lobstr::ref()` erlaubt es, dieses Verhalten zu studieren.
 
 ```{r, echo = FALSE, out.width = "55%"}
-knitr::include_graphics("5_Abbildungen/pds_5_list_copy_on_modify.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_5_list_copy_on_modify.pdf"))
 ```
+
 
 \scriptsize
 ```{r}
-L1 = list(1,2,3)			# Erzeugen einer Liste als Objekt (0x1a3)
-L2 = L1						# L1 und L2 referenzieren das Objekt (0x1a3)
-L2[[3]] = 4					# Copy-on-Modify mit shallow Objekt Kopie
-lobstr::ref(L1,L2)			# Ausgabe der Referenzen
+L1 = list(1,2,3)     # Erzeugen einer Liste als Objekt (z.B. 0x1a3)
+L2 = L1              # L1 und L2 referenzieren das Objekt (z.B. 0x1a3)
+L2[[3]] = 4          # Copy-on-Modify mit shallow Objekt Kopie
+lobstr::ref(L1,L2)   # Ausgabe der Referenzen
 ```
+
+\color{darkcyan}
+Anmerkung: Die Referenzen werden bei jeder Neuerstellung der Objekte anders sein. Entsprechend werden die mit `lobbstr::ref()` ausgegebenen Referenzen nicht mit denen in der Abbildung übereinstimmen. 
+
 
 #
 \setstretch{3}
@@ -344,6 +364,7 @@ Listen
 \vfill
 
 
+
 # Dataframes
 \setstretch{1.4}
 \textcolor{darkblue}{Übersicht}
@@ -355,8 +376,9 @@ Listen
 
 \vspace{1mm}
 ```{r, echo = FALSE, out.width = "75%"}
-knitr::include_graphics("5_Abbildungen/pds_5_tabelle.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_5_tabelle.pdf"))
 ```
+
 
 
 # Dataframes
@@ -369,7 +391,7 @@ knitr::include_graphics("5_Abbildungen/pds_5_tabelle.pdf")
 * Die Vektorelement gleicher Position entsprechen den Zeilen einer Tabelle.
 
 ```{r, echo = FALSE, out.width = "50%"}
-knitr::include_graphics("5_Abbildungen/pds_5_dataframe_representation.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_5_dataframe_representation.pdf"))
 ```
 
 
@@ -400,7 +422,6 @@ D = data.frame(x = letters[1:4], 	# 1. Spalte mit Name x
 
 \small
 Die Spalten eines Dataframes können offenbar unterschiedlichen Typs sein.
-
 
 
 # Dataframes
@@ -441,7 +462,7 @@ View(D)
 ```
 
 ```{r, echo = FALSE, out.width = "25%"}
-knitr::include_graphics("5_Abbildungen/pds_5_view.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_5_view.pdf"))
 ```
 
 `str()` zeigt in kompakter Form wesentliche Aspekte eines Dataframes an.
@@ -466,6 +487,7 @@ Allgemein zeigt `str()` in kompakter Form wesentliche Aspekte eines R Objektes a
 typeof(D)
 attributes(D)
 ```
+
 
 
 # Dataframes
@@ -542,7 +564,7 @@ D[,c("x", "z")]						# 1. Index fuer Zeilen, 2. Index fuer Spalten
 
 
 ```{r, echo = FALSE, out.width = "90%"}
-knitr::include_graphics("5_Abbildungen/pds_5_dataframe_copy_on_modify.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_5_dataframe_copy_on_modify.pdf"))
 ```
 
 
