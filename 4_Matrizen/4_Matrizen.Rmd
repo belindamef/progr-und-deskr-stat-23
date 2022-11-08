@@ -182,6 +182,8 @@ Generell gilt
 * Indizes verschiedener Dimensionen können unterschiedlich indiziert werden.
 * Eindimensionale Resultate liegen als Vektor, nicht als Matrix vor.
 
+\vspace{3mm}
+
 \footnotesize
 ```{r, eval = F}
 A = matrix(c(2:7)^2, nrow = 2)		# 2 x 3 Matrix der Zahlen 2^2,...,7^2

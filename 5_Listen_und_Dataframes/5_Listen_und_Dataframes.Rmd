@@ -94,45 +94,41 @@ knitr::include_graphics(file.path(abb_dir, "pds_5_list_representation.pdf"))
 \setstretch{1.1}
 \textcolor{darkblue}{Erzeugung}
 
-\small
+\footnotesize
 Direkte Konkatenation von Listenelementen mit `list()`
 
-\footnotesize
-```{r, eval = F}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
 L = list(c(1,4,5),							# Liste mit einem Vektor,
 		 		 matrix(1:8, nrow = 2),		# einer Matrix und
 		 		 exp)						# einer Funktion
-[[1]]									    # 1. Listenelement
-[1] 1 4 5
-[[2]]										# 2. Listenelement
-     [,1] [,2] [,3] [,4]
-[1,]    1    3    5    7
-[2,]    2    4    6    8
-[[3]]
-function (x)  .Primitive("exp")				# 3. Listenelement
+print(L)
 ```
 
-\small
+\setstretch{1.1}
+\footnotesize
 Listen können Elemente von Listen sein
 
-\footnotesize
-```{r, eval = F}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
 L = list(list(1))							# Liste mit Element 1 in einer Liste
-[[1]]
-[[1]][[1]]
-[1] 1
+print(L)
 ```
-\small
+
+\setstretch{1.1}
+\footnotesize
 `c()` kann zum Verbinden von Listen genutzt werden
 
-\footnotesize
-```{r, eval = F}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
 L = c(list(pi), list("a"))					# Konkatenation zweier Listen
-[[1]]									    # 1. Listenelement
-[1] 3.141593
-[[2]]										# 2. Listenelement
-[1] "a"
+print(L)
 ```
+
+
 
 # Listen
 \textcolor{darkblue}{Charakterisierung}
@@ -161,37 +157,40 @@ ncol(L)								# Die Spaltenanzahl von Listen ist NULL
 
 # Listen
 \textcolor{darkblue}{Indizierung}
-\small
 
+\setstretch{1.1}
+\footnotesize
 Einfache eckige Klammern [ ] indizieren Listenelemente als Listen
 
-\footnotesize
-```{r, eval = F}
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
 L  = list(1:3, "a", exp)			# eine Liste
 l1 = L[1]							# Indizierung eines Listenelements
-[[1]]								# das Listenelement l1
-[1] 1 2 3							# der Inhalt von Listenelement l1
+l1
 typeof(l1)							# Typbestimmung von l1
-[1] "list"						    # L[] gibt eine Liste aus
 ```
 
-\small
+\setstretch{1.1}
+\footnotesize
 Doppelte eckige Klammern [[ ]] indizieren den Inhalt von Listenelementen
 
-\footnotesize
-```{r, eval = F}
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
 L  = list(1:3, "a", exp)			# eine Liste
 i2 = L[[2]]							# Indizierung des Listenelementinhalts
-[1] "a"								# der Inhalt von Listenelement L[2]
+i2
 typeof(i2)						    # Typbestimmung von i2
-[1] "character"						# L[[]] gibt den Listenelementinhalt aus
 ```
 
-\small
+\setstretch{1.1}
+\footnotesize
 Ersetzen von Listenelement(inhalt)en
 
-\footnotesize
-```{r, eval = F}
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
 L  		= list(1:3, "a", exp)		# eine Liste
 L[1]	= 4:6						# keine Typkonversion, Fehlermeldung
 L[1]	= list(4:6)				    # Ersetzung des 1. Listenelementes
@@ -199,40 +198,50 @@ L[[3]]	= "c"						# Ersetzung des 3. Listenelementinhaltes
 ```
 
 
+
 # Listen
 \textcolor{darkblue}{Indizierung}
 
-\small
+\setstretch{1.1}
+\footnotesize
 Die Prinzipien der Listenindizierung sind analog zur Vektorindizierung
 
 \footnotesize
 Vektoren positiver Zahlen adressieren entsprechende Elemente
 
-```{r,eval = F}
+\setstretch{0.9}
+\tiny
+```{r,eval = T}
 L = list(1:3, "a", pi)				# eine Liste
 l = L[c(1,3)] 					    # 1. und 3. Listenelement
-[[1]]								# 1. Listenelement
-[1] 1 2 3
-[[2]]								# 2. Listenelement
-[1] 3.141593
+l
 ```
 
+\setstretch{1.1}
+\footnotesize
 Vektoren negativer Zahlen adressieren komplementäre Elemente
-```{r, eval = F}
+
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
 L = list(1:3, "a", pi)				# eine Liste
 l = L[-c(1,3)] 						# 2. Listenelement
-[1] "a"
+l
 ```
 
+\setstretch{1.1}
+\footnotesize
 Logische Vektoren adressieren Elemente mit TRUE.
-```{r, eval = F}
+
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
 L = list(1:3, "a", pi)				# eine Liste
 l = L[c(T,T,F)]						# 1. und 2. Listenelement
-[[1]]							    # 1. Listenelement
-[1] 1 2 3
-[[2]]								# 2. Listenelement
-[1] "a"
+l
 ```
+
+
 
 # Listen
 \textcolor{darkblue}{Indizierung}
@@ -241,29 +250,30 @@ l = L[c(T,T,F)]						# 1. und 2. Listenelement
 Listenelementen können bei Erzeugung Namen gegeben werden
 
 \footnotesize
-```{r, eval = F}
+```{r, eval = T}
 L = list(greta  = 1:3,				# eine Liste mit benannten Elementen
  	 	 luisa 	= "a",
 		 carla 	= exp)
-$greta								# 1. Listenelement
-[1] 1 2 3
-$luisa 								# 2. Listenelement
-[1] "a"
-$carla							    # 3. Listenelement
-function (x)  .Primitive("exp")
+L$greta               # 1. Listenelement
+```
+```{r}
+L$luisa               # 2. Listenelement
+```
+```{r}
+L$carla               # 3. Listenelement
 ```
 
 \small
 Listenelementen können mit `names()` Namen gegeben werden
 
 \footnotesize
-```{r, eval = F}
+```{r, eval = T}
 K 		 = list(1:2, TRUE)			# eine unbenannte Liste
 names(K) = c("Frodo", "Sam")		# Namensgebung mit names()
-$Frodo  							# 1.Listenelement
-[1] 1 2
-$Sam      							# 2. Listelement
-[1] TRUE
+K$Frodo  							# 1.Listenelement
+```
+```{r}
+K$Sam      							# 2. Listelement
 ```
 
 
@@ -348,6 +358,7 @@ L2[[3]] = 4          # Copy-on-Modify mit shallow Objekt Kopie
 lobstr::ref(L1,L2)   # Ausgabe der Referenzen
 ```
 
+\setstretch{1}
 \color{darkcyan}
 Anmerkung: Die Referenzen werden bei jeder Neuerstellung der Objekte anders sein. Entsprechend werden die mit `lobbstr::ref()` ausgegebenen Referenzen nicht mit denen in der Abbildung übereinstimmen. 
 
@@ -395,6 +406,7 @@ knitr::include_graphics(file.path(abb_dir, "pds_5_dataframe_representation.pdf")
 ```
 
 
+
 # Dataframes
 \setstretch{1.2}
 \textcolor{darkblue}{Erzeugung}
@@ -424,6 +436,7 @@ D = data.frame(x = letters[1:4], 	# 1. Spalte mit Name x
 Die Spalten eines Dataframes können offenbar unterschiedlichen Typs sein.
 
 
+
 # Dataframes
 \setstretch{1.1}
 \textcolor{darkblue}{Charakterisierung}
@@ -450,6 +463,7 @@ nrow(D)										# Zeilenanzahl
 ncol(D)									    # Spaltenanzahl
 length(D)									# Länge ist die Spaltenanzahl
 ```
+
 
 
 # Dataframes
@@ -509,6 +523,8 @@ v
 class(v)							# v ist ein Dataframe
 ```
 
+
+
 # Dataframes
 \textcolor{darkblue}{Indizierung}
 \footnotesize
@@ -528,6 +544,7 @@ y = D$y								# $ zur Indizierung der y Spalte
 y
 class(y)							# v ist ein Vektor vom Typ "integer" (!)
 ```
+
 
 
 # Dataframes
@@ -554,6 +571,7 @@ D[,c("x", "z")]						# 1. Index fuer Zeilen, 2. Index fuer Spalten
 ```
 
 
+
 # Dataframes
 \textcolor{darkblue}{Copy-on-modify}
 \small
@@ -568,6 +586,7 @@ knitr::include_graphics(file.path(abb_dir, "pds_5_dataframe_copy_on_modify.pdf")
 ```
 
 
+
 #
 \setstretch{3}
 \vfill
@@ -578,6 +597,8 @@ Dataframes
 
 **Übungen und Selbstkontrollfragen**
 \vfill
+
+
 
 # Übungen und Selbstkontrollfragen 
 \small
