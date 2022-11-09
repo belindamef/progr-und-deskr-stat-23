@@ -208,7 +208,7 @@ laenge_vektor = length(vektor)
 indizes_1_3_5_usw = seq(1, laenge_vektor, by=2)
 
 # Kreiere einen neuen Vektor, der nur die Elemente 0.0, 0.1, ..., 0.9., 1.0 enthält
-vektor_eine_dezimal_stelle_skf7 = vektor[indizes_pos]
+vektor_eine_dezimal_stelle_skf7 = vektor[indizes_1_3_5_usw]
 
 # ======SKF 8================================================================
 # Kreiere einen Vektor mit jeder 2. Zahl in der Sequenz 2 - [Laenge des Vektors]
