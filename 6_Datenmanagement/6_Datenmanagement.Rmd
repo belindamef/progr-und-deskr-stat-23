@@ -1,37 +1,47 @@
 ---
 fontsize: 8pt
-bibliography: 6_Referenzen.bib
+bibliography: ../Referenzen.bib
 citation_package: natbib
 output:
   beamer_presentation:
+    highlight: tango
     keep_tex: true
     includes:
-      in_header: 6_header.tex
+      in_header: ../Header.tex
 ---
 
 
-```{r, include = F}
-source("6_R_common.R")
+```{r source R_common, include = F}
+source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
 ```
 
-# {.plain} 
+
+
+#  {.plain}
 \center
-```{r, echo = FALSE, out.width = "20%"}
-knitr::include_graphics("6_Abbildungen/pds_6_otto.png")
+```{r Abb otto, echo = FALSE, out.width = "20%"}
+knitr::include_graphics(file.path(abb_dir,"otto.png"))
 ```
 
 \vspace{2mm}
 
-\huge
+\Large
 Programmierung und Deskriptive Statistik
-\vspace{6mm}
+\vspace{4mm}
 
-\large
-BSc Psychologie WiSe 2021/22
+\normalsize
+BSc Psychologie WiSe 2022/23
 
-\vspace{6mm}
-\large
-Prof. Dr. Dirk Ostwald
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
 
 # {.plain}
 \vfill
@@ -41,35 +51,44 @@ Prof. Dr. Dirk Ostwald
 \end{center}
 \vfill
 
-# {.plain}
-\small
+
+
+
+
+# Orga
+\color{black}
+
+\vfill
+\footnotesize
 \center
 \footnotesize
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{lll}
-Datum        & Einheit                     & Thema					                             \\\hline
-14.10.2021   & Einführung                  & (1)  Einführung 				                     \\
-21.10.2021   & R Grundlagen                & (2)  R und RStudio I           	           \\
-28.10.2021   & R Grundlagen                & (2)  R und RStudio II                       \\
-04.11.2021   & R Grundlagen                & (3)  Vektoren                               \\
-11.11.2021   & R Grundlagen                & (4)  Matrizen                               \\
-18.11.2021   & R Grundlagen                & (5)  Listen und Dataframes                  
-\\
-  \textbf{25.11.2021}
-& \textbf{Deskriptive Statistik}
-& \textbf{(6) Datenmanagement}
-\\
-02.12.2021   & Deskriptive Statistik       & (7)  Häufigkeitsverteilungen                \\
-09.12.2021   & Deskriptive Statistik       & (9)  Verteilungsfunktionen und Quantile     \\
-16.12.2021   & Deskriptive Statistik       & (10) Maße der zentralen Tendenz             \\
-             & \textcolor{gray}{Weihnachtspause}                                         \\
-06.01.2022   & Deskriptive Statistik       & (11) Maße der Datenvariabilität             \\
-13.01.2022   & Deskriptive Statistik       & (12) Bivariate Zusammenhangsmaße            \\
-20.01.2022   & Deskriptive Statistik       & (13) R Base Graphics                        \\
-27.01.2022   & Deskriptive Statistik       & (14) Q \& A                                 \\\hline
-25.02.2022   & Klausurtermin               &  G26 – H1, 9:00 - 10:00 Uhr                 \\
-Jul 2022     & Klausurwiederholungstermin
+Datum          & Einheit               & Thema		                              \\\hline
+12.10.22       & Einführung            & (1) Einführung    		                  \\
+19.10.22       & R Grundlagen          & (2) R und RStudio I                     \\
+26.10.22       & R Grundlagen          & (2) R und RStudio II                   \\
+02.11.22       & R Grundlagen          & (3) Vektoren         \\
+09.11.22       & R Grundlagen          & (4) Matrizen   \\
+16.11.22       & R Grundlagen          & (5) Listen und Dataframes               \\
+23.11.22       & R Grundlagen          & (6) Datenmanagement \\
+30.11.22       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
+07.12.22       & Deskriptive Statistik & (8) Verteilungsfunktionen und Quantile \\
+14.12.22       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
+19.12.22       & \textit{Leistungsnachweis Teil 1}                              \\
+21.12.22       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
+               & \textcolor{gray}{Weihnachtspause}       \\
+04.01.23       & Deskriptive Statistik & (11) Plotting | Visualisierungen       \\
+11.01.23       & Deskriptive Statistik & (12)  Anwendungsbeispiel (Deskriptive Statistik) \\
+18.01.23       & Inferenzstatistik     & (13) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle)                          \\
+25.01.23       & Inferenzstatistik     & (14) Anwendungsbeispiel (Hypothesentest)                          \\
+???            & \textit{Leistungsnachweis Teil 2}      
+                        \\\hline
 \end{tabular}
+
+
+
+
 
 
 #
@@ -117,7 +136,7 @@ Datenimport und Datenexport
 \end{minipage}
 \begin{minipage}{.4\linewidth}
 ```{r, echo = FALSE, out.width = "60%"}
-knitr::include_graphics("6_Abbildungen/pds_6_data.pdf")
+knitr::include_graphics(file.path(abb_dir,"pds_6_data.pdf"))
 ```
 \end{minipage}
 
@@ -177,7 +196,7 @@ oder weitere technische Informationen zu einer Datenquelle.
 
 \begin{center}
 ```{r, echo = FALSE, out.width = "60%"}
-knitr::include_graphics("6_Abbildungen/pds_6_fair_datenideal.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_6_fair_datenideal.pdf"))
 ```
 \vspace{.7cm}
 
@@ -329,7 +348,7 @@ Datenimport und Datenexport
 \vspace{1mm}
 
 ```{r, echo = FALSE, out.width = "60%"}
-knitr::include_graphics("6_Abbildungen/pds_6_binäres_dateiformat.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_6_binaeres_dateiformat.pdf"))
 ```
 
 \vspace{2mm}
@@ -337,7 +356,7 @@ knitr::include_graphics("6_Abbildungen/pds_6_binäres_dateiformat.pdf")
 \vspace{1mm}
 
 ```{r, echo = FALSE, out.width = "60%"}
-knitr::include_graphics("6_Abbildungen/pds_6_textuelles_dateiformat.pdf")
+knitr::include_graphics(file.path(abb_dir, "/pds_6_textuelles_dateiformat.pdf"))
 ```
 
 
@@ -707,11 +726,11 @@ Verzeichnismanagement
 \vspace{2mm}
 \tiny
 ```{r}
-wdir    = getwd()                     # Working directory
-ddir    = file.path(wdir, "6_Data")   # Datenverzeichnispfad
-fname   = "cushny.csv"                # (base) filename
-fpath   = file.path(ddir, fname)      # filepath 
-D       = read.table(fpath)           # Einlesen der Datei
+work_dir = getwd()                                # Working directory
+data_dir = file.path(dirname(work_dir), "Data")   # Datenverzeichnispfad
+fname    = "cushny.csv"                           # (base) filename
+fpath    = file.path(data_dir, fname)             # filepath 
+D        = read.table(fpath)                      # Einlesen der Datei
 print(D)
 ```
 
@@ -755,7 +774,7 @@ data(package = "psychTools") 	# Anzeige der psychTools Datensaetze
 ```
 
 ```{r, echo = FALSE, out.width = "100%"}
-knitr::include_graphics("6_Abbildungen/pds_6_r_datasets.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_6_r_datasets.pdf"))
 ```
 
 Alle Datensätze werden mit `data(package = .packages(TRUE))` angezeigt.
@@ -813,11 +832,11 @@ Das Argument `row.names = FALSE` unterdrückt das Schreiben von Zeilennahmen
 ```{r}
 fname       = "cushny.csv"                          # Dateiname (input)
 rname   	  = "student.csv"                         # Dateiname (output)
-D           = read.table(file.path(ddir, fname))    # Dateneinlesen
+D           = read.table(file.path(data_dir, fname))    # Dateneinlesen
 D           = D[,5:6]                               # Reduktion des Dataframes
 R           = write.table(							# .csv Schreibfunktion
 				D,                                  # Zu speichernder Dataframe
-			    file = file.path(ddir, rname), 		# Dateinname
+			    file = file.path(data_dir, rname), 		# Dateinname
                 sep = ",",                          # Werteseparator fuer .csv
                 row.names = F)                      # keine Zeilennamen
 ```
@@ -825,7 +844,7 @@ R           = write.table(							# .csv Schreibfunktion
 Ergebnisdatei student.csv
 
 ```{r, echo = FALSE, out.width = "30%"}
-knitr::include_graphics("6_Abbildungen/pds_6_writetable.pdf")
+knitr::include_graphics(file.path(abb_dir, "pds_6_writetable.pdf"))
 ```
 
 #
