@@ -148,7 +148,7 @@ knitr::include_graphics(file.path(abb_dir,"pds_6_data.pdf"))
 analoge oder digitale Daten, die im Zuge wissenschaftlicher Vorhaben
 entstehen oder genutzt werden, z.B. durch Beobachtungen, Experimente,
 Simulationsrechnungen, Erhebungen, Befragungen, Quellenforschungen,
-Aufzeichnungen von Audio- und Videosequenzen, Digitalisierung von Objekten, und Auswertungen."''"
+Aufzeichnungen von Audio- und Videosequenzen, Digitalisierung von Objekten, und Auswertungen."
 \vspace{.7cm}
 
 \footnotesize
