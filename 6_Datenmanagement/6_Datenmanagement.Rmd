@@ -543,8 +543,8 @@ Der Begriff "String" in R ist also nur informeller Natur.
 Strings werden mit Anführungszeichen oder Hochkommata erzeugt
 
 ```{r}
-c("Dies ist ein character vector")	# Anfuehrungszeichen sind  der String Standard
-c('Dies ist ein "string"')			# Hochkommata koennen bei  Anfuehrungszeichen im String helfen
+c("Dies ist ein character vector")	# Anfuehrungszeichen sind der String Standard
+c('Dies ist ein "string"')			# Hochkommata koennen beiAnfuehrungszeichen im String helfen
 ```
 
 `paste()` konvertiert Vektoren in character und fügt sie elementweise zusammen.
@@ -745,7 +745,7 @@ Einige weitere Spezifikationen bei Anwendung von `read.table()` sind
 * `sep` für die Auswahl des Separators
 * `dec` für die Auswahl des Dezimalpunktes
 * `nrow` für die Anzahl der einzulesenden Zeilen
-* `skip` für die Anzahl der am Anfang der Datei zu überspringenden Zeilen
+* `skip` für die Anzahl der am Anfang der Datei zu überspringenden Zeilen (inkl. Header)
 
 \footnotesize
 
