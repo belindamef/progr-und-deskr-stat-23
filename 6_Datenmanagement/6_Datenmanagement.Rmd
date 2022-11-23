@@ -506,9 +506,9 @@ Beispiel
 
 	$\quad\quad$ \{
 
-	$\quad\quad\quad\quad$  ``Deskriptive Statistik'' : \{``Abgeschlossen"'' : TRUE,  ``Note''  : 1.0 \},
+	$\quad\quad\quad\quad$  ``Deskriptive Statistik'' : \{``Abgeschlossen"'' : true,  ``Note''  : 1.0 \},
 
-	$\quad\quad\quad\quad$  ``Inferenzstatistik'' : \{``Abgeschlossen'' : FALSE, ``Note'': NA \}
+	$\quad\quad\quad\quad$  ``Inferenzstatistik'' : \{``Abgeschlossen'' : false, ``Note'': null \}
 
 	$\quad\quad$ \}
 
