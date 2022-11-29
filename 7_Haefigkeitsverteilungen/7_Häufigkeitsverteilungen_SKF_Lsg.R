@@ -130,192 +130,108 @@ dev.copy2pdf(
 
 # ------SKF 8) Plot Häufigkeitsverteilung Pre-Post-Diff-BDI---------------------
 
-# -----------------------------------------------------------------
-#     Histogramm mit gewünschter Klassenbreite von 3 (geg.: h)
-# ----------------------------------------------------------------
+# Vorbereitung des Wertes für das hist() Inputargument "breaks = ": 
 
-# Vorbereitung des Wertes für das hist() Inputargument "breaks = "
-h       = 1                        # gewünschte Klassenbreite
-b_0     = min(bdi_diff_klassisch)  # b_0
-b_k     = max(bdi_diff_klassisch)  # b_k
-k       = ceiling((b_k - b_0)/h)   # Anzahl der Klassen (Wird nicht benötigt)
-b       = seq(b_0, b_k, by = h)    # Klassen [b_{j-1}, b_j[
+# Für die Berechnung von Klassenbreiten benötigen wir zunächst die min/max Werte
+# und die Anzahl der Datenpunkte
+b_0_klassisch     = min(bdi_diff_klassisch)    # b_0 (min Wert)
+b_k_klassisch     = max(bdi_diff_klassisch)    # b_k (max Wert)
+b_0_online        = min(bdi_diff_online)       # b_0 (min Wert)
+b_k_online        = max(bdi_diff_online)       # b_k (max Wert)
+n_klassisch       = length(bdi_diff_klassisch) # Anzahl Datenwerte
+n_online          = length(bdi_diff_online)    # Anzahl Datenwerte
 
-# Klassisch
-hist(                              # Histogramm
-  bdi_diff_klassisch,              # Datensatz, für den ein Histogramm erstellt werden soll
-  breaks = b,                      # breaks
-  xlim   = c(x_min, x_max),        # x Achsen Limits
-  ylim   = c(y_min, y_max),        # y Achsen Limits
-  ylab   = "Häufigkeit",           # y-Achsenbezeichnung
-  xlab   = "",                     # x-Achsenbezeichnung
-  main   = "Post-Pre-BDI Differenz (Klassisch), h = 3" # Titel
-)  
+# a) Gewünschte Klassebreite von 3
+h              = 1                                         # gewünschte Klassenbreite
+b_h3_klassisch = seq(b_0_klassisch, b_k_klassisch, by = h) # Klassen [b_{j-1}, b_j[
+b_h3_online    = seq(b_0_online, b_k_online, by = h)       # Klassen [b_{j-1}, b_j[
 
-# Diagramm als PDF speichern
-dev.copy2pdf(            
-  file  = file.path(fig_dir, "7_skf_8_hist_diff_bdi_klassisch_h3.pdf"), 
-  width = 8, height = 5
-)  
+# b) Excelstandard
+k_klassisch       = ceiling(sqrt(n_klassisch))   # Anzahl der Klassen
+k_online          = ceiling(sqrt(n_online))      # Anzahl der Klassen
+b_excel_klassisch = seq(b_0_klassisch, b_k_klassisch, len = k_klassisch)
+b_excel_online    = seq(b_0_online, b_k_online, len = k_online)
 
-# Online
-hist(                             # Histogramm
-  bdi_diff_online,                # Datensatz, für den ein Histogramm erstellt werden soll
-  breaks = b,                     # breaks
-  xlim   = c(x_min, x_max),       # x Achsen Limits
-  ylim   = c(y_min, y_max),       # y Achsen Limits
-  ylab   = "Häufigkeit",          # y-Achsenbezeichnung
-  xlab   = "",                    # x-Achsenbezeichnung
-  main   = "Post-Pre-BDI Differenz (Online), h = 3" # Titel
-)  
+# c) Sturges Klassenzahl
+k_klassisch         = ceiling(log2(n_klassisch) + 1)   # Anzahl der Klassen
+k_online            = ceiling(log2(n_online) + 1)      # Anzahl der Klassen
+b_sturges_klassisch = seq(b_0_klassisch, b_k_klassisch, len = k_klassisch)
+b_sturges_online   = seq(b_0_online, b_k_online, len = k_online)
 
-# Diagramm als PDF speichern
-dev.copy2pdf(            
-  file  = file.path(fig_dir, "7_skf_5_hist_diff_bdi_online_h3.pdf"), 
-  width = 8, height = 5
-)
-
-# -------------------------------------------------------------
-#     Histogramm nach Excelstandard (geg.: k)
-# -------------------------------------------------------------
-graphics.off()
-
-# Vorbereitung des Wertes für das hist() Inputargument "breaks = "
-n        = length(x)               # Anzahl Datenwerte
-k        = ceiling(sqrt(n))        # Anzahl der Klassen
-b        = seq(b_0, b_k, len = k)  # Klassen [b_{j-1}, b_j[
-h        = b[2] - b[1]             # Klassenbreite (Wird nicht benötigt)
-
-# Klassisch
-hist(                              # Histogramm
-  bdi_diff_klassisch,              # Datensatz, für den ein Histogramm erstellt werden soll
-  breaks = b,                      # breaks
-  xlim   = c(x_min, x_max),        # x Achsen Limits
-  ylim   = c(y_min, y_max),        # y Achsen Limits
-  ylab   = "Häufigkeit",           # y-Achsenbezeichnung
-  xlab   = "",                     # x-Achsenbezeichnung
-  main   = "Post-Pre-BDI Differenz (Klassisch), Excelstandard" # Titel
-)  
-
-# Diagramm als PDF speichern
-dev.copy2pdf(            
-  file  = file.path(fig_dir, "7_skf_8_hist_diff_bdi_klassisch_excel.pdf"), 
-  width = 8, height = 5
-)  
-
-# Online
-hist(                             # Histogramm
-  bdi_diff_online,                # Datensatz, für den ein Histogramm erstellt werden soll
-  breaks = b,                     # breaks
-  xlim  = c(x_min, x_max),        # x Achsen Limits
-  ylim  = c(y_min, y_max),        # y Achsen Limits
-  ylab  = "Häufigkeit",           # y-Achsenbezeichnung
-  xlab  = "",                     # x-Achsenbezeichnung
-  main  = "Post-Pre-BDI Differenz (Online), Excelstandard" # Titel
-)  
-
-# Diagramm als PDF speichern
-dev.copy2pdf(            
-  file  = file.path(fig_dir, "7_skf_5_hist_diff_bdi_online_excel.pdf"), 
-  width = 8, height = 5
-)
-
-# --------------------------------------------------------------
-#     Histogramm mit Sturges Klassenzahl (geg.: k)
-# --------------------------------------------------------------
-graphics.off()
-
-# Vorbereitung des Wertes für das hist() Inputargument "breaks = "
-n        = length(x)               # Anzahl Datenwerte
-k        = ceiling(log2(n)+1)      # Anzahl der Klassen
-b        = seq(b_0, b_k, len = k)  # Klassen [b_{j-1}, b_j[
-h        = b[2] - b[1]             # Klassenbreite (wird nicht benötigt)
-
-# Klassisch
-hist(                              # Histogramm
-  bdi_diff_klassisch,              # Datensatz, für den ein Histogramm erstellt werden soll
-  breaks = b,                      # breaks
-  xlim   = c(x_min, x_max),        # x Achsen Limits
-  ylim   = c(y_min, y_max),        # y Achsen Limits
-  ylab   = "Häufigkeit",           # y-Achsenbezeichnung
-  xlab   = "",                     # x-Achsenbezeichnung
-  main   = "Post-Pre-BDI Differenz (Klassisch), Sturges" # Titel
-)  
-
-# Diagramm als PDF speichern
-dev.copy2pdf(            
-  file  = file.path(fig_dir, "7_skf_8_hist_diff_bdi_klassisch_sturges.pdf"), 
-  width = 8, height = 5
-)  
-
-# Online
-hist(                             # Histogramm
-  bdi_diff_online,                # Datensatz, für den ein Histogramm erstellt werden soll
-  breaks = b,                     # breaks
-  xlim  = c(x_min, x_max),        # x Achsen Limits
-  ylim  = c(y_min, y_max),        # y Achsen Limits
-  ylab  = "Häufigkeit",           # y-Achsenbezeichnung
-  xlab  = "",                     # x-Achsenbezeichnung
-  main  = "Post-Pre-BDI Differenz (Online), Sturges" # Titel
-)  
-
-# Diagramm als PDF speichern
-dev.copy2pdf(            
-  file  = file.path(fig_dir, "7_skf_5_hist_diff_bdi_online_sturges.pdf"), 
-  width = 8, height = 5
-)
+# d) Scott Klassenzahl (geg.: h)
+S_klassisch       = sd(bdi_diff_klassisch)                               # Stichprobenstandardabweichung
+S_online          = sd(bdi_diff_online)                                  # Stichprobenstandardabweichung
+h_klassisch       = ceiling(3.49*S_klassisch/(n_klassisch^(1/3)))        # Klassenbreite
+h_online          = ceiling(3.49*S_online/(n_online^(1/3)))              # Klassenbreite
+k_klassisch       = ceiling((b_k_klassisch - b_0_klassisch)/h_klassisch) # Anzahl der Klassen
+k_online          = ceiling((b_k_online - b_0_online)/h_online)          # Anzahl der Klassen
+b_scott_klassisch = seq(b_0_klassisch, b_k_klassisch, len = k_klassisch)
+b_scott_online    = seq(b_0_online, b_k_online, len = k_online)
 
 
+# Damit wir die gleichen Befehle zur Histogramm-erzeugung nicht 4x wiederholen müssen, 
+# erzeugen wir für verschiedene Ansätze (a bis d) Listen, durch die wir mit
+# for-loops durchiterieren können. 
+breaks_list_klassisch = list(
+  "h3"            = b_h3_klassisch,
+  "Excelstandard" = b_excel_klassisch,
+  "Stuges"        = b_sturges_klassisch,
+  "Scott"         = b_scott_klassisch
+  )
+breaks_list_online = list(
+  "h3"            = b_h3_online,
+  "Excelstandard" = b_excel_online,
+  "Stuges"        = b_sturges_online,
+  "Scott"         = b_scott_online
+  )
 
-# --------------------------------------------------------------
-#     Histogramm mit Scott Klassenzahl (geg.: h)
-# --------------------------------------------------------------
-graphics.off()
+# Plot Histogramm - Klassisch
+for (breaks_method_name in names(breaks_list_klassisch)) {
+  graphics.off()
+  
+  # Histogramm plotten
+  hist(                                                    # Histogramm
+    bdi_diff_klassisch,                                    # Datensatz, für den ein Histogramm erstellt werden soll
+    breaks = breaks_list_klassisch[[breaks_method_name]],  # breaks
+    xlim   = c(x_min, x_max),                              # x Achsen Limits
+    ylim   = c(y_min, y_max),                              # y Achsen Limits
+    ylab   = "Häufigkeit",                                 # y-Achsenbezeichnung
+    xlab   = "",                                           # x-Achsenbezeichnung
+    main   = paste("Post-Pre-BDI Differenz (Klassisch),", 
+                   breaks_method_name)
+    )  
+  
+  # Diagramm als PDF speichern
+  dev.copy2pdf(            
+    file  = file.path(fig_dir, paste("7_skf_8_hist_diff_bdi_klassisch_",
+                                     breaks_method_name, ".pdf")), 
+    width = 8, height = 5
+    )  
+  }
 
-# Vorbereitung des Wertes für das hist() Inputargument "breaks = "
-n        = length(x)                 # Anzahl Datenwerte
-S        = sd(x)                     # Stichprobenstandardabweichung
-h        = ceiling(3.49*S/(n^(1/3))) # Klassenbreite
-k        = ceiling((b_k - b_0)/h)    # Anzahl der Klassen
-b        = seq(b_0, b_k, len = k)    # Klassen [b_{j-1}, b_j[
-h        = b[2] - b[1]               # Klassenbreite
- 
-# Klassisch
-hist(                                # Histogramm
-  bdi_diff_klassisch,                # Datensatz, für den ein Histogramm erstellt werden soll
-  breaks = b,                        # breaks
-  xlim   = c(x_min, x_max),          # x Achsen Limits
-  ylim   = c(y_min, y_max),          # y Achsen Limits
-  ylab   = "Häufigkeit",             # y-Achsenbezeichnung
-  xlab   = "",                       # x-Achsenbezeichnung
-  main   = "Post-Pre-BDI Differenz (Klassisch), Scott" # Titel
-)  
-
-# Diagramm als PDF speichern
-dev.copy2pdf(            
-  file  = file.path(fig_dir, "7_skf_8_hist_diff_bdi_klassisch_scott.pdf"), 
-  width = 8, height = 5
-)  
-
-# Online
-hist(                                # Histogramm
-  bdi_diff_online,                   # Datensatz, für den ein Histogramm erstellt werden soll
-  breaks = b,                        # breaks
-  xlim  = c(x_min, x_max),           # x Achsen Limits
-  ylim  = c(y_min, y_max),           # y Achsen Limits
-  ylab  = "Häufigkeit",              # y-Achsenbezeichnung
-  xlab  = "",                        # x-Achsenbezeichnung
-  main  = "Post-Pre-BDI Differenz (Online), Scott" # Titel
-)  
-
-# Diagramm als PDF speichern
-dev.copy2pdf(            
-  file  = file.path(fig_dir, "7_skf_5_hist_diff_bdi_online_scott.pdf"), 
-  width = 8, height = 5
-)
-
-
-
+# Plot Histogramm - Online
+for (breaks_method_name in names(breaks_list_online)) {
+  graphics.off()
+  
+  # Histogramm plotten
+  hist(                                                    # Histogramm
+    bdi_diff_online,                                       # Datensatz, für den ein Histogramm erstellt werden soll
+    breaks = breaks_list_online[[breaks_method_name]],  # breaks
+    xlim   = c(x_min, x_max),                              # x Achsen Limits
+    ylim   = c(y_min, y_max),                              # y Achsen Limits
+    ylab   = "Häufigkeit",                                 # y-Achsenbezeichnung
+    xlab   = "",                                           # x-Achsenbezeichnung
+    main   = paste("Post-Pre-BDI Differenz (Online),", 
+                   breaks_method_name)
+  )  
+  
+  # Diagramm als PDF speichern
+  dev.copy2pdf(            
+    file  = file.path(fig_dir, paste("7_skf_8_hist_diff_bdi_online_",
+                                     breaks_method_name, ".pdf")), 
+    width = 8, height = 5
+  )  
+}
 
 #------
 graphics.off()                   # Schließt alle eventuell noch offenen graphics devices
