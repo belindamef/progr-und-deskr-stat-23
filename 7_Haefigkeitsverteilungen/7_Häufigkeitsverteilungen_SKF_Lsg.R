@@ -142,7 +142,7 @@ n_klassisch       = length(bdi_diff_klassisch) # Anzahl Datenwerte
 n_online          = length(bdi_diff_online)    # Anzahl Datenwerte
 
 # a) Gewünschte Klassebreite von 3
-h              = 1                                         # gewünschte Klassenbreite
+h              = 3                                       # gewünschte Klassenbreite
 b_h3_klassisch = seq(b_0_klassisch, b_k_klassisch, by = h) # Klassen [b_{j-1}, b_j[
 b_h3_online    = seq(b_0_online, b_k_online, by = h)       # Klassen [b_{j-1}, b_j[
 

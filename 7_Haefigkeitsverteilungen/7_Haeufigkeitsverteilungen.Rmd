@@ -433,7 +433,7 @@ x_max  = 25                    # x Achsengrenze (oben)
 y_min  = 0                     # y Achsengrenze (oben)
 y_max  = 30                    # y Achsengrenze (unten)
 hist(                          # Histogramm
-  x,                           ´# Datensatz
+  x,                           # Datensatz
   xlim  = c(x_min, x_max),     # x Achsengrenzen
   ylim  = c(y_min, y_max),     # y Achsengrenzen
   ylab  = "Häufigkeit",        # y-Achsenbezeichnung
