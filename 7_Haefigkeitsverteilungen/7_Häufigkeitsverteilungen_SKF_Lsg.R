@@ -175,7 +175,7 @@ b_scott_online    = seq(b_0_online, b_k_online, len = k_online)
 breaks_list_klassisch = list(
   "h3"            = b_h3_klassisch,
   "Excelstandard" = b_excel_klassisch,
-  "Stuges"        = b_sturges_klassisch,
+  "Sturges"       = b_sturges_klassisch,
   "Scott"         = b_scott_klassisch
   )
 breaks_list_online = list(
@@ -204,7 +204,7 @@ for (breaks_method_name in names(breaks_list_klassisch)) {
   # Diagramm als PDF speichern
   dev.copy2pdf(            
     file  = file.path(fig_dir, paste("7_skf_8_hist_diff_bdi_klassisch_",
-                                     breaks_method_name, ".pdf")), 
+                                     breaks_method_name, ".pdf", sep = "")), 
     width = 8, height = 5
     )  
   }
@@ -228,7 +228,7 @@ for (breaks_method_name in names(breaks_list_online)) {
   # Diagramm als PDF speichern
   dev.copy2pdf(            
     file  = file.path(fig_dir, paste("7_skf_8_hist_diff_bdi_online_",
-                                     breaks_method_name, ".pdf")), 
+                                     breaks_method_name, ".pdf", sep = "")), 
     width = 8, height = 5
   )  
 }
