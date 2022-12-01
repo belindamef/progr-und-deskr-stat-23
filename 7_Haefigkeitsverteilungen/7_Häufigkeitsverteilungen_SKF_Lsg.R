@@ -142,9 +142,16 @@ n_klassisch       = length(bdi_diff_klassisch) # Anzahl Datenwerte
 n_online          = length(bdi_diff_online)    # Anzahl Datenwerte
 
 # a) Gewünschte Klassebreite von 3
-h              = 3                                       # gewünschte Klassenbreite
+h              = 3                                         # gewünschte Klassenbreite
 b_h3_klassisch = seq(b_0_klassisch, b_k_klassisch, by = h) # Klassen [b_{j-1}, b_j[
+# Achtung: das Ergebnis von seq(b_0_klassisch, b_k_klassisch, by = h) ist 
+# (-12,  -9,  -6,  -3,   0), was nicht alle Werte abdeckt. Deshalbt fügen wir 
+# einen break (i.e. die 3) hinzu
+b_h3_klassisch = c(b_h3_klassisch, 3)
 b_h3_online    = seq(b_0_online, b_k_online, by = h)       # Klassen [b_{j-1}, b_j[
+# Achtung: wie bei der ONLINE Gruppe, deckt auch hier das Ergebnis von seq() 
+# nicht alle Werte ab, weshalb wir einen break hinzufügen
+b_h3_online    = c(b_h3_online, 0)
 
 # b) Excelstandard
 k_klassisch       = ceiling(sqrt(n_klassisch))   # Anzahl der Klassen
