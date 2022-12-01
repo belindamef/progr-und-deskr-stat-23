@@ -72,7 +72,7 @@ Datum          & Einheit               & Thema		                              \\
 09.11.22       & R Grundlagen          & (4) Matrizen   \\
 16.11.22       & R Grundlagen          & (5) Listen und Dataframes               \\
 23.11.22       & R Grundlagen          & (6) Datenmanagement \\
-30.11.22       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
+30.11.22       & Deskriptive Statistik & (7) Häufigkeitsverteilungen            \\
 07.12.22       & Deskriptive Statistik & (8) Verteilungsfunktionen und Quantile \\
 14.12.22       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
 19.12.22       & \textit{Leistungsnachweis Teil 1}                              \\
