@@ -169,10 +169,16 @@ write.csv(D, file = fname, row.names = F)
 Einlesen des Datensatzes mit `read.table()`
 \vspace{1mm}
 
+```{r echo=FALSE}
+pfad_zu_Datenordner = file.path(dirname(getwd()), "Data")
+```
 \footnotesize
 ```{r}
-fname       = file.path(data_dir, "psychotherapie_datensatz.csv")
-D           = read.table(fname, sep = ",", header = T)
+pfad_zu_datei = file.path(pfad_zu_Datenordner, "psychotherapie_datensatz.csv")
+# z.B. könnte fpath so aussehen: 
+# "/home/belindame_f/ovgu/progr-und-deskr-stat-23/Data/psychotherapie_datensatz.csv"
+
+D           = read.table(pfad_zu_datei, sep = ",", header = T)
 ```
 
 \small
@@ -249,13 +255,12 @@ Erzeugen der relativen Häufigkeitsverteilung durch Division mit $n$
 
 \setstretch{1.2}
 \footnotesize
-```{r, eval = F}
+```{r, eval = T}
 x = D$Pre.BDI                  # Double vector der Pre BDI Werte
 n = length(x)                  # Anzahl der Datenwerte (100)
 H = as.data.frame(table(x))    # absolute Haeufigkeitsverteilung (dataframe)
 names(H) = c("a", "h")         # Spaltenbenennung
 H$r = H$h/n                    # relative Haeufigkeitsverteilung
-print(H, digits = 1)           # Ausgabe
 ```
 \footnotesize
 \setstretch{1}
