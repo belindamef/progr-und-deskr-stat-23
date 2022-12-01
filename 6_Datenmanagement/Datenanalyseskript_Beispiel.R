@@ -1,9 +1,10 @@
 # Beispiel für simples Datenanalyseskript. 
 
 # Directory and file name Management
-work_dir = getwd()                                 # Working directory
+work_dir = getwd()                                 # Working directory (Pfad)
 data_dir = file.path(work_dir, "Data")             # Datenverzeichnispfad
 results_dir = file.path(work_dir, "Results")       # Ergebnisverzeichnispfad
+
 rawdata_fname = "cushny.csv"                       # (base) Daten filename
 rawdata_fpath = file.path(data_dir, rawdata_fname) # Rohdaten Dateipfad (Input)
 out_fname = readline(                              # User Input als Dateinamen verwenden
