@@ -313,7 +313,7 @@ breaks_list_f2f   = list(
 breaks_list_ONL = list(
   "h3"            = b_h3_ONL,
   "Excelstandard" = b_excel_ONL,
-  "Stuges"        = b_sturges_ONL,
+  "Sturges"        = b_sturges_ONL,
   "Scott"         = b_scott_ONL
   )
 
@@ -328,8 +328,8 @@ for (breaks_method_name in names(breaks_list_f2f)) {
   hist(                                                    # Histogramm
     bdi_diff_f2f,                                          # Datensatz, für den ein Histogramm erstellt werden soll
     breaks        = breaks_list_f2f[[breaks_method_name]], # breaks
-    xlim          = c(x_min, x_max),                       # x Achsen Limits
-    ylim          = c(y_min, y_max),                       # y Achsen Limits
+    xlim          = c(-15, 5),                             # x Achsen Limits
+    ylim          = c(0,25),                               # y Achsen Limits
     ylab          = "Häufigkeit",                          # y-Achsenbezeichnung
     xlab          = "",                                    # x-Achsenbezeichnung
     main          = paste("Post-Pre-BDI Differenz (f2f),", # Titel
@@ -352,12 +352,12 @@ for (breaks_method_name in names(breaks_list_ONL)) {
   hist(                                                    # Histogramm
     bdi_diff_ONL,                                          # Datensatz, für den ein Histogramm erstellt werden soll
     breaks        = breaks_list_ONL[[breaks_method_name]], # breaks
-    xlim          = c(x_min, x_max),                       # x Achsen Limits
-    ylim          = c(y_min, y_max),                       # y Achsen Limits
+    xlim          = c(-15 , 5),                            # x Achsen Limits
+    ylim          = c(0,25),                               # y Achsen Limits
     ylab          = "Häufigkeit",                          # y-Achsenbezeichnung
     xlab          = "",                                    # x-Achsenbezeichnung
     main          = paste("Post-Pre-BDI Differenz (ONL),", # Titel
-                   breaks_method_name)
+                          breaks_method_name)
   )  
   
   # Diagramm als PDF speichern
