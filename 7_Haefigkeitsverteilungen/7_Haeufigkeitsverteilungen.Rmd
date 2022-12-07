@@ -52,6 +52,41 @@ Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy
 \end{center}
 \vfill
 
+
+
+# Orga
+\color{black}
+
+\vfill
+\footnotesize
+\center
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum          & Einheit               & Thema		                              \\\hline
+12.10.22       & Einführung            & (1) Einführung    		                  \\
+19.10.22       & R Grundlagen          & (2) R und RStudio I                     \\
+26.10.22       & R Grundlagen          & (2) R und RStudio II                   \\
+02.11.22       & R Grundlagen          & (3) Vektoren         \\
+09.11.22       & R Grundlagen          & (4) Matrizen   \\
+16.11.22       & R Grundlagen          & (5) Listen und Dataframes               \\
+23.11.22       & R Grundlagen          & (6) Datenmanagement \\
+30.11.22       & Deskriptive Statistik & (7) Häufigkeitsverteilungen I      \\
+07.12.22       & Deskriptive Statistik & (7) Häufigkeitsverteilungen II   \\
+14.12.22       & Deskriptive Statistik &(8) Verteilungsfunktionen und Quantile        \\
+19.12.22       & \textit{Leistungsnachweis Teil 1}                              \\
+21.12.22       & Deskriptive Statistik & (9) Maße der zentralen Tendenz        \\
+               & \textcolor{gray}{Weihnachtspause}       \\
+04.01.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität      \\
+11.01.23       & Deskriptive Statistik & (12)  Anwendungsbeispiel (Deskriptive Statistik) \\
+18.01.23       & Inferenzstatistik     & (13) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle)                          \\
+25.01.23       & Inferenzstatistik     & (14) Anwendungsbeispiel (Hypothesentest)                          \\
+???            & \textit{Leistungsnachweis Teil 2}      
+                        \\\hline
+\end{tabular}
+
+
+
 # {.plain}
 \setstretch{1.6}
 \justifying
@@ -300,10 +335,11 @@ Speichern von Abbildungen mit `dev.copy2pdf()`
 \footnotesize
 \vspace{1mm}
 ```{r, eval = F}
-dev.copy2pdf(                                         # PDF Kopirefunktion
-file   = file.path(abb_dir, "pds_7_ha_prebdi.pdf"),   # Dateiname
-width  = 7,                                           # Breite (inch)
-height = 4)                                           # Höhe (inch)
+dev.copy2pdf(                                                           # PDF Kopirefunktion
+  file   = file.path(pfad_zu_abbildungs_ordner, "pds_7_ha_prebdi.pdf"), # Dateiname
+  width  = 7,                                                           # Breite (inch)
+  height = 4                                                            # Höhe (inch)
+  )
 ```
 
 
@@ -323,12 +359,12 @@ barplot(                            # Balkendiagramm
   ylab      = "h(a)",               # y Achsenbeschriftung
   ylim      = c(0,25),              # y Achsengrenzen
   las       = 2,                    # Anzeigen aller x Werte TODO: Orientierung der x ticks?
-  main  		= "Pre BDI"            # Titel
+  main  		= "Pre BDI"             # Titel
   )              
-dev.copy2pdf(                       # PDF Kopiefunktion
-file  		= file.path(abb_dir, "pds_7_ha_prebdi.pdf"), # Dateiname
-width 		= 7, 							          # Breite (inch)
-height 		= 4)  
+dev.copy2pdf(                                            # PDF Kopiefunktion
+  file  		= file.path(abb_dir, "pds_7_ha_prebdi.pdf"), # Dateiname
+  width 		= 7, 							                           # Breite (inch)
+  height 		= 4)  
 ```
 
 
@@ -344,21 +380,23 @@ Relative Häufigkeitsverteilung aller Pre-BDI Werte
 
 ```{r, echo = F, eval = F}
 graphics.off()
-r 		    = H$r                      	              # h(a) Werte
-names(r)    = H$a         					          # barplot braucht a Werte als names
-dev.new()      							         	  # Abbildungsinitialisierung
-barplot( 									          # Balkendiagramm
-r,     										          # absolute Haeufigkeiten
-col   	    = "gray90",        			 	          # Balkenfarbe
-xlab  		= "a",          				          # x Achsenbeschriftung
-ylab  		= "r(a)",     					          # y Achsenbeschriftung
-ylim         = c(0,0.25),                             # y Achsengrenzen
-las   		= 2,          	 				          # Anzeigen aller x Werte
-main  		= "Pre BDI") 					          # Titel
-dev.copy2pdf(								          # PDF Kopiefunktion
-file  		= file.path(abb_dir, "pds_7_ra_prebdi.pdf"), # Dateiname
-width 		= 7, 							          # Breite (inch)
-height 		= 4)  
+r          = H$r           # h(r) Werte
+names(r)   = H$a           # barplot braucht a Werte als names
+dev.new()                  # Abbildungsinitialisierung
+barplot(                   # Balkendiagramm
+  r,                       # relative Haeufigkeiten
+  col   	  = "gray90",    # Balkenfarbe
+  xlab  		= "a",         # x Achsenbeschriftung
+  ylab  		= "r(a)",      # y Achsenbeschriftung
+  ylim      = c(0,0.25),   # y Achsengrenzen
+  las   		= 2,           # Anzeigen aller x Werte
+  main  		= "Pre BDI")   # Titel
+
+dev.copy2pdf(              # PDF Kopiefunktion
+  file  		= file.path(abb_dir, "pds_7_ra_prebdi.pdf"),  # Dateiname
+  width 		= 7, 							                            # Breite (inch)
+  height 		= 4
+  )
 ```
 
 ```{r, echo = FALSE, out.width = "90%"}
