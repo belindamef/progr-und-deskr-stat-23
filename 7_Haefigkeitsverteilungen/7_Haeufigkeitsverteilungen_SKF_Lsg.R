@@ -313,7 +313,7 @@ breaks_list_f2f   = list(
 breaks_list_ONL = list(
   "h3"            = b_h3_ONL,
   "Excelstandard" = b_excel_ONL,
-  "Sturges"        = b_sturges_ONL,
+  "Sturges"       = b_sturges_ONL,
   "Scott"         = b_scott_ONL
   )
 
@@ -321,7 +321,7 @@ breaks_list_ONL = list(
 for (breaks_method_name in names(breaks_list_f2f)) {
   graphics.off()
   
-  # browser()                                                # pausiert loop
+  #browser()                                                # pausiert loop
   # Achtet darauf, wie sich bei jeder Iteration der Wert der Variable "breaks_method_name" ändert. 
 
   # Histogramm plotten
