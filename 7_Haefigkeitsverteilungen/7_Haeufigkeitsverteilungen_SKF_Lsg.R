@@ -36,7 +36,7 @@ H_post_bdi$r = H_post_bdi$h/n_post_bdi               # relative Häufigkeitsvert
 # Input für barplot() vorbereiten
 h          = H_post_bdi$h                            # h(a) Werte
 names(h)   = H_post_bdi$a                            # barplot braucht a Werte als names
-
+dev.new()
 barplot(                                             # Balkendiagramm
   h,                                                 # absolute Haeufigkeiten
   col      = "gray90",                               # Balkenfarbe

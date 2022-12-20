@@ -598,3 +598,4 @@ ihre Ergebnisse mit der Ausgabe der summary() Funktion.
 
 # References
 \footnotesize
+dev.new()
