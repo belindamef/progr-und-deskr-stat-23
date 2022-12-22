@@ -51,4 +51,4 @@ mod_num  = as.numeric(as.vector(mod))
 # ------Zusammenfassende Ausgabe------------------------------------------------
 cat("Mittelwert:", x_bar_man,
     "\nMedian    :", x_tilde_man,
-    "\nModualwert:", mod_num)
+    "\nModalwert:", mod_num)
