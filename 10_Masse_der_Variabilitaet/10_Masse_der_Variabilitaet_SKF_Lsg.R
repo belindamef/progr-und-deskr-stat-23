@@ -3,9 +3,6 @@
 #
 # author: Belinda Fleischmann
 
-# Pakete laden
-library(latex2exp)                                   # Für LaTeX Formatierung
-
 # Directory management
 work_dir = getwd()                                   # Working directory
 data_dir = file.path(work_dir, "Data")               # Datenverzeichnispfad
@@ -20,7 +17,7 @@ if (!file.exists(fig_dir)){
 
 # Import and prepare data
 Data_df =  read.table(rawdata_fpath, sep = ",", header = T)
-x       =  Data_df$Post.BDI             # double Vektor der Post-BDI Werte Werte
+x       =  Data_df$Post.BDI             # double Vektor der Post-BDI Werte
 
 # ------SKF 2) Spannbreite der Post.BDI Daten-----------------------------------
 # "Manuelle" Berechnung
@@ -31,12 +28,12 @@ cat("Spannbreite (manuell): ", S)
 
 # automatische Spannbreitenberechnung
 MinMax  = range(x)                # "automatische" Berechnung von min(x), max(x)
-S       = MinMax[2] - MinMax[1]   # Spannbreite
-cat("\nSpannbreite (automatisch): ", S)
+Sb       = MinMax[2] - MinMax[1]  # Spannbreite
+cat("\nSpannbreite (automatisch): ", Sb)
 
 # ------SKF 4) (empirische) Stichprobenvarianz der Post.BDI Daten---------------
 
-# ------Stichprobenvarianz----------------------------------
+# ------Stichprobenvarianz---------------------------------
 # "Manuelle" Berechnung
 n       = length(x)                       # Anzahl der Werte
 S2      = (1/(n-1))*sum((x - mean(x))^2)  # Stichprobenvarianz
@@ -50,6 +47,8 @@ cat("\nStichprobenvarianz (automatisch): ", S2)
 # "Manuelle" Berechnung
 S2_tilde = (1/n)*sum((x - mean(x))^2)     # Empirische Stichprobenvarianz
 cat("\nEmpirische Stichprobenvarianz (manuell): ", S2_tilde)
+
+# Berechnung mit var()
 S2_tilde = ((n-1)/n)*var(x)               # "automatische" empirische Stichprobenvarianz
 cat("\nEmpirische Stichprobenvarianz (automatisch): ", S2_tilde)
 
@@ -61,7 +60,7 @@ n     = length(x)                             # Anzahl der Werte
 S     = sqrt((1/(n-1))*sum((x - mean(x))^2))  # Standardabweichung
 cat("\nStichprobenstandardabweichung (manuell): ", S)
 
-# Automatische Berechnung der Stichprobenstandardabweichung
+# Berechnung mit sd()
 S     = sd(x)                                 # "automatische" Berechnung
 cat("\nStichprobenstandardabweichung (automatisch): ", S)
 
@@ -69,6 +68,7 @@ cat("\nStichprobenstandardabweichung (automatisch): ", S)
 # "Manuelle" Berechnung
 S_tilde	= sqrt((1/(n))*sum((x - mean(x))^2))  # empirische Standardabweichung
 cat("\nEmpirische Stichprobenstandardabweichung (manuell): ", S_tilde)
+# Berechnung mit sd()
 S_tilde	= sqrt((n-1)/n)*sd(x)                 # "automatische" Berechnung
 cat("\nEmpirische Stichprobenstandardabweichung (automatisch): ", S_tilde)
 
