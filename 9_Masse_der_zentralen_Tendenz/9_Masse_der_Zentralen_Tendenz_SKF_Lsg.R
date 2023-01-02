@@ -23,7 +23,7 @@ Data_df =  read.table(rawdata_fpath, sep = ",", header = T)
 
 # ------SKF 2) Mittelwert der Post.BDI Daten.-----------------------------------
 # "Manuelle" Mittelwertsbestimmung 
-x         = Data_df$Post.BDI    # double Vektor der Pre-BDI Werte Werte
+x         = Data_df$Post.BDI    # double Vektor der Post-BDI Werte Werte
 n         = length(x)           # Anzahl der Werte
 x_bar_man = (1/n)*sum(x)        # Mittelwertsberechnung
 
