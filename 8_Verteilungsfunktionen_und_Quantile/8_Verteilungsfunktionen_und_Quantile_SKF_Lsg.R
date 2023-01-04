@@ -84,8 +84,10 @@ dev.new()                           # Abbildungsinitialisierung
 
 plot(                               # plot() weiß mit ecdf object umzugehen
   evf,                              # ecdf (empirical cumulative distribution function) Objekt
-  xlab = TeX("$\\xi$"),             # x Achsenbeschriftung
-  ylab = TeX("$F(\\xi)$"),          # y Achsenbeschriftung
+  xlab = TeX("$\\xi$"),            # x Achsenbeschriftung
+  #xlab = "xi",                      # x Achsenbeschriftung ohne LaTeX Formatierung
+  ylab = TeX("$F(\\xi)$"),          # y Achsenbeschriftung ohne LaTeX Formatierung
+  #ylab = "F(xi)", 
   main = "Pre.BDI Empirische Verteilungsfunktion")  # Titel
 
 # PDF Speicherung

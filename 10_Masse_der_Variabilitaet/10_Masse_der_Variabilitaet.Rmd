@@ -76,7 +76,7 @@ Datum          & Einheit               & Thema		                              \\
 19.12.22       & \textit{Leistungsnachweis Teil 1}                              \\
 21.12.22       & Deskriptive Statistik & (9) Maße der zentralen Tendenz        \\
                & \textcolor{gray}{Weihnachtspause}       \\
-\textbf{04.01.23}      & \textbf{Deskriptive Statistik} & (10) \textbf{Maße der Datenvariabilität}    \\
+\textbf{04.01.23}      & \textbf{Deskriptive Statistik} & \textbf{(10) Maße der Datenvariabilität}    \\
 11.01.23       & Deskriptive Statistik & (12)  Anwendungsbeispiel (Deskriptive Statistik) \\
 18.01.23       & Inferenzstatistik     & (13) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle)                          \\
 25.01.23       & Inferenzstatistik     & (14) Anwendungsbeispiel (Hypothesentest)                          \\
@@ -123,7 +123,7 @@ Selbstkontrollfragen
 \begin{definition}[Spannbreite]
 $x = (x_1,...,x_n)$ sei ein Datensatz. Dann ist die \textit{Spannbreite} von $x_1,...,x_n$ definiert als
 \begin{equation}
-S := \max(x_1,...,x_n) - \min(x_1,...,x_n).
+sb := \max(x_1,...,x_n) - \min(x_1,...,x_n).
 \end{equation}
 \end{definition}
 
@@ -137,18 +137,17 @@ S := \max(x_1,...,x_n) - \min(x_1,...,x_n).
 fname   = file.path(data_dir, "psychotherapie_datensatz.csv")
 D       = read.table(fname, sep = ",", header = T)
 
-
 # Manuelle Spannbreitenberechnung
 x 	    = D$Pre.BDI 	   	            	# double Vektor der Pre-BDI Werte Werte 	
 x_max 	= max(x)							# Maximum der TA1 Werte
 x_min 	= min(x)							# Mininum der TA1 Werte
-S 	    = x_max - x_min 					# Spannbreite
-print(S)
+sb 	    = x_max - x_min 					# Spannbreite
+print(sb)
 
 # automatische Spannbreitenberechnung
 MinMax	= range(x)							# "automatische" Berechnung von min(x), max(x)
-S 		= MinMax[2] - MinMax[1]		        # Spannbreite
-print(S)
+sb 		= MinMax[2] - MinMax[1]		        # Spannbreite
+print(sb)
 ```
 
 # 
@@ -172,22 +171,22 @@ Selbstkontrollfragen
 $x = (x_1,...,x_n)$ sei ein Datensatz und $\bar{x}$ das Stichprobenmittel. Die \textit{Stichprobenvarianz} von $x$ 
 ist definiert als 
 \begin{equation}
-S^2 := \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2
+s^2 := \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2
 \end{equation}
 und die \textit{empirische Stichprobenvarianz} von $x$ ist definiert als
 \begin{equation}
-\tilde{S}^2 := \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2.
+\tilde{s}^2 := \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2.
 \end{equation}
 \end{definition}
 
 Bemerkungen
 
-* $S^2$ ist ein unverzerrter Schätzer von $\mathbb{V}(X)$, $\tilde{S}^2$ ist ein verzerrter Schätzer $\mathbb{V}(X)$.
-* Für $n \to \infty$ gilt $\frac{1}{n}\approx \frac{1}{n-1}$, $\tilde{S}^2$ ist ein asymptotisch unverzerrter Schätzer von  $\mathbb{V}(X)$.
-* $\tilde{S}^2$ ist der ML Schätzer, $S^2$ ist der ReML Schätzer von $\sigma^2$ bei $X_1,...,X_n \sim N(\mu,\sigma^2)$.
+* $s^2$ ist ein unverzerrter Schätzer von $\mathbb{V}(\xi)$, $\tilde{s}^2$ ist ein verzerrter Schätzer $\mathbb{V}(\xi)$.
+* Für $n \to \infty$ gilt $\frac{1}{n}\approx \frac{1}{n-1}$, $\tilde{s}^2$ ist ein asymptotisch unverzerrter Schätzer von  $\mathbb{V}(\xi)$.
+* $\tilde{s}^2$ ist der ML Schätzer, $s^2$ ist der ReML Schätzer von $\sigma^2$ bei $\xi_1,...,\xi_n \sim N(\mu,\sigma^2)$.
 * Es gelten
 \begin{equation}
-\tilde{S}^2 = \frac{n-1}{n}S^2, S^2 = \frac{n}{n-1}\tilde{S}^2 \mbox{ und } 0 \le \tilde{S}^2 < S^2.
+\tilde{s}^2 = \frac{n-1}{n}s^2, s^2 = \frac{n}{n-1}\tilde{s}^2 \mbox{ und } 0 \le \tilde{s}^2 < s^2.
 \end{equation}
 
 # stichprobenvarianz
@@ -199,14 +198,14 @@ Bemerkungen
 ```{r}
 x 			= D$Pre.BDI 	   	            	# double Vektor der Pre-BDI Werte Werte											
 n 			= length(x)							# Anzahl der Werte
-S2 			= (1/(n-1))*sum((x - mean(x))^2)	# Stichprobenvarianz
-print(S2)
-S2 			= var(x)							# "automatische" Stichprobenvarianz
-print(S2)
-S2_tilde 	= (1/n)*sum((x - mean(x))^2)		# Empirische Stichprobenvarianz
-print(S2_tilde)
-S2_tilde 	= ((n-1)/n)*var(x)					# "automatische" empirische Stichprobenvarianz
-print(S2_tilde)
+s2 			= (1/(n-1))*sum((x - mean(x))^2)	# Stichprobenvarianz
+print(s2)
+s2 			= var(x)							# "automatische" Stichprobenvarianz
+print(s2)
+s2_tilde 	= (1/n)*sum((x - mean(x))^2)		# Empirische Stichprobenvarianz
+print(s2_tilde)
+s2_tilde 	= ((n-1)/n)*var(x)					# "automatische" empirische Stichprobenvarianz
+print(s2_tilde)
 ```
 
 # Stichprobenvarianz
@@ -214,25 +213,25 @@ print(S2_tilde)
 \begin{theorem}[Stichprobenvarianz bei linear-affinen Transformationen]
 \justifying
 \normalfont
-$x = (x_1,...,x_n)$ sei ein Datensatz mit Stichprobenvarianz $S_x^2$ und
+$x = (x_1,...,x_n)$ sei ein Datensatz mit Stichprobenvarianz $s_x^2$ und
 $y = (ax_1+b, ..., ax_n+b)$ sei der mit $a,b \in \mathbb{R}$ linear-affin
-transformierte Datensatz mit Stichprobenvarianz $S_y^2$. Dann gilt
+transformierte Datensatz mit Stichprobenvarianz $s_y^2$. Dann gilt
 \begin{equation}
-S^2_y = a^2 S^2_x.
+s^2_y = a^2 s^2_x.
 \end{equation}
 \end{theorem}
 \tiny
 \underline{Beweis}
 \begin{align}
 \begin{split}
-S^2_y
+s^2_y
 := \frac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2 
 &  = \frac{1}{n-1}\sum_{i=1}^n (ax_i + b - (a\bar{x} + b))^2 \\
 &  = \frac{1}{n-1}\sum_{i=1}^n (ax_i + b - a\bar{x} - b)^2 \\
 &  = \frac{1}{n-1}\sum_{i=1}^n (a(x_i - \bar{x}))^2 \\
 &  = \frac{1}{n-1}\sum_{i=1}^n a^2(x_i - \bar{x})^2 
    = a^2\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 
-   = a^2S_x^2 \\
+   = a^2s_x^2 \\
 \end{split}
 \end{align}
 
@@ -247,16 +246,16 @@ S^2_y
 ```{r}
 # Stichprobenvarianz nach Transformation
 x 		= D$Pre.BDI      	   	            	# double Vektor der Pre-BDI Werte Werte	
-S2x		= var(x)								# Stichprobenvarianz von x_1,...,x_n
+s2x		= var(x)								# Stichprobenvarianz von x_1,...,x_n
 a		= 2 									# Multiplikationskonstante
 b 		= 5 									# Additionskonstante
 y 		= a*x + b							    # y_i = ax_i + b
-S2y		= var(y)								# Stichprobenvarianz y_1,...,y_n
-print(S2y)
+s2y		= var(y)								# Stichprobenvarianz y_1,...,y_n
+print(s2y)
 
 # Stichprobenvarianz nach Theorem
-S2y 	= a^2*S2x    							# Stichprobenvarianz y_1,...,y_n
-print(S2y)
+s2y 	= a^2*s2x    							# Stichprobenvarianz y_1,...,y_n
+print(s2y)
 ```
 
 # Stichprobenvarianz
@@ -269,13 +268,13 @@ $x = (x_1,...,x_n)$ sei ein Datensatz, $x^2 := (x_1^2, ..., x_n^2)$ sei sein
 elementweises Quadrat und $\bar{x}$ und $\overline{x^2}$ seien die respektiven
 Mittelwerte. Dann gilt
 \begin{equation}
-\tilde{S}^2 = \overline{x^2} - \bar{x}^2
+\tilde{s}^2 = \overline{x^2} - \bar{x}^2
 \end{equation}
 \end{theorem}
 \underline{Beweis}
 \begin{align}
 \begin{split}
-\tilde{S}^2
+\tilde{s}^2
 & := \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2 \\
 &  = \frac{1}{n}\sum_{i=1}^n \left(x_i^2 - 2x_i \bar{x} +  \bar{x}^2\right) \\
 &  =  \frac{1}{n}\sum_{i=1}^n x_i^2
@@ -304,16 +303,16 @@ Mittelwerte. Dann gilt
 x 			= D$Pre.BDI      	   	            	# double Vektor der Pre-BDI Werte Werte
 n           = length(x)                             # Anzahl Datenpunkte
 x_bar 		= mean(x)								# Stichprobenmittel
-S2_tilde 	= ((n-1)/n)*var(x)						# empirische Stichprobenvarianz
-print(S2_tilde)
+s2_tilde 	= ((n-1)/n)*var(x)						# empirische Stichprobenvarianz
+print(s2_tilde)
 
 # Berechnung der empirischen Stichprobenvarianz mit Theorem
-S2_tilde 	= mean(x^2) - (mean(x))^2				# \bar{x^2} - \bar{x}^2
-print(S2_tilde)
+s2_tilde 	= mean(x^2) - (mean(x))^2				# \bar{x^2} - \bar{x}^2
+print(s2_tilde)
 
 # Das Theorem gilt nicht für die Stichprobenvarianz
-S2 			= var(x)						        # S^2 \neq \bar{x^2} - \bar{x}^2						
-print(S2)
+s2 			= var(x)						        # s^2 \neq \bar{x^2} - \bar{x}^2						
+print(s2)
 ```
 
 # 
@@ -337,22 +336,22 @@ Selbstkontrollfragen
 $x = (x_1,...,x_n)$ sei ein Datensatz. Die \textit{Stichprobenstandardabweichung} 
 von $x$ ist definiert als  
 \begin{equation}
-S := \sqrt{S^2}
+s := \sqrt{s^2}
 \end{equation}
 und die \textit{empirische Stichprobenstandardabweichung} von $x$ ist definiert als
 \begin{equation}
-\tilde{S} := \sqrt{\tilde{S}^2}.
+\tilde{s} := \sqrt{\tilde{s}^2}.
 \end{equation}
 \end{definition}
 
 Bemerkungen
 
-* $S$ ist ein verzerrter Schätzer von $\mathbb{S}(X)$.
-* $S^2$ misst Variabilität in quadrierten Einheiten, zum Beispiel Quadratmeter ($m^2)$.
-* $S$ misst Variabilität in unquadrierten Einheiten, zum Beispiel Meter ($m$).
+* $s$ ist ein verzerrter Schätzer von $\mathbb{S}(\xi)$.
+* $s^2$ misst Variabilität in quadrierten Einheiten, zum Beispiel Quadratmeter ($m^2)$.
+* $s$ misst Variabilität in unquadrierten Einheiten, zum Beispiel Meter ($m$).
 * Es gilt 
 \begin{equation}
-\tilde{S} = \sqrt{(n-1)/n}S.
+\tilde{s} = \sqrt{(n-1)/n}s.
 \end{equation}
 
 
@@ -366,18 +365,18 @@ Bemerkungen
 # Manuelle Berechnung der Stichprobenstandardabweichung
 x 		= D$Pre.BDI      	   	            	# double Vektor der Pre-BDI Werte Werte	
 n 		= length(x)								# Anzahl der Werte
-S 		= sqrt((1/(n-1))*sum((x - mean(x))^2))	# Standardabweichung
-print(S)
+s 		= sqrt((1/(n-1))*sum((x - mean(x))^2))	# Standardabweichung
+print(s)
 
 # Automatische Berechnung der Stichprobenstandardabweichung
-S 		= sd(x)								    # "automatische" Berechnung
-print(S)
+s 		= sd(x)								    # "automatische" Berechnung
+print(s)
 
 # Empirische Standardabweichung
-S_tilde	= sqrt((1/(n))*sum((x - mean(x))^2))   # empirische Standardabweichung
-print(S_tilde)
-S_tilde	= sqrt((n-1)/n)*sd(x)				   # empirische Standardabweichung
-print(S_tilde)
+s_tilde	= sqrt((1/(n))*sum((x - mean(x))^2))   # empirische Standardabweichung
+print(s_tilde)
+s_tilde	= sqrt((n-1)/n)*sd(x)				   # empirische Standardabweichung
+print(s_tilde)
 ```
 # Stichprobenstandardabweichung
 \setstretch{1}
@@ -385,18 +384,18 @@ print(S_tilde)
 \begin{theorem}[Stichprobenvarianz bei linear-affinen Transformationen]
 \justifying
 \normalfont
-$x = (x_1,...,x_n)$ sei ein Datensatz mit Stichprobenstandardabweichung $S_x$ und
+$x = (x_1,...,x_n)$ sei ein Datensatz mit Stichprobenstandardabweichung $s_x$ und
 $y = (ax_1+b, ..., ax_n+b)$ sei der mit $a,b \in \mathbb{R}$ linear-affin
-transformierte Datensatz mit Stichprobenstandardabweichung $S_y$. Dann gilt
+transformierte Datensatz mit Stichprobenstandardabweichung $s_y$. Dann gilt
 \begin{equation}
-S_y = |a| S_x.
+s_y = |a| s_x.
 \end{equation}
 \end{theorem}
 \tiny
 \underline{Beweis}
 \begin{align*}
 \begin{split}
-S_y
+s_y
 := \left(\frac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2\right)^{1/2} 
 &  = \left(\frac{1}{n-1}\sum_{i=1}^n \left(ax_i + b - (a\bar{x} + b)\right)^2\right)^{1/2} \\
 &  = \left(\frac{1}{n-1}\sum_{i=1}^n \left(a(x_i - \bar{x})\right)^2\right)^{1/2}			\\
@@ -404,7 +403,7 @@ S_y
 &  = \left(a^2\right)^{1/2}\left(\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2\right)^{1/2}
 \end{split}
 \end{align*}
-Also gilt $S_y = aS_x$, wenn $a \ge 0$ und $S_y = -aS_x$, wenn $a < 0$. Dies aber entspricht $S_y = |a|S_x$.
+Also gilt $s_y = as_x$, wenn $a \ge 0$ und $s_y = -as_x$, wenn $a < 0$. Dies aber entspricht $s_y = |a|s_x$.
 
 
 # Stichprobenstandardabweichung
@@ -416,25 +415,25 @@ Also gilt $S_y = aS_x$, wenn $a \ge 0$ und $S_y = -aS_x$, wenn $a < 0$. Dies abe
 ```{r}
 # a >= 0
 x 	= D$Pre.BDI      	# double Vektor der Pre-BDI Werte Werte
-Sx	= sd(x)				# Stichprobenvarianz von x
+s_x	= sd(x)				# Stichprobenvarianz von x
 a	= 2 			    # Multiplikationskonstante
 b 	= 5 				# Additionskonstante
 y 	= a*x + b			# y_i = ax_i + b
-Sy	= sd(y)				# Stichprobenvarianz von y
-print(Sy)
-Sy 	= a*Sx				# Stichprobenvarianz von y
-print(Sy)
+s_y	= sd(y)				# Stichprobenvarianz von y
+print(s_y)
+s_y = a*s_x				# Stichprobenvarianz von y
+print(s_y)
 
 # a < 0
 x 	= D$Pre.BDI      	# double Vektor der Pre-BDI Werte Werte
-Sx	= sd(x)				# Stichprobenvarianz von x
+s_x	= sd(x)				# Stichprobenvarianz von x
 a	= -3 				# Multiplikationskonstante
 b 	= 10 				# Additionskonstante
 y 	= a*x + b			# y_i = ax_i + b
-Sy	= sd(y)				# Stichprobenvarianz von y
-print(Sy)
-Sy  = (-a)*Sx			# Stichprobenvarianz von y
-print(Sy)
+s_y	= sd(y)				# Stichprobenvarianz von y
+print(s_y)
+s_y  = (-a)*s_x			# Stichprobenvarianz von y
+print(s_y)
 ```
 
 # 

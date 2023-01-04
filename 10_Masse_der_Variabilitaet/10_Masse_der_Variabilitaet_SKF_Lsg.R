@@ -23,52 +23,52 @@ x       =  Data_df$Post.BDI             # double Vektor der Post-BDI Werte
 # "Manuelle" Berechnung
 x_max   = max(x)                  # Maximum
 x_min   = min(x)                  # Mininum
-S       = x_max - x_min           # Spannbreite
-cat("Spannbreite (manuell): ", S)
+sb       = x_max - x_min           # Spannbreite
+cat("Spannbreite (manuell): ", sb)
 
 # automatische Spannbreitenberechnung
 MinMax  = range(x)                # "automatische" Berechnung von min(x), max(x)
-Sb       = MinMax[2] - MinMax[1]  # Spannbreite
-cat("\nSpannbreite (automatisch): ", Sb)
+sb       = MinMax[2] - MinMax[1]  # Spannbreite
+cat("\nSpannbreite (automatisch): ", sb)
 
 # ------SKF 4) (empirische) Stichprobenvarianz der Post.BDI Daten---------------
 
 # ------Stichprobenvarianz---------------------------------
 # "Manuelle" Berechnung
 n       = length(x)                       # Anzahl der Werte
-S2      = (1/(n-1))*sum((x - mean(x))^2)  # Stichprobenvarianz
-cat("\nStichprobenvarianz (manuell): ", S2)
+s2      = (1/(n-1))*sum((x - mean(x))^2)  # Stichprobenvarianz
+cat("\nStichprobenvarianz (manuell): ", s2)
 
 # Berechnung mit var()
-S2      = var(x)                          # "automatische" Stichprobenvarianz
-cat("\nStichprobenvarianz (automatisch): ", S2)
+s2      = var(x)                          # "automatische" Stichprobenvarianz
+cat("\nStichprobenvarianz (automatisch): ", s2)
 
 # ------ empirische Stichprobenvarianz---------------------
 # "Manuelle" Berechnung
-S2_tilde = (1/n)*sum((x - mean(x))^2)     # Empirische Stichprobenvarianz
-cat("\nEmpirische Stichprobenvarianz (manuell): ", S2_tilde)
+s2_tilde = (1/n)*sum((x - mean(x))^2)     # Empirische Stichprobenvarianz
+cat("\nEmpirische Stichprobenvarianz (manuell): ", s2_tilde)
 
 # Berechnung mit var()
-S2_tilde = ((n-1)/n)*var(x)               # "automatische" empirische Stichprobenvarianz
-cat("\nEmpirische Stichprobenvarianz (automatisch): ", S2_tilde)
+s2_tilde = ((n-1)/n)*var(x)               # "automatische" empirische Stichprobenvarianz
+cat("\nEmpirische Stichprobenvarianz (automatisch): ", s2_tilde)
 
 # ------SKF 8) (empirische) Stichprobenstandardabweichung der Post.BDI Daten----
 
 # ------Stichprobenstandardabweichung----------------------------------
 # "Manuelle" Berechnung
 n     = length(x)                             # Anzahl der Werte
-S     = sqrt((1/(n-1))*sum((x - mean(x))^2))  # Standardabweichung
-cat("\nStichprobenstandardabweichung (manuell): ", S)
+s     = sqrt((1/(n-1))*sum((x - mean(x))^2))  # Standardabweichung
+cat("\nStichprobenstandardabweichung (manuell): ", s)
 
 # Berechnung mit sd()
-S     = sd(x)                                 # "automatische" Berechnung
-cat("\nStichprobenstandardabweichung (automatisch): ", S)
+s     = sd(x)                                 # "automatische" Berechnung
+cat("\nStichprobenstandardabweichung (automatisch): ", s)
 
 # ------ empirische Stichprobenstandardabweichung---------------------
 # "Manuelle" Berechnung
-S_tilde	= sqrt((1/(n))*sum((x - mean(x))^2))  # empirische Standardabweichung
-cat("\nEmpirische Stichprobenstandardabweichung (manuell): ", S_tilde)
+s_tilde	= sqrt((1/(n))*sum((x - mean(x))^2))  # empirische Standardabweichung
+cat("\nEmpirische Stichprobenstandardabweichung (manuell): ", s_tilde)
 # Berechnung mit sd()
-S_tilde	= sqrt((n-1)/n)*sd(x)                 # "automatische" Berechnung
-cat("\nEmpirische Stichprobenstandardabweichung (automatisch): ", S_tilde)
+s_tilde	= sqrt((n-1)/n)*sd(x)                 # "automatische" Berechnung
+cat("\nEmpirische Stichprobenstandardabweichung (automatisch): ", s_tilde)
 
