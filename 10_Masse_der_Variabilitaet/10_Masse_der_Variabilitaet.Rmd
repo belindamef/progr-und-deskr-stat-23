@@ -72,14 +72,14 @@ Datum          & Einheit               & Thema		                              \\
 23.11.22       & R Grundlagen          & (6) Datenmanagement \\
 30.11.22       & Deskriptive Statistik & (7) Häufigkeitsverteilungen I      \\
 07.12.22       & Deskriptive Statistik & (7) Häufigkeitsverteilungen II   \\
-14.12.22       & Deskriptive Statistik &(8) Verteilungsfunktionen und Quantile        \\
+14.12.22       & Deskriptive Statistik & (8) Verteilungsfunktionen und Quantile        \\
 19.12.22       & \textit{Leistungsnachweis Teil 1}                              \\
 21.12.22       & Deskriptive Statistik & (9) Maße der zentralen Tendenz        \\
                & \textcolor{gray}{Weihnachtspause}       \\
 \textbf{04.01.23}      & \textbf{Deskriptive Statistik} & \textbf{(10) Maße der Datenvariabilität}    \\
-11.01.23       & Deskriptive Statistik & (12)  Anwendungsbeispiel (Deskriptive Statistik) \\
-18.01.23       & Inferenzstatistik     & (13) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle)                          \\
-25.01.23       & Inferenzstatistik     & (14) Anwendungsbeispiel (Hypothesentest)                          \\
+11.01.23       & Deskriptive Statistik & (11)  Anwendungsbeispiel (Deskriptive Statistik) \\
+18.01.23       & Inferenzstatistik     & (11) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle)                          \\
+25.01.23       & Inferenzstatistik     & (11) Anwendungsbeispiel (Hypothesentest)                          \\
                         \\\hline
 27.01.23       & \textit{Leistungsnachweis Teil 2}   & Online, 9:00 - 10:00 Uhr   
 
