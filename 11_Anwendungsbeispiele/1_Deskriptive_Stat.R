@@ -20,7 +20,7 @@ fname       = file.path(data_dir, "psychotherapie_datensatz.csv")   # Einlesen
 D           = read.table(fname, sep = ",", header = TRUE)           # Rohdaten
 D$Delta.BDI = -(D$Post.BDI - D$Pre.BDI)                             # \Delta BDI Maß
 
-# ------Asuwertung deskriptiver Statistiken-------------------------------------
+# ------Auswertung deskriptiver Statistiken-------------------------------------
 # Initialisierung eines Dataframes
 tp            = c("Klassisch", "Online")            # Therapiebedingungen
 ntp           = length(tp)                          # Anzahl Therapiebedingungen
@@ -50,6 +50,8 @@ for(i in 1:ntp){
 print(S)
 
 # -------Bedingungsabhängige Visualisierung deskriptiver Statistiken------------
+graphics.off()                                # Schließt alle eventuell noch offenen graphics devices
+dev.new()
 
 # Abbildung 1: Balkendiagramm und Boxplots
 # ---------------------------------------------
@@ -77,6 +79,7 @@ x = barplot(                                  # Ausgabe der x-Ordinaten (?barplo
   xlim        = c(0,3),                       # x-Achsenbegrenzung 
   xlab        = "Bedingung",                  # x-Achsenbeschriftung    
   main        = TeX("$\\Delta BDI$"))         # Titel
+  #main        = "Delta BDI")
 arrows(                                       # arrows() für Fehlerbalken (siehe ?arrows)
   x0          = x,                            # arrow start x-ordinate
   y0          = mw - sd,                      # arrow start y-ordinate
@@ -104,6 +107,9 @@ dev.copy2pdf(
 
 # Abbildung 2: Histogramme
 # ---------------------------------------------
+graphics.off()                                # Schließt alle eventuell noch offenen graphics devices
+dev.new()
+
 # Histogrammparameter
 h           = 1                               # gewünschte Klassenbreite
 b_0         = min(D$Delta.BDI)                # b_0
@@ -147,3 +153,5 @@ dev.copy2pdf(
   file        = file.path(fig_dir, "11_deskr_hist.pdf"),
   width       = 8,
   height      = 4)
+
+graphics.off()
