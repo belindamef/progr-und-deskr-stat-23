@@ -47,6 +47,7 @@ for(i in 1:ntp){
 }
 
 # Ausgabe
+cat('\n\nDeskriptive Statistiken: \n\n')
 print(S)
 
 # -------Bedingungsabhängige Visualisierung deskriptiver Statistiken------------
