@@ -6,7 +6,7 @@
 library(latex2exp)   # Für LaTeX-Schriftformatierung
 
 # Datenmanagement
-data_dir = file.path(getwd(), "Data")  # Pfad zum Datenorder (output der Simulation)
+data_dir = file.path(getwd(), "Data")  # Pfad zum Datenordner (output der Simulation)
 deskr_skript_pfad = file.path(getwd(), 
                               "11_Anwendungsbeispiele", 
                               "1_Deskriptive_Stat.R")
@@ -61,25 +61,25 @@ for(i in 1:ntp){
   C_mu$G_u[i]    = X_bar - (S/sqrt(n))*psi_inv    # untere KI Grenze
   C_mu$mu_hat[i] = X_bar                          # Erwartungswertparameterschätzer
   C_mu$G_o[i]    = X_bar + (S/sqrt(n))*psi_inv    # obere KI Grenze
-}
+  }
 
 # Ausgabe
 cat('\n\nKonfidenzintervall für Erwartungswertparameter: \n\n')
 print(C_mu)
 
 # -----------------------------
-# Für Varianzwertparameter
+# Für Varianzparameter
 # -----------------------------
 
 # Analyseparameter
 t       = c("Klassisch", "Online")                    # Therapiebedingungen
 ntp     = length(tp)                                  # Anzahl an Therapiebedingungen
 n       = 50                                          # Anzahl von BeobaC_sigsqrhtungen pro Therapiebedingung
-C_sigsqr       = data.frame(                          # Dataframeerzeugung
-  G_u        = rep(NaN,ntp),                  # untere KI Grenze
-  sigsqr_hat = rep(NaN,ntp),                  # Varianzparameterschätzer
-  G_o        = rep(NaN,ntp),                  # obere KI Grenze
-  row.names  = tp)                            # Therapiebedingungen
+C_sigsqr     = data.frame(                            # Dataframeerzeugung
+  G_u        = rep(NaN,ntp),                          # untere KI Grenze
+  sigsqr_hat = rep(NaN,ntp),                          # Varianzparameterschätzer
+  G_o        = rep(NaN,ntp),                          # obere KI Grenze
+  row.names  = tp)                                    # Therapiebedingungen
 
 # Konfidenzintervallparameter
 delta   = 0.95                                        # Konfidenzlevel
@@ -88,11 +88,11 @@ xi_2    = qchisq((1+delta)/2, n - 1)                  # \Xi^2((1+\delta)/2; n - 
 
 # Konfidenzintervallevaluation
 for(i in 1:ntp){
-  data            = D$Delta.BDI[D$Bedingung == t[i]] # Stichprobenrealisierung
-  S2              = var(data)                        # Stichprobenvarianz
-  C_sigsqr$G_u[i]        = (n-1)*S2/xi_2             # untere KI Grenze
-  C_sigsqr$sigsqr_hat[i] = S2                        # Varianzparameterschätzer
-  C_sigsqr$G_o[i]        = (n-1)*S2/xi_1             # obere KI Grenze
+  data            = D$Delta.BDI[D$Bedingung == t[i]]  # Stichprobenrealisierung
+  S2              = var(data)                         # Stichprobenvarianz
+  C_sigsqr$G_u[i]        = (n-1)*S2/xi_2              # untere KI Grenze
+  C_sigsqr$sigsqr_hat[i] = S2                         # Varianzparameterschätzer
+  C_sigsqr$G_o[i]        = (n-1)*S2/xi_1              # obere KI Grenze
   }
 
 # Ausgabe
