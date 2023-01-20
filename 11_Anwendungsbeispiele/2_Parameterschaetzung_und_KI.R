@@ -1,4 +1,4 @@
-# Dieses Skript TODO. 
+# Dieses Skript schätzt Parameter und Konfidenzintervalle. 
 
 # Kurs:  "Programmierung und Deskriptive Statistik" im WS 22/23
 
