@@ -9,6 +9,8 @@ output:
     latex_engine: xelatex
     includes:
       in_header: ../Header.tex
+      
+    
 ---
 
 
@@ -797,20 +799,140 @@ Konfidenzintervalle
 
 
 # Hypothesentest
-\textcolor{darkblue}{Anwendungsszenario , Modellannahmen und Hypothese}
-\vspace{2mm}
 
 \small
-Es liegen zwei Stichproben experimenteller Einheiten (Klassische Bedingung,
-Online Bedingung) vor. Wir nehmen unabhängige identische Normalverteilungen
-$N(\mu_1,\sigma^2)$ und $N(\mu_2,\sigma^2)$ an, wobei die Parameter $\mu_1,\mu_2,\sigma^2$
+\textcolor{darkblue}{Anwendungsszenario und  statistisches Modell}
+
+\vspace{2mm}
+\footnotesize
+\setstretch{1.5}
+
+Wir nehmen an, dass die $\Delta$ BDI Werte, also der uns vorliegende Datensatz Realisierungen von unabhängig
+verteilten Zufallsvariablen
+\begin{equation}
+\ups_{ij} \sim N\left(\mu_{i},\sigma^2_i\right), i = 1,2, j = 1,...,50
+\end{equation}
+sind, wobei $i$ die Therapiebedingung (1 = Klassisch, 2 = Online) und $j$
+den Proband:innen Index in der $i$ten experimentellen Bedingung bezeichnen.
+Innerhalb einer Bedingung sind diese Zufallsvariablen also unabhängig und identisch
+verteilt.
+\vspace{2mm}
+
+Die Parameter $\mu_1,\mu_2,\sigma^2$ sind
 unbekannt sind. Wir beabsichtigen das Quantifizieren der Unsicherheit beim
 inferentiellen Vergleich von $\mu_1$ mit $\mu_2$.
 \vspace{2mm}
 
-Wir führen also einen Zweistichproben-T-Test bei unabhängigen Stichproben unter
-Annahme identischer Varianz durch und wollen die Hypothesen $H_0:\mu_1 = \mu_2$
-und $H_1:\mu_1 \neq \mu_2$ mit einem Signifikanzniveau von $\alpha_0 = 0.05$ testen.
+Dafür können wir einen Zweistichproben-T-Test bei unabhängigen Stichproben unter
+Annahme identischer Varianz durchführen. 
+
+
+Wir wollen die Hypothesen $H_0:\mu_1 = \mu_2$
+und $H_1:\mu_1 \neq \mu_2$ mit einem Signifikanzniveau von $\alpha_0 = 0.05$ testen und verwenden dafür einen 
+**zweiseitigen Zweistichproben-Test**. 
+
+
+
+# Hypothesentest
+
+\small
+\textcolor{darkblue}{(1) Statistisches Modell und Testhypothesen}
+\vspace{2mm}
+
+\footnotesize
+Wir betrachten die einfache Nullhpothese und die zusammengesetzte Alternativhypothese
+\begin{align}
+&H_0:\mu_1 - \mu_2 = 0 \Leftrightarrow \mu_1 = \mu_2 \text{ und } \\
+&H_1:\mu_1 - \mu_2 \neq 0 \Leftrightarrow \mu_1 \neq \mu_2
+\end{align}
+
+
+\vspace{2mm}
+
+
+# Hypothesentest
+
+\small
+\textcolor{darkblue}{(2) Definition und Analyse der Teststatistik}
+\vspace{2mm}
+
+\footnotesize
+
+Die T-Teststatistik für den Zweistichproben-T-Test ist gegeben durch 
+
+\begin{equation}
+T = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\bar{y}_1-\bar{y}_2 - \mu_0}{s_{12}}\right)
+\end{equation}
+und dessen Verteilung durch
+\begin{equation}
+T \sim t(\delta, n_1 + n_2 - 2) \mbox{ mit } \delta = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\mu_1-\mu_2-\mu_0}{\sigma}\right).
+\end{equation}
+
+
+# Hypothesentest
+
+\small
+
+\textcolor{darkblue}{(3) Definition des Tests }
+
+\vspace{2mm}
+
+\begin{equation}
+\phi(\ups) := 1_{\{|T| \ge k\}} =
+{\begin{cases}
+1 & |T| \ge k \\
+0 & |T|  <  k
+\end{cases}}.
+\end{equation}
+
+
+# Hypothesentest
+
+\small
+\textcolor{darkblue}{(4) Analyse der Testgütefunktion}
+\vspace{2mm}
+
+\footnotesize
+\begin{theorem}[Testgütefunktion]
+\justifying
+\normalfont
+Es sei $\phi$ der im obigen Modell formulierte Zweistichproben-T-Test. Dann ist
+die Testgütefunktion von $\phi$ gegeben durch
+\begin{multline}
+q_{\phi} : \mathbb{R}^2 \to [0,1],
+(\mu_1, \mu_2) \mapsto q_{\phi}(\mu_1, \mu_2)
+\\ := 1 - \psi(k;\delta,n_1+n_2-2) + \psi(-k;\delta,n_1+n_2-2)
+\end{multline}
+wobei $\psi(\cdot; \delta, n_1+n_2-2)$  die KVF der nichtzentralen
+$t$-Verteilung mit Nichtzentralitätsparameter
+\begin{equation}
+\delta := \sqrt{\frac{n_1n_2}{n_1+n_2}}\frac{\mu_1-\mu_2}{\sigma}
+\end{equation}
+und Freiheitsgradparameter $n_1+n_2-2$ bezeichnet.
+\end{theorem}
+
+
+# Hypothesentest
+
+\small
+\textcolor{darkblue}{(5) Testumfangkontrolle}
+\vspace{2mm}
+
+
+\footnotesize
+
+\begin{theorem}[Testumfangkontrolle]
+\justifying
+\normalfont
+$\phi$ sei der im obigen Testszenario definierte Test. Dann ist $\phi$ ein
+Level-$\alpha_0$-Test mit Testumfang $\alpha_0$, wenn der kritische Wert
+definiert ist durch
+\begin{equation}
+k_{\alpha_0} := \psi^{-1}\left(1 - \frac{\alpha_0}{2}; n_1 + n_2 - 2 \right),
+\end{equation}
+wobei $\psi^{-1}(\cdot; n_1+n_2-2)$ die inverse KVF der $t$-Verteilung mit
+$n_1+n_2-2$ Freiheitsgraden ist.
+\end{theorem}
 
 
 
