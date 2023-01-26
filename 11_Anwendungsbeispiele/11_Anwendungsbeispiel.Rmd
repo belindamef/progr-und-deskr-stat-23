@@ -810,7 +810,7 @@ Konfidenzintervalle
 Wir nehmen an, dass die $\Delta$ BDI Werte, also der uns vorliegende Datensatz Realisierungen von unabhängig
 verteilten Zufallsvariablen
 \begin{equation}
-\ups_{ij} \sim N\left(\mu_{i},\sigma^2_i\right), i = 1,2, j = 1,...,50
+\ups_{ij} \sim N\left(\mu_{i},\sigma^2\right), i = 1,2, j = 1,...,50
 \end{equation}
 sind, wobei $i$ die Therapiebedingung (1 = Klassisch, 2 = Online) und $j$
 den Proband:innen Index in der $i$ten experimentellen Bedingung bezeichnen.
@@ -835,8 +835,7 @@ und $H_1:\mu_1 \neq \mu_2$ mit einem Signifikanzniveau von $\alpha_0 = 0.05$ tes
 
 # Hypothesentest
 
-\small
-\textcolor{darkblue}{(1) Statistisches Modell und Testhypothesen}
+\textcolor{darkblue}{(1) Modell und Testhypothesen}
 \vspace{2mm}
 
 \footnotesize
@@ -852,7 +851,6 @@ Wir betrachten die einfache Nullhpothese und die zusammengesetzte Alternativhypo
 
 # Hypothesentest
 
-\small
 \textcolor{darkblue}{(2) Definition und Analyse der Teststatistik}
 \vspace{2mm}
 
@@ -865,13 +863,16 @@ T = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\bar{y}_1-\bar{y}_2 - \mu_0}{s_{12}
 \end{equation}
 und dessen Verteilung durch
 \begin{equation}
-T \sim t(\delta, n_1 + n_2 - 2) \mbox{ mit } \delta = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\mu_1-\mu_2-\mu_0}{\sigma}\right).
+T \sim t(\d, n_1 + n_2 - 2) \mbox{ mit } \d = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\mu_1-\mu_2-\mu_0}{\sigma}\right).
+\end{equation}
+wobei $\bar{y}_1$ und $\bar{y}_2$ die Stichprobenmittel der Gruppen Klassische und Online-Therapie, respektive sind, $n_1$ und $n_2$ die jeweiligen Stichprobengrößen und $s_{12} = \sqrt{s^2_{12}}$ die *gepoolte Stichprobenstandardabweichung*. Die *gepoolte Stichprobenvarianz* ist gegeben durch 
+\begin{equation}
+s^2_{12} := \frac{\sum_{j=1}^{n_1} (y_{1j} - \bar{y}_1)^2 + \sum_{j=1}^{n_2} (y_{2j} - \bar{y}_2)^2}{n_1+n_2-2}
 \end{equation}
 
 
 # Hypothesentest
 
-\small
 
 \textcolor{darkblue}{(3) Definition des Tests }
 
@@ -888,7 +889,6 @@ T \sim t(\delta, n_1 + n_2 - 2) \mbox{ mit } \delta = \sqrt{\frac{n_1n_2}{n_1+n_
 
 # Hypothesentest
 
-\small
 \textcolor{darkblue}{(4) Analyse der Testgütefunktion}
 \vspace{2mm}
 
@@ -914,7 +914,6 @@ und Freiheitsgradparameter $n_1+n_2-2$ bezeichnet.
 
 # Hypothesentest
 
-\small
 \textcolor{darkblue}{(5) Testumfangkontrolle}
 \vspace{2mm}
 
@@ -977,7 +976,7 @@ pval      = 2*(1 - pt(abs(t), n_1+n_2-2))                       # p-Wert
 # Ausgabe
 cat("\nx_bar_1           = ", x_bar_1,
     "\nx_bar_2           = ", x_bar_2,
-    "\nfg                = ", n_1 + n_2 - 2,
+    "\nFreiheitsgrade    = ", n_1 + n_2 - 2,
     "\nSignifikanzlevel  = ", alpha_0,
     "\nKritischer Wert   = ", k_alpha_0,
     "\nTeststatistik     = ", t,
@@ -985,8 +984,19 @@ cat("\nx_bar_1           = ", x_bar_1,
     "\np-Wert            = ", pval)
 ```
 
-\small
-$\Rightarrow$ Wir lehnen die Nullhypothese $H_0: \mu_1 = \mu_2$ ab.
+\footnotesize
+
+Folgendes können wir aus dieser Zusammenfassung ablesen:
+
+* \footnotesize Die Stichprobenmittel der zwei Datensätze sind $6.16$ und $4.92$
+* Die Anzahl der Freiheitsgrade ist $98$
+* Das Signifikanzniveau dieses Tests $\alpha_0$ ist $0.05$
+* Der kritische Wert $k_{\alpha_0}$ ist $1.98$
+* Der Wert der T-Teststatistik $T$ ist $2.65$
+* Das Ergebnis des Tests $\phi$ ist $1$ (Wie zu erwarten, da hier $T > k_{\alpha_0})$
+* $\Rightarrow$ Wir lehnen die Nullhypothese $H_0: \mu_1 = \mu_2$ ab.
+* Der p-Wert beträgt 0.00951
+
 
 
 # Hypothesentest
@@ -994,7 +1004,7 @@ $\Rightarrow$ Wir lehnen die Nullhypothese $H_0: \mu_1 = \mu_2$ ab.
 \textcolor{darkblue}{R Implementation des Zweistichproben-T-Tests}
 
 \vspace{2mm}
-\setstretch{1}
+\setstretch{0.8}
 \tiny
 ```{r}
 # Automatischer Zweistichproben-T-Test
@@ -1007,7 +1017,39 @@ varphi    = t.test(                           # ?t.test für Details
 
 # Ausgabe
 print(varphi)
+```
 
+\setstretch{1.2}
+
+Folgendes können wir aus dieser Zusammenfassung ablesen:
+
+* Es wurden die Daten verwendet, die in den Variablen `x_1` und `x_2` gespeichert sind. 
+* Der Wert der T-Teststatistik $T$ ist $2.65$
+* Die Anzahl der Freiheitsgrade, engl.: degrees of freedom (df) ist $98$
+* Die Alternativhypothese ist, dass die "wahre" Differenz zwischen $\mu_1$ und $\mu_2$ gleich $0$ ist. 
+* Das $95\%$-Konfidenzintervall der geschätzten Erwartungswertdifferenz ist $[0.31, 2.17]$.
+* Die Stichprobenmittel der zwei Datensätze sind $6.16$ und $4.92$
+* Der p-Wert beträgt (gerundet) 0.01. 
+* $\Rightarrow$ Da dieser Wert kleiner als das festgelegte Signifikanzniveau $0.05$ ist, kann die  die Nullhypothese $H_0: \mu_1 = \mu_2$ abgelehnt werden.
+
+
+
+
+# Hypothesentest
+
+\textcolor{darkblue}{R Implementation des Zweistichproben-T-Tests}
+
+\vspace{2mm}
+
+\footnotesize
+
+Die Werte, die in der automatischen Ausgabe angezeigt werden sind gerundet. Die exakten Werte sind jedoch im Objekt `varphi` gespeichert und wir können diese aufrufen. 
+
+\vspace{2mm}
+\setstretch{1}
+\tiny
+
+```{r}
 # Genauere Ausgabe t
 paste(varphi[1])
 
